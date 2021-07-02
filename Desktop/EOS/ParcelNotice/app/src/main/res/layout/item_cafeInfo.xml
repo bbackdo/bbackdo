@@ -24,7 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="10dp"></ImageView>
 
         <TextView
             android:id="@+id/cafe_name"
@@ -64,7 +64,7 @@
             android:fontFamily="@font/nexon_gothic_lv1_bold"
             android:text="김현수(이)가 가져감"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_dummy_recipient" />
+            app:layout_constraintTop_toBottomOf="@id/time" />
 
         <Button
             android:id="@+id/button_parcel_cancel"
