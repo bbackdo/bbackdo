@@ -125,7 +125,7 @@ public class SearchActivity extends Fragment implements OnMapReadyCallback {
 
 
         MarkerOptions markerOptions4 = new MarkerOptions();
-        markerOptions4.position(new LatLng(37.557325600092895, 127.04212326887637));
+        markerOptions4.position(new LatLng(37.55714419798944, 127.04212995357115));
         markerOptions4.title("스타벅스 한양대점");
         markerOptions4.snippet("사람개많아");
         googleMap.addMarker(markerOptions4);
