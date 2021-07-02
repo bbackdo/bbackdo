@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.eos.caffein.LoginActivity"
+    android:background="#D7C4A9">
+
+    <View
+        android:id="@+id/view_login_upLine"
+        android:layout_width="300dp"
+        android:layout_height="3dp"
+        android:layout_marginBottom="10dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toTopOf="@id/textView_login_appDescribe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_login_appDescribe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/koreanfrenchtypewriter"
+        android:text="카공족을 위한 맞춤 플랫폼"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@id/textView_login_appName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_login_appName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/koreanfrenchtypewriter"
+        android:text="카페:in"
+        android:textColor="#564732"
+        android:textSize="70sp"
+        app:layout_constraintBottom_toTopOf="@id/view_login_underLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+    <View
+        android:id="@+id/view_login_underLine"
+        android:layout_width="300dp"
+        android:layout_height="3dp"
+        android:layout_marginBottom="30dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toTopOf="@id/view_login_mainImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/view_login_mainImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/app_main_image"
+        app:layout_constraintBottom_toTopOf="@id/editText_login_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_login_id"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/login_background"
+        android:hint="아이디"
+        android:gravity="center_vertical"
+        android:textColor="#BEBCB9"
+        android:paddingLeft="10dp"
+        android:textSize="16sp"
+        android:letterSpacing="0.12"
+        android:fontFamily="@font/nexon_gothic_lv1_bold"
+        app:layout_constraintBottom_toTopOf="@id/editText_login_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_login_password"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/login_background"
+        android:hint="비밀번호"
+        android:gravity="center_vertical"
+        android:textColor="#BEBCB9"
+        android:letterSpacing="0.12"
+        android:fontFamily="@font/nexon_gothic_lv1_bold"
+        android:paddingLeft="10dp"
+        android:password="true"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/button_login_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_login_login"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="8dp"
+        android:background="#706556"
+        android:backgroundTint="#706556"
+        android:text="로그인"
+        android:fontFamily="@font/nexon_gothic_lv1_bold"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/button_login_kakao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/button_login_kakao"
+        android:layout_width="298dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/login_button_kakao"
+        android:fontFamily="@font/nexon_gothic_lv1_bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_login_register"
+        style="?android:borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="28dp"
+        android:buttonTint="#000000"
+        android:fontFamily="@font/nexon_gothic_lv1_bold"
+        android:text="회원가입"
+        android:textColor="#7E7E7E"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_login_kakao"
+        app:layout_constraintVertical_bias="0.714"
+        tools:layout_editor_absoluteX="297dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
