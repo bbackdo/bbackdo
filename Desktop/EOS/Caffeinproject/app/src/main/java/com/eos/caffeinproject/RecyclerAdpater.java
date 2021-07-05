@@ -44,9 +44,9 @@ public class RecyclerAdpater extends RecyclerView.Adapter<RecyclerAdpater.Holder
             this.caffelogo = view.findViewById(R.id.caffe_logo);
             this.time = view.findViewById(R.id.time);
             this.star1 = view.findViewById(R.id.star1);
-            this.star2 = view.findViewById(R.id.star4);
-            this.star3 = view.findViewById(R.id.star2);
-            this.star4 = view.findViewById(R.id.star3);
+            this.star2 = view.findViewById(R.id.star2);
+            this.star3 = view.findViewById(R.id.star3);
+            this.star4 = view.findViewById(R.id.star4);
         }
     }
 
