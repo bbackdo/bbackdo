@@ -1,18 +1,12 @@
 package com.eos.caffeinproject;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,41 +16,38 @@ import java.util.ArrayList;
 
 
 public class ZzimActivity extends Fragment {
-    View v;
-    private RecyclerView recyclerView;
+
 
     private RecyclerAdpater mAdapter;
+    private ArrayList<CafeData> myList = new ArrayList<>();
 
-    private ArrayList<CafeData> list = new ArrayList<>();
-
-    private RecyclerView.LayoutManager mLayoutManager;
 
     public ZzimActivity(){}
 
+    private void initData(){
+        myList.clear();
+        myList.add(new CafeData("탐앤탐스", 2, "운영시간 00:00~3:00", R.drawable.tomntoms));
+        myList.add(new CafeData("스타벅스", 4, "운영안해~!", R.drawable.starbucks));
+    }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        v = inflater.inflate(R.layout.activity_zzim, container, false);
+        View v = inflater.inflate(R.layout.activity_zzim, container, false);
 
-        recyclerView = v.findViewById(R.id.collection_list);
+        initData();
 
+        Context context = v.getContext();
+        RecyclerView recyclerView = v.findViewById(R.id.zzim_recy);
         recyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(getActivity());
 
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(context);
+
+        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.scrollToPosition(0);
 
-        for(int i = 0; i<20; i++){
-            list.add(new CafeData("탐앤탐스", 2, "운영시간 00:00~3:00"));
-            list.add(new CafeData("흥신소", 4, "운영안해~!"));
-        }
-
-        mAdapter = new RecyclerAdpater(list);
-        recyclerView.setAdapter(mAdapter);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-
+        RecyclerAdpater adapter = new RecyclerAdpater(myList, context);
+        recyclerView.setAdapter(adapter);
 
         return v;
     }
