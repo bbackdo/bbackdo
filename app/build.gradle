@@ -30,9 +30,17 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
+
+    implementation("com.louiscad.splitties:splitties-activities:$splitties_version")
+    implementation("com.louiscad.splitties:splitties-bundle:$splitties_version")
+    implementation("com.louiscad.splitties:splitties-alertdialog-material:$splitties_version")
+    implementation("com.louiscad.splitties:splitties-toast:$splitties_version")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'

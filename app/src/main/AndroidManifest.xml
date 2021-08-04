@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bbackdo">
         <activity android:name=".TeamNumActivity"></activity>
+        <activity android:name=".AniActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

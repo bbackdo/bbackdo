@@ -10,21 +10,11 @@
         android:id="@+id/textPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="플레이 할 인원수를 선택해주세요"
+        android:text="팀 수를 선택해주세요"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="307dp" />
-
-    <EditText
-        android:id="@+id/teamNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        app:layout_constraintEnd_toStartOf="@+id/buttonAdd"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toEndOf="@+id/buttonSub"
-        app:layout_constraintTop_toBottomOf="@+id/textPlay" />
 
     <Button
         android:id="@+id/buttonSub"
@@ -57,4 +47,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAdd"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toEndOf="@+id/buttonSub"
+        app:layout_constraintTop_toBottomOf="@+id/textPlay" />
 </androidx.constraintlayout.widget.ConstraintLayout>
