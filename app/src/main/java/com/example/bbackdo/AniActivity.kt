@@ -4,7 +4,6 @@ import android.app.Activity
 import java.util.Random
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
 import com.example.bbackdo.databinding.ActivityAniBinding
 
 class AniActivity : AppCompatActivity() {
@@ -35,7 +34,6 @@ class AniActivity : AppCompatActivity() {
                 imageView4.setImageResource(imgYut[n4])
 
                 yutEditText.setText(Yut[n])
-
             }
         }
     }
