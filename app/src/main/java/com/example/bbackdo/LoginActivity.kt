@@ -1,15 +1,21 @@
 package com.example.bbackdo
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.bbackdo.databinding.ActivityLoginBinding
+import com.example.bbackdo.databinding.DialogLoginBinding
 import com.example.bbackdo.dto.User
 import com.example.bbackdo.lib.Authentication
 import com.example.bbackdo.lib.Database
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -17,6 +23,7 @@ import com.google.firebase.database.ktx.getValue
 import splitties.activities.start
 import splitties.alertdialog.appcompat.*
 import splitties.alertdialog.material.materialAlertDialog
+
 
 class LoginActivity : AppCompatActivity() {
     private val bind by lazy {
@@ -53,25 +60,24 @@ class LoginActivity : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     var user = snapshot.getValue<User>()
                     // 신규 로그인
+                    // nickname, win, lose, readyState, rooms
                     if (user == null) {
-                        val editText = EditText(this@LoginActivity)
-                        // TODO 더 이쁘게
-                        materialAlertDialog {
-                            titleResource = R.string.title_dialog_nickname
-                            // TODO 닉네임 조건 검사 추가
-                            message = "닉네임 조건"
-                            okButton {
-                                val nickname = editText.text.toString()
-                                user = User(nickname)
-                                userReference.setValue(user)
-                                successLogin(user!!)
+                        Toast.makeText(this@LoginActivity, "신규 로그인", Toast.LENGTH_SHORT).show()
+                        val builder = AlertDialog.Builder(this@LoginActivity)
+                        val builderItem = DialogLoginBinding.inflate(layoutInflater)
+                        val editText = builderItem.alertEditText
+                        with(builder) {
+                            setTitle("닉네임을 입력하세요")
+                            setView(builderItem.root)
+                            setPositiveButton("OK") { _: DialogInterface, _: Int ->
+                                if (editText.text != null) {
+                                    val nickname = editText.text.toString()
+                                    user = User(nickname)
+                                    userReference.setValue(user)
+                                    successLogin(user!!)
+                                }
                             }
-                            cancelButton()
-
-                        }.onShow {
-
-                        }.run {
-                            setView(editText)
+                            setNeutralButton("취소", null)
                             show()
                         }
                     } else {
@@ -81,7 +87,15 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+                    Database.getReference("users/${Authentication.uid}").removeValue().addOnSuccessListener(object:
+                        OnSuccessListener<Void> {
+                        override fun onSuccess(p0: Void?) {
+                            Toast.makeText(this@LoginActivity, "삭제 완료", Toast.LENGTH_SHORT).show()
+
+                        }
+
+                    })
+
                 }
 
             })
@@ -99,6 +113,7 @@ class LoginActivity : AppCompatActivity() {
             message = "로그인 성공"
             okButton {
                 bind.testAButton.isEnabled = true
+                bind.testBButton.isEnabled = false
             }
         }.show()
     }
@@ -112,6 +127,7 @@ class LoginActivity : AppCompatActivity() {
             .signOut(this)
             .addOnCompleteListener {
                 // 로그아웃 이후 작업
+                bind.testBButton.isEnabled = true
             }
     }
 
@@ -128,7 +144,7 @@ class LoginActivity : AppCompatActivity() {
                 if (!Authentication.isLoggedIn()) {
                     testAButton.isEnabled = false
                 } else {
-                    start<AniActivity>()
+                    start<RoomListActivity>()
                 }
             }
             testBButton.setOnClickListener {

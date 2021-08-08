@@ -7,3 +7,4 @@ data class User(var nickname: String = "",
                 var rooms: Map<String, Any>? = null)
 
 //사람 - id, 닉네임, 승패정보, 들어간방, 레디
+// nickname, win, lose, readyState, rooms
