@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="60dp">
+    android:layout_height="60dp"
+    android:background="#DADADA"
+    android:backgroundTint="#DADADA">
 
     <TextView
         android:id="@+id/textTitle"
@@ -27,10 +29,10 @@
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:tint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_lock_idle_lock"
+        app:tint="#000000"
         tools:layout_editor_absoluteX="288dp" />
 
     <TextView
@@ -44,6 +46,7 @@
         android:gravity="center"
         android:text="8/8"
         android:textAlignment="center"
+        android:textColor="#4CAF50"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
