@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
 
 
         main.testButton.setOnClickListener {
-            Toast.makeText(this, "뭐야",Toast.LENGTH_SHORT ).show()
             start<LoginActivity>()
         }
 
