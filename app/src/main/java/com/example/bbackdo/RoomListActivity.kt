@@ -7,7 +7,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
+import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -18,7 +21,6 @@ import com.example.bbackdo.databinding.ItemRecyclerRoomBinding
 import com.google.android.gms.tasks.OnSuccessListener
 
 //알림, 액티비티
-//동그라미를 누르면... 할 수 있게
 //업을 떄/잡을 떄/졌을 때/자리
 
 class RoomListActivity : AppCompatActivity() {
@@ -53,9 +55,7 @@ class RoomListActivity : AppCompatActivity() {
                 }
 
 
-            }
-            recyclerRoom.adapter = RecyclerViewAdapter(this@RoomListActivity, dataList)
-            recyclerRoom.layoutManager = LinearLayoutManager(this@RoomListActivity)
+
 
         }
         //파이어스토어 인스턴스 초기화
@@ -84,6 +84,7 @@ class RoomListActivity : AppCompatActivity() {
         override fun getItemCount(): Int {
             return listData.size
         }
+
 
 
         inner class ViewHolder(private val bind: ItemRecyclerRoomBinding) :

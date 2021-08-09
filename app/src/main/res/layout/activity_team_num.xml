@@ -10,51 +10,87 @@
         android:id="@+id/textPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="팀 수를 선택해주세요"
+        android:text="팀수"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.133"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="307dp" />
+        tools:layout_editor_absoluteY="84dp" />
 
-    <Button
-        android:id="@+id/buttonSub"
+    <TextView
+        android:id="@+id/textPlay2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:text="-"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textPlay" />
-
-    <Button
-        android:id="@+id/buttonAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
-        android:text="+"
-        android:textSize="30sp"
+        android:text="커스텀 벌칙"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textPlay" />
+        app:layout_constraintHorizontal_bias="0.153"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="269dp" />
+
+    <TextView
+        android:id="@+id/textPlay3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="업을 때"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/textPlay2"
+        tools:layout_editor_absoluteY="327dp" />
 
     <Button
         android:id="@+id/buttonFinish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="80dp"
         android:layout_marginBottom="16dp"
-        android:text="완료"
+        android:text="만들기"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/textNum"
+    <Button
+        android:id="@+id/buttonCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        app:layout_constraintEnd_toStartOf="@+id/buttonAdd"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toEndOf="@+id/buttonSub"
-        app:layout_constraintTop_toBottomOf="@+id/textPlay" />
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="16dp"
+        android:text="취소"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/buttonFinish" />
+
+    <EditText
+        android:id="@+id/editNum"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@+id/textPlay"
+        tools:layout_editor_absoluteY="116dp" />
+
+    <EditText
+        android:id="@+id/editNum2"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        tools:layout_editor_absoluteX="97dp"
+        tools:layout_editor_absoluteY="434dp" />
+
+    <EditText
+        android:id="@+id/editNum3"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        tools:layout_editor_absoluteX="137dp"
+        tools:layout_editor_absoluteY="386dp" />
+
+    <EditText
+        android:id="@+id/editNum4"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        tools:layout_editor_absoluteX="182dp"
+        tools:layout_editor_absoluteY="434dp" />
+
+    <EditText
+        android:id="@+id/editNum5"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/textPlay3"
+        app:layout_constraintTop_toTopOf="@+id/textPlay3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
