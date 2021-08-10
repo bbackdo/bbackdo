@@ -18,10 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbackdo.databinding.ActivityRoomListBinding
 import com.example.bbackdo.databinding.ItemRecyclerRoomBinding
-import com.google.android.gms.tasks.OnSuccessListener
-
-//알림, 액티비티
-//업을 떄/잡을 떄/졌을 때/자리
+//import com.google.android.gms.tasks.OnSuccessListener
 
 class RoomListActivity : AppCompatActivity() {
 
@@ -53,6 +50,7 @@ class RoomListActivity : AppCompatActivity() {
                     setNeutralButton("취소", null)
                     show()
                 }
+            }
 
 
 
@@ -96,10 +94,10 @@ class RoomListActivity : AppCompatActivity() {
                     val pos = adapterPosition
                     if (pos != RecyclerView.NO_POSITION) {
                         // 참가하기 클릭 했을 때
-                        buttonEnter.setOnClickListener {
+                        //buttonEnter.setOnClickListener {
                             // Database에 추가
 
-                        }
+                       // }
                     }
                 }
 
