@@ -7,40 +7,64 @@
     tools:context=".LoginActivity">
 
     <Button
-        android:id="@+id/testAButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/logintEnterRoomBtn"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:enabled="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:enabled="false"
         android:text="입장"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/loginLogoImage" />
 
     <Button
-        android:id="@+id/testBButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/loginBtn"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#8BC34A"
         android:text="로그인"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/testAButton" />
+        app:layout_constraintTop_toBottomOf="@+id/logintEnterRoomBtn" />
 
     <Button
-        android:id="@+id/testCButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/logoutBtn"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#8BC34A"
         android:text="로그아웃"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/testBButton" />
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="409dp"
-        android:layout_height="2dp"
-        android:background="@color/black"
+
+    <ImageView
+        android:id="@+id/loginLogoImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="190dp" />
+        app:layout_constraintTop_toBottomOf="@+id/loginTitleTextView"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/loginTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="술자리 윷놀이 게임"
+        android:textColor="#000000"
+        android:textSize="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
