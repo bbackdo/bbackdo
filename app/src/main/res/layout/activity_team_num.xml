@@ -7,35 +7,165 @@
     tools:context=".TeamNumActivity">
 
     <TextView
-        android:id="@+id/textPlay"
+        android:id="@+id/textTitleSolo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="팀수"
+        android:layout_marginTop="16dp"
+        android:text="방만들기"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textTeamNumSolo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text=">팀수"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.133"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="84dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textTitleSolo" />
+
+    <EditText
+        android:id="@+id/editTeamNumSolo"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/textTeamNumSolo"
+        app:layout_constraintTop_toBottomOf="@+id/textTeamNumSolo" />
 
     <TextView
-        android:id="@+id/textPlay2"
+        android:id="@+id/textPenalty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="커스텀 벌칙"
+        android:layout_marginTop="16dp"
+        android:text=">커스텀 벌칙"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.153"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="269dp" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/editTeamNumSolo"
+        app:layout_constraintTop_toBottomOf="@+id/editTeamNumSolo" />
 
     <TextView
-        android:id="@+id/textPlay3"
+        android:id="@+id/textPenalty1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:text="업을 때"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/textPlay2"
-        tools:layout_editor_absoluteY="327dp" />
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textPenalty"
+        app:layout_constraintTop_toBottomOf="@+id/textPenalty" />
+
+    <EditText
+        android:id="@+id/editPenaltySolo1"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textPenalty1"
+        app:layout_constraintTop_toTopOf="@+id/textPenalty1" />
+
+    <TextView
+        android:id="@+id/textPenalty2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="잔"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/editPenaltySolo1"
+        app:layout_constraintTop_toTopOf="@+id/editPenaltySolo1" />
+
+    <TextView
+        android:id="@+id/textPenalty3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="잡을 때"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textPenalty1"
+        app:layout_constraintTop_toBottomOf="@+id/textPenalty1" />
+
+    <EditText
+        android:id="@+id/editPenaltySolo2"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textPenalty3"
+        app:layout_constraintTop_toTopOf="@+id/textPenalty3" />
+
+    <TextView
+        android:id="@+id/textPenalty4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="잔"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/editPenaltySolo2"
+        app:layout_constraintTop_toTopOf="@+id/editPenaltySolo2" />
+
+    <EditText
+        android:id="@+id/editPenaltySolo3"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textPenalty3"
+        app:layout_constraintTop_toTopOf="@+id/textPenalty5" />
+
+    <TextView
+        android:id="@+id/textPenalty5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text=" 번 자리에 말이 오면 "
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/editPenaltySolo3"
+        app:layout_constraintTop_toBottomOf="@+id/textPenalty3" />
+
+    <EditText
+        android:id="@+id/editPenaltySolo4"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textPenalty5"
+        app:layout_constraintTop_toTopOf="@+id/textPenalty5" />
+
+    <TextView
+        android:id="@+id/textPenalty6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="잔"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/editPenaltySolo4"
+        app:layout_constraintTop_toTopOf="@+id/editPenaltySolo4" />
+
+    <TextView
+        android:id="@+id/textPenalty7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="졌을 때"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/editPenaltySolo3"
+        app:layout_constraintTop_toBottomOf="@+id/textPenalty5" />
+
+    <EditText
+        android:id="@+id/editPenaltySolo5"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textPenalty7"
+        app:layout_constraintTop_toTopOf="@+id/textPenalty7" />
+
+    <TextView
+        android:id="@+id/textPenalty8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="잔"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/editPenaltySolo5"
+        app:layout_constraintTop_toTopOf="@+id/editPenaltySolo5" />
 
     <Button
         android:id="@+id/buttonFinish"
@@ -43,7 +173,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="#DADADA"
         android:text="만들기"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -53,44 +185,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="#DADADA"
         android:text="취소"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/buttonFinish" />
 
-    <EditText
-        android:id="@+id/editNum"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        app:layout_constraintStart_toStartOf="@+id/textPlay"
-        tools:layout_editor_absoluteY="116dp" />
-
-    <EditText
-        android:id="@+id/editNum2"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        tools:layout_editor_absoluteX="97dp"
-        tools:layout_editor_absoluteY="434dp" />
-
-    <EditText
-        android:id="@+id/editNum3"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="386dp" />
-
-    <EditText
-        android:id="@+id/editNum4"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        tools:layout_editor_absoluteX="182dp"
-        tools:layout_editor_absoluteY="434dp" />
-
-    <EditText
-        android:id="@+id/editNum5"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toEndOf="@+id/textPlay3"
-        app:layout_constraintTop_toTopOf="@+id/textPlay3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
