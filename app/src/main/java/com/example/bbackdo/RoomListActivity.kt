@@ -18,7 +18,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbackdo.databinding.ActivityRoomListBinding
 import com.example.bbackdo.databinding.ItemRecyclerRoomBinding
-//import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.gms.tasks.OnSuccessListener
+
+//알림, 액티비티
+//업을 떄/잡을 떄/졌을 때/자리
 
 class RoomListActivity : AppCompatActivity() {
 
@@ -50,7 +53,6 @@ class RoomListActivity : AppCompatActivity() {
                     setNeutralButton("취소", null)
                     show()
                 }
-            }
 
 
             }
