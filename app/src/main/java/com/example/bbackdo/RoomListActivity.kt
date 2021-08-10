@@ -53,63 +53,59 @@ class RoomListActivity : AppCompatActivity() {
             }
 
 
-
-
+            }
+            //파이어스토어 인스턴스 초기화
+            //firestore = FirebaseFirestore.getInstance()
         }
-        //파이어스토어 인스턴스 초기화
-        //firestore = FirebaseFirestore.getInstance()
     }
 
-    inner class RecyclerViewAdapter(
-        private val context: Context,
-        private var listData: ArrayList<Room>
-    ) :
-        RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
-        init {
-
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val view = ItemRecyclerRoomBinding.inflate(LayoutInflater.from(context), parent, false)
-            return ViewHolder(view)
-        }
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            val room: Room = listData[position]
-            holder.binding(room)
-        }
-
-        override fun getItemCount(): Int {
-            return listData.size
-        }
-
-
-
-        inner class ViewHolder(private val bind: ItemRecyclerRoomBinding) :
-            RecyclerView.ViewHolder(bind.root) {
-            fun binding(room: Room) {
-                with(bind){
-                    textTitle.text = room.title.toString()
-
-                    val pos = adapterPosition
-                    if (pos != RecyclerView.NO_POSITION) {
-                        // 참가하기 클릭 했을 때
-                        //buttonEnter.setOnClickListener {
-                            // Database에 추가
-
-                       // }
-                    }
-                }
-
-            }
+        inner class RecyclerViewAdapter(
+            private val context: Context,
+            private var listData: ArrayList<Room>
+        ) :
+            RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
             init {
 
             }
 
-            fun setTitle(title: String) {
+            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+                val view =
+                    ItemRecyclerRoomBinding.inflate(LayoutInflater.from(context), parent, false)
+                return ViewHolder(view)
+            }
 
+            override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+                val room: Room = listData[position]
+                holder.binding(room)
+            }
+
+            override fun getItemCount(): Int {
+                return listData.size
+            }
+
+
+            inner class ViewHolder(private val bind: ItemRecyclerRoomBinding) :
+                RecyclerView.ViewHolder(bind.root) {
+                fun binding(room: Room) {
+                    with(bind) {
+                        textTitle.text = room.title.toString()
+
+                        val pos = adapterPosition
+                        if (pos != RecyclerView.NO_POSITION) {
+                            // 참가하기 클릭 했을 때
+                        }
+                    }
+
+                }
+
+                init {
+
+                }
+
+                fun setTitle(title: String) {
+
+                }
             }
         }
     }
 
-}

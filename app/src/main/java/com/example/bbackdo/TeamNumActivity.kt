@@ -30,10 +30,10 @@ class TeamNumActivity : AppCompatActivity() {
                 //intent.putExtra("teamNum", count)
                 startActivity(intent)
             }
+
         }
 
-        buttonCancel.setOnClickListener {
-
+        buttonCancel.setOnClickListener { 
         }
     }
 }
