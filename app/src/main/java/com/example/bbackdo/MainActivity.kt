@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
             start<LoginActivity>()
         }
 
-        main.testBButton.setOnClickListener {
+        main.loginBtn.setOnClickListener {
             start<LoginActivity>()
         }
 
