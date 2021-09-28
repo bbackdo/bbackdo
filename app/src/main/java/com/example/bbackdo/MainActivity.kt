@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
 
         main.testButton.setOnClickListener {
-            start<LoginActivity>()
+            start<TeamNumActivity>()
         }
 
         main.loginBtn.setOnClickListener {
