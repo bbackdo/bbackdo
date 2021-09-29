@@ -39,13 +39,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="50dp"
         android:backgroundTint="#61DADADA"
-        android:includeFontPadding="false"
         android:textColor="#FF9800"
         app:layout_constraintBottom_toBottomOf="@+id/textTwo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.017"
         app:layout_constraintStart_toEndOf="@+id/textTwo" />
 
     <TextView
@@ -62,7 +60,7 @@
 
     <EditText
         android:id="@+id/editPassword"
-        android:layout_width="190dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="50dp"
@@ -268,30 +266,5 @@
         android:textSize="18dp"
         app:layout_constraintStart_toEndOf="@+id/editPenalty5"
         app:layout_constraintTop_toTopOf="@+id/editPenalty5" />
-
-    <Button
-        android:id="@+id/buttonCancelMulti"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#DADADA"
-        android:text="취소"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textThirteen" />
-
-    <Button
-        android:id="@+id/buttonMakeMulti"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="70dp"
-        android:backgroundTint="#DADADA"
-        android:text="만들기"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonCancelMulti" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

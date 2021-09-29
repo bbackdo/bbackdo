@@ -3,6 +3,7 @@
     package="com.example.bbackdo">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,8 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bbackdo">
-        <activity android:name=".RoomListActivity"/>
-        <activity android:name=".LoginActivity"/>
+        <activity
+            android:name=".TeamActivity"
+            android:exported="true" />
+        <activity android:name=".RoomListActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".TeamNumActivity" />
         <activity android:name=".AniActivity" />
         <activity android:name=".MainActivity">
