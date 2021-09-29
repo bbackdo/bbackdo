@@ -1,5 +1,6 @@
 package com.example.bbackdo
 
+import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbackdo.databinding.ActivityRoomListBinding
+import com.example.bbackdo.databinding.DialogMakeRoomBinding
 import com.example.bbackdo.databinding.ItemRecyclerRoomBinding
 import com.google.android.gms.tasks.OnSuccessListener
 
@@ -34,6 +36,7 @@ class RoomListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         with(room) {
             setContentView(root)
             Toast.makeText(this@RoomListActivity, "방만들기 액티비티", Toast.LENGTH_SHORT).show()
@@ -44,6 +47,7 @@ class RoomListActivity : AppCompatActivity() {
                 val dialogView = inflater.inflate(R.layout.dialog_make_room, null)
                 val alertDialog = AlertDialog.Builder(this@RoomListActivity)
 
+
                 with(alertDialog) {
                     setView(dialogView)
                     setTitle("방 만들기")
@@ -52,8 +56,19 @@ class RoomListActivity : AppCompatActivity() {
                     }
                     setNeutralButton("취소", null)
                     show()
-                }
 
+                    var listener = DialogInterface.OnClickListener{p0, _->
+                        var dialog = p0 as AlertDialog
+                        var makeRoom = dialog.findViewById<Button>(R.id.buttonMakeMulti)
+                        var cancel = dialog.findViewById<Button>(R.id.buttonCancelMulti)
+                    }
+
+
+
+                    fun test(){
+
+                    }
+                }
 
             }
             //파이어스토어 인스턴스 초기화

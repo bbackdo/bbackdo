@@ -37,13 +37,15 @@
     <EditText
         android:id="@+id/editTitle"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="32dp"
         android:backgroundTint="#61DADADA"
+        android:includeFontPadding="false"
         android:textColor="#FF9800"
         app:layout_constraintBottom_toBottomOf="@+id/textTwo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.017"
         app:layout_constraintStart_toEndOf="@+id/textTwo" />
 
     <TextView
@@ -60,8 +62,8 @@
 
     <EditText
         android:id="@+id/editPassword"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="50dp"
         android:backgroundTint="#61DADADA"
@@ -85,7 +87,7 @@
     <EditText
         android:id="@+id/editPlayerNum"
         android:layout_width="50dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:backgroundTint="#61DADADA"
         android:textColor="#FF9800"
@@ -108,7 +110,7 @@
     <EditText
         android:id="@+id/editTeamNum"
         android:layout_width="50dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:backgroundTint="#61DADADA"
         android:textColor="#FF9800"
@@ -142,7 +144,7 @@
     <EditText
         android:id="@+id/editPenalty1"
         android:layout_width="50dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="#61DADADA"
         android:gravity="center"
         android:textColor="#FF9800"
@@ -174,7 +176,7 @@
     <EditText
         android:id="@+id/editPenalty2"
         android:layout_width="50dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="#61DADADA"
         android:gravity="center"
         android:textColor="#FF9800"
@@ -195,7 +197,7 @@
     <EditText
         android:id="@+id/editPenalty3"
         android:layout_width="50dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="#61DADADA"
         android:gravity="center"
         android:textColor="#FF9800"
@@ -217,7 +219,7 @@
     <EditText
         android:id="@+id/editPenalty4"
         android:layout_width="50dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="#61DADADA"
         android:gravity="center"
         android:textColor="#FF9800"
@@ -249,7 +251,7 @@
     <EditText
         android:id="@+id/editPenalty5"
         android:layout_width="50dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="#61DADADA"
         android:gravity="center"
         android:textColor="#FF9800"
