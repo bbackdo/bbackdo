@@ -20,9 +20,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bbackdo.databinding.ActivityRoomListBinding
 import com.example.bbackdo.databinding.DialogMakeRoomBinding
 import com.example.bbackdo.databinding.ItemRecyclerRoomBinding
-import com.google.android.gms.tasks.OnSuccessListener
-import splitties.alertdialog.appcompat.alertDialog
-import splitties.alertdialog.appcompat.onDismiss
+import com.example.bbackdo.dto.Team
+import com.example.bbackdo.dto.Room
+import com.example.bbackdo.lib.Authentication
+import com.example.bbackdo.lib.Database
+import com.google.firebase.database.ServerValue
+import splitties.activities.start
+
 
 //알림, 액티비티
 //업을 떄/잡을 떄/졌을 때/자리
@@ -33,8 +37,13 @@ class RoomListActivity : AppCompatActivity() {
     private val room by lazy {
         ActivityRoomListBinding.inflate(layoutInflater)
     }
+    private val bind by lazy {
+        DialogMakeRoomBinding.inflate(layoutInflater)
+    }
 
     private val dataList = arrayListOf<Room>()
+    private val penalty = arrayListOf<Int>()
+    private val teams = arrayListOf<Team>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,10 +61,26 @@ class RoomListActivity : AppCompatActivity() {
                     setView(dialogView)
                     setNeutralButton("취소", null)
                     setPositiveButton("만들기"){_:DialogInterface, _:Int ->
-                        Toast.makeText(this@RoomListActivity, "button", Toast.LENGTH_SHORT)
-                            .show()
 
-                    }
+                        val roomRef = Database.getReference("rooms").push();
+                        val uid = Authentication.uid!!
+                        val rid = roomRef.key
+                        with(bind){
+                            val memberNum = Integer.parseInt(editPlayerNum.toString())
+                            var room = Room(uid, memberNum, editPassword.text.toString(), penalty, rid, Integer.parseInt(editTeamNum.toString()),
+                                editTitle.text.toString(),
+                                hashMapOf(uid to true))
+                        }
+                        val updates = hashMapOf(
+                            "rooms/$rid" to room,
+                            "users/$uid/rooms/$rid" to ServerValue.TIMESTAMP
+                        )
+                        Database.getReference("").updateChildren(updates).addOnSuccessListener {
+                            Toast.makeText(this@RoomListActivity, "button", Toast.LENGTH_SHORT)
+                                .show()
+                            }
+                        }
+
                     show()
 
                 }
