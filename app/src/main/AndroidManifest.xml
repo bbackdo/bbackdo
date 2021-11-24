@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bbackdo">
         <activity
+            android:name=".NicknameActivity"
+            android:exported="true" />
+        <activity
             android:name=".TeamActivity"
             android:exported="true" />
         <activity android:name=".RoomListActivity" />
