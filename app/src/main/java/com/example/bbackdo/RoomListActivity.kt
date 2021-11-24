@@ -4,13 +4,29 @@ import android.content.Context
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.Button
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbackdo.databinding.ActivityRoomListBinding
+import com.example.bbackdo.databinding.DialogMakeRoomBinding
 import com.example.bbackdo.databinding.ItemRecyclerRoomBinding
+import com.example.bbackdo.dto.Team
+import com.example.bbackdo.dto.Room
+import com.example.bbackdo.lib.Authentication
+import com.example.bbackdo.lib.Database
+import com.google.firebase.database.ServerValue
+import splitties.activities.start
+
 
 //알림, 액티비티
 //업을 떄/잡을 떄/졌을 때/자리
@@ -21,8 +37,13 @@ class RoomListActivity : AppCompatActivity() {
     private val room by lazy {
         ActivityRoomListBinding.inflate(layoutInflater)
     }
+    private val bind by lazy {
+        DialogMakeRoomBinding.inflate(layoutInflater)
+    }
 
     private val dataList = arrayListOf<Room>()
+    private val penalty = arrayListOf<Int>()
+    private val teams = arrayListOf<Team>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,10 +61,26 @@ class RoomListActivity : AppCompatActivity() {
                     setView(dialogView)
                     setNeutralButton("취소", null)
                     setPositiveButton("만들기"){_:DialogInterface, _:Int ->
-                        Toast.makeText(this@RoomListActivity, "button", Toast.LENGTH_SHORT)
-                            .show()
 
-                    }
+                        val roomRef = Database.getReference("rooms").push();
+                        val uid = Authentication.uid!!
+                        val rid = roomRef.key
+                        with(bind){
+                            val memberNum = Integer.parseInt(editPlayerNum.toString())
+                            var room = Room(uid, memberNum, editPassword.text.toString(), penalty, rid, Integer.parseInt(editTeamNum.toString()),
+                                editTitle.text.toString(),
+                                hashMapOf(uid to true))
+                        }
+                        val updates = hashMapOf(
+                            "rooms/$rid" to room,
+                            "users/$uid/rooms/$rid" to ServerValue.TIMESTAMP
+                        )
+                        Database.getReference("").updateChildren(updates).addOnSuccessListener {
+                            Toast.makeText(this@RoomListActivity, "button", Toast.LENGTH_SHORT)
+                                .show()
+                            }
+                        }
+
                     show()
 
                 }
@@ -84,7 +121,7 @@ class RoomListActivity : AppCompatActivity() {
             RecyclerView.ViewHolder(bind.root) {
             fun binding(room: Room) {
                 with(bind) {
-                    textTitle.text = room.rid.toString()
+                    textTitle.text = room.title.toString()
 
                     val pos = adapterPosition
                     if (pos != RecyclerView.NO_POSITION) {
