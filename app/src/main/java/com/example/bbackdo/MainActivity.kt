@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
             start<TeamNumActivity>()
         }
 
-        main.loginBtn.setOnClickListener {
+        main.kakaoLoginBtn.setOnClickListener {
             start<LoginActivity>()
         }
 
