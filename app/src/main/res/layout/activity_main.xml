@@ -11,21 +11,81 @@
         android:id="@+id/testButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="혼자하기"
-        app:layout_constraintBottom_toTopOf="@+id/loginBtn"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#F9E7C8"
+        android:text="한 휴대폰으로 여러명 게임하기"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/loginBtn"
+        android:id="@+id/kakaoLoginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="여럿이 하기"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#F9E7C8"
+        android:text="각자 휴대폰을 가지고 게임하기"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="원하는 게임 방식을 선택해주세요"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="85dp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="58dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView9"
+        app:layout_constraintTop_toBottomOf="@+id/testButton"
+        app:srcCompat="@drawable/logo2" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="58dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/kakaoLoginBtn"
+        app:layout_constraintTop_toBottomOf="@+id/kakaoLoginBtn"
+        app:srcCompat="@drawable/logo2" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="58dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/kakaoLoginBtn"
+        app:layout_constraintTop_toBottomOf="@+id/kakaoLoginBtn"
+        app:srcCompat="@drawable/logo2" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="58dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/testButton"
+        app:srcCompat="@drawable/logo2"
+        tools:layout_editor_absoluteX="176dp" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="58dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintTop_toBottomOf="@+id/testButton"
+        app:srcCompat="@drawable/logo2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
