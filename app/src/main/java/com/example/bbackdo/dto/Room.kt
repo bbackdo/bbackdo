@@ -1,10 +1,14 @@
 package com.example.bbackdo.dto
 
-data class Room (var title: String ="",
-                 var password: String = "",
-                 var manager: String ="",
-                 var memberNum: Int = 0,
-                 var teamNum: Int = 0,
-                 var teams: Map<String, Any>? = null,
-                 var penalty: Map<String, Any>? = null
+
+data class Room (
+    var rid: String? = null,
+                 var title: String? ="",
+                 var password: String? = "",
+                 var memberNum: Int? = 0,
+                 var manager: String? ="",
+                 var teamNum: Int? = 0,
+                 var users: Map<String, String>? = null,
+                 var team: Map<String, Int>? = null,
+                 var penalty: List<String>? = null
 )

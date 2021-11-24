@@ -4,25 +4,13 @@ import android.content.Context
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbackdo.databinding.ActivityRoomListBinding
-import com.example.bbackdo.databinding.DialogMakeRoomBinding
 import com.example.bbackdo.databinding.ItemRecyclerRoomBinding
-import com.google.android.gms.tasks.OnSuccessListener
-import splitties.alertdialog.appcompat.alertDialog
-import splitties.alertdialog.appcompat.onDismiss
 
 //알림, 액티비티
 //업을 떄/잡을 떄/졌을 때/자리
@@ -96,7 +84,7 @@ class RoomListActivity : AppCompatActivity() {
             RecyclerView.ViewHolder(bind.root) {
             fun binding(room: Room) {
                 with(bind) {
-                    textTitle.text = room.title.toString()
+                    textTitle.text = room.rid.toString()
 
                     val pos = adapterPosition
                     if (pos != RecyclerView.NO_POSITION) {
