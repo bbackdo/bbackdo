@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ECB27E"
     tools:context=".CreateRoomActivity">
 
     <EditText
@@ -13,8 +14,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:gravity="center_horizontal"
         android:hint="0"
         android:inputType="number"
+        android:textColor="#C0392B"
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/mission2" />
@@ -24,12 +27,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
         android:text="잔"
         android:textColor="#000000"
-        android:textSize="16dp"
-        app:layout_constraintTop_toTopOf="@id/mission4"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@id/mission4"
-        app:layout_constraintStart_toEndOf="@id/mission4"/>
+        app:layout_constraintStart_toEndOf="@id/mission4" />
 
     <EditText
         android:id="@+id/memberNumEditText"
@@ -38,8 +41,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:gravity="center_horizontal"
         android:hint="0"
         android:inputType="number"
+        android:textColor="#C0392B"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.037"
@@ -53,8 +58,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:gravity="center_horizontal"
         android:hint="0"
         android:inputType="number"
+        android:textColor="#C0392B"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.037"
@@ -65,36 +72,33 @@
         android:id="@+id/createRoomMissionTextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:text="인원"
         android:textColor="#000000"
-        android:textSize="20dp"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/memberNumEditText"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/createRoomPasswordTextView"
         app:layout_constraintTop_toTopOf="@+id/memberNumEditText" />
 
     <TextView
         android:id="@+id/createRoomMissionTextview2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:text="팀수"
         android:textColor="#000000"
-        android:textSize="20dp"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/teamNumEditText2"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/createRoomMissionTextview"
         app:layout_constraintTop_toTopOf="@+id/teamNumEditText2" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:text="커스텀 벌칙"
         android:textColor="#000000"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="@+id/createRoomMissionTextview2"
         app:layout_constraintTop_toBottomOf="@+id/createRoomMissionTextview2" />
 
     <EditText
@@ -102,7 +106,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="64dp"
         android:ems="10"
         android:hint="방 이름을 지어주세요!"
         android:inputType="textPersonName"
@@ -120,7 +124,7 @@
         android:text="방제목"
         android:textColor="#000000"
         android:textColorLink="#000000"
-        android:textSize="20dp"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/titleEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/titleEditText" />
@@ -129,14 +133,13 @@
         android:id="@+id/createRoomPasswordTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:text="비밀번호"
         android:textColor="#000000"
-        android:textSize="20dp"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/passwordEditText"
         app:layout_constraintEnd_toEndOf="@+id/titleEditText"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/createRoomTextView"
         app:layout_constraintTop_toTopOf="@+id/passwordEditText" />
 
     <EditText
@@ -156,27 +159,26 @@
 
     <Button
         android:id="@+id/createRoomButton"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginEnd="100dp"
-        android:backgroundTint="#00A1A1A1"
-        android:text="방만들기"
+        android:backgroundTint="#F9E7C8"
+        android:text="만들기"
         android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cancelButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
- />
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/cancelButton" />
 
     <Button
         android:id="@+id/cancelButton"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginStart="100dp"
 
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="#00A1A1A1"
+        android:backgroundTint="#F9E7C8"
         android:text="취소"
         android:textColor="#000000"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/createRoomButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -186,10 +188,11 @@
         android:id="@+id/createTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:text="방만들기"
         android:textColor="#000000"
-        android:textSize="26dp"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/titleEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -199,11 +202,12 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="64dp"
         android:text="업을때"
         android:textColor="#000000"
-        android:textSize="16dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/mission1"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mission1" />
 
@@ -211,12 +215,11 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:text="잡을때"
         android:textColor="#000000"
-        android:textSize="16dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/mission2"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="@+id/mission2" />
 
     <TextView
@@ -224,37 +227,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
+        android:layout_marginBottom="8dp"
         android:text="번 자리에 말이 오면"
         android:textColor="#000000"
-        android:textSize="16dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/mission3"
-        app:layout_constraintStart_toEndOf="@+id/mission3"
-        app:layout_constraintTop_toTopOf="@+id/mission3" />
+        app:layout_constraintStart_toEndOf="@+id/mission3" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="14dp"
+        android:layout_marginBottom="8dp"
         android:text="잔"
         android:textColor="#000000"
-        android:textSize="16dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/mission1"
-        app:layout_constraintStart_toEndOf="@+id/mission1"
-        app:layout_constraintTop_toTopOf="@+id/mission1" />
+        app:layout_constraintStart_toEndOf="@+id/mission1" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
         android:text="잔"
         android:textColor="#000000"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/mission2"
-        app:layout_constraintStart_toEndOf="@+id/mission2"
-        app:layout_constraintTop_toTopOf="@+id/mission2" />
+        app:layout_constraintStart_toEndOf="@+id/mission2" />
 
     <EditText
         android:id="@+id/mission1"
@@ -263,8 +265,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:gravity="center_horizontal"
         android:hint="0"
         android:inputType="number"
+        android:textColor="#C0392B"
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -276,8 +280,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:gravity="center_horizontal"
         android:hint="0"
         android:inputType="number"
+        android:textColor="#C0392B"
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/mission1" />
@@ -286,50 +292,51 @@
         android:id="@+id/mission3"
         android:layout_width="25dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:gravity="center_horizontal"
         android:hint="0"
         android:inputType="number"
+        android:textColor="#C0392B"
         android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/mission2" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:text="졌을 때"
         android:textColor="#000000"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@id/mission3"
-        app:layout_constraintTop_toBottomOf="@+id/mission3" />
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mission5"
+        app:layout_constraintStart_toStartOf="@+id/mission3" />
 
     <EditText
         android:id="@+id/mission5"
         android:layout_width="25dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
+        android:gravity="center_horizontal"
         android:hint="0"
         android:inputType="number"
+        android:textColor="#C0392B"
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@id/textView10"
-        app:layout_constraintBottom_toBottomOf="@+id/textView10"
-        app:layout_constraintTop_toTopOf="@id/textView10"/>
+        app:layout_constraintTop_toBottomOf="@+id/mission3" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
         android:text="잔"
         android:textColor="#000000"
-        android:textSize="16dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toEndOf="@+id/mission5"
-        app:layout_constraintTop_toTopOf="@+id/mission5"
-        app:layout_constraintBottom_toBottomOf="@id/mission5"/>
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/mission5"
+        app:layout_constraintStart_toEndOf="@+id/mission5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

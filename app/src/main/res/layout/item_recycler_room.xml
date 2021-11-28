@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="50dp"
     android:background="@drawable/view_background"
-    android:backgroundTint="#DADADA">
+    android:backgroundTint="#F9E7C8">
 
     <TextView
         android:id="@+id/textTitle"
@@ -18,6 +18,7 @@
         android:gravity="center"
         android:text="Title"
         android:textAlignment="textStart"
+        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
