@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -51,6 +52,10 @@ class RoomListActivity : AppCompatActivity() {
                 start<CreateRoomActivity>()
             }
 
+            //item 간격 설정
+            val spaceDecoration = VerticalSpaceItemDecoration(50)
+            recyclerRoom.addItemDecoration(spaceDecoration)
+
             recyclerRoom.adapter = adapter
             // 새로고침
             swipeRefreshLayout.setOnRefreshListener {
@@ -78,6 +83,17 @@ class RoomListActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         refreshRoomList(true)
+    }
+
+    inner class VerticalSpaceItemDecoration(private val verticalSpaceHeight: Int) : RecyclerView.ItemDecoration() {
+        override fun getItemOffsets(
+            outRect: Rect,
+            view: View,
+            parent: RecyclerView,
+            state: RecyclerView.State
+        ) {
+            outRect.bottom = verticalSpaceHeight
+        }
     }
 
 
