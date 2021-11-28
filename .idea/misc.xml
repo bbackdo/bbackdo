@@ -5,12 +5,13 @@
       <map>
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/drawable/google_login.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/drawable/google_login_icon.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/drawable/view_background.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/activity_ani.xml" value="0.11413043478260869" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/activity_create_room.xml" value="0.264" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/activity_game.xml" value="0.24365942028985507" />
-        <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/activity_nickname.xml" value="0.264" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/activity_room_list.xml" value="0.8" />

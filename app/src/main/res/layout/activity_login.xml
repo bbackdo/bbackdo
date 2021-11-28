@@ -32,11 +32,17 @@
         app:srcCompat="@drawable/title" />
 
     <Button
-        android:id="@+id/kakaoLoginImageButton"
+        android:id="@+id/googleLoginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="로그인"
+        android:backgroundTint=" #4285F4"
+        android:drawableLeft="@drawable/common_google_signin_btn_icon_dark_normal"
+        android:paddingLeft="0dp"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:text="구글 계정으로 로그인"
+        android:textStyle="bold"
+        app:iconPadding="0dp"
         app:layout_constraintBottom_toTopOf="@+id/logoImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

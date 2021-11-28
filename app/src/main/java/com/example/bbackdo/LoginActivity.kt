@@ -113,7 +113,7 @@ class LoginActivity : AppCompatActivity() {
             message = "로그인 성공"
             okButton {
                 bind.logoImage.isEnabled = true
-                bind.kakaoLoginImageButton.isEnabled = false
+                bind.googleLoginButton.isEnabled = false
             }
         }.show()
     }
@@ -127,7 +127,7 @@ class LoginActivity : AppCompatActivity() {
             .signOut(this)
             .addOnCompleteListener {
                 // 로그아웃 이후 작업
-                bind.kakaoLoginImageButton.isEnabled = true
+                bind.googleLoginButton.isEnabled = true
             }
     }
 
@@ -147,7 +147,7 @@ class LoginActivity : AppCompatActivity() {
                     start<RoomListActivity>()
                 }
             }
-            kakaoLoginImageButton.setOnClickListener {
+            googleLoginButton.setOnClickListener {
                 login()
             }
             logoImage.setOnClickListener {
