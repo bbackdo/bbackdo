@@ -7,51 +7,93 @@
     android:scrollbarSize="20dp"
     tools:context=".RoomListActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerRoom"
-        android:layout_width="match_parent"
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSearchBar" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutSearch">
 
-    <EditText
-        android:id="@+id/editSearchBar"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageSearch"
-        app:layout_constraintTop_toBottomOf="@+id/buttonMake" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerRoom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editSearchBar"
+            tools:listitem="@layout/item_recycler_room"
+            tools:visibility="visible" />
+
+    </com.baoyz.widget.PullRefreshLayout>
 
     <Button
         android:id="@+id/buttonMake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#DADADA"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#ECC17F"
         android:text="방만들기"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageSearch"
-        android:layout_width="50dp"
+    <LinearLayout
+        android:id="@+id/linearLayoutSearch"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:background="#F3F3F3"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/view_background"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonMake"
-        app:srcCompat="?android:attr/actionModeWebSearchDrawable"
-        app:tint="#D5D5D5" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonMake">
+
+        <ImageView
+            android:id="@+id/imageSearch"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:background="@drawable/view_background"
+            android:backgroundTint="#E4E4E4"
+            app:srcCompat="?android:attr/actionModeWebSearchDrawable"
+            app:tint="#7C7C7C" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/editSearchBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="2dp"
+        android:background="@color/white"
+        android:inputType="text"
+        android:lines="1"
+        android:paddingStart="10dp"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayoutSearch"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayoutSearch"
+        app:layout_constraintStart_toStartOf="@+id/linearLayoutSearch"
+        app:layout_constraintTop_toTopOf="@+id/linearLayoutSearch" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

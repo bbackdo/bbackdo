@@ -112,8 +112,8 @@ class LoginActivity : AppCompatActivity() {
             title = user.nickname
             message = "로그인 성공"
             okButton {
-                bind.logintEnterRoomBtn.isEnabled = true
-                bind.loginBtn.isEnabled = false
+                bind.logoImage.isEnabled = true
+                bind.googleLoginButton.isEnabled = false
             }
         }.show()
     }
@@ -127,7 +127,7 @@ class LoginActivity : AppCompatActivity() {
             .signOut(this)
             .addOnCompleteListener {
                 // 로그아웃 이후 작업
-                bind.loginBtn.isEnabled = true
+                bind.googleLoginButton.isEnabled = true
             }
     }
 
@@ -138,20 +138,20 @@ class LoginActivity : AppCompatActivity() {
 
         with(bind) {
             if (Authentication.isLoggedIn()) {
-                logintEnterRoomBtn.isEnabled = true
+                titleImage.isEnabled = true
             }
-            logintEnterRoomBtn.setOnClickListener {
+            titleImage.setOnClickListener {
                 if (!Authentication.isLoggedIn()) {
-                    logintEnterRoomBtn.isEnabled = false
+                    titleImage.isEnabled = false
                 } else {
                     start<RoomListActivity>()
                 }
             }
-            loginBtn.setOnClickListener {
+            googleLoginButton.setOnClickListener {
                 login()
             }
-            logoutBtn.setOnClickListener {
-                logintEnterRoomBtn.isEnabled = false
+            logoImage.setOnClickListener {
+                logoImage.isEnabled = false
                 logout()
             }
 
