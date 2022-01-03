@@ -1,3 +1,6 @@
 package com.example.bbackdo
 
-data class Room(var title : String? = null)
+import android.content.Context
+
+data class Room(private val context: String?, private var listDate: ArrayList<Room>) {
+}
