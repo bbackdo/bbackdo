@@ -25,7 +25,7 @@ class CreateActivity : AppCompatActivity() {
                 val uid = Authentication.uid!!
                 val rid = roomRef.key
                 val iter = penalties.iterator()
-
+/*
                 val room = Room(
                     rid,
                     titleEditText.text.toString(),
@@ -36,10 +36,13 @@ class CreateActivity : AppCompatActivity() {
                     ),
                     penalties.distinct()
                 )
+
                 val updates = hashMapOf(
                     "rooms/$rid" to room,
                     "users/$uid/rooms/$rid" to ServerValue.TIMESTAMP
                 )
+
+ */
             }
         }
     }

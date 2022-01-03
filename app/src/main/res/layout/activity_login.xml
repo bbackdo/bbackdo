@@ -35,7 +35,7 @@
         android:id="@+id/googleLoginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint=" #4285F4"
+        android:backgroundTint="#4285F4"
         android:drawableLeft="@drawable/common_google_signin_btn_icon_dark_normal"
         android:paddingLeft="0dp"
         android:paddingTop="0dp"
