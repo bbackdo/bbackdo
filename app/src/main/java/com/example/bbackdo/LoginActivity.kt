@@ -112,6 +112,7 @@ class LoginActivity : AppCompatActivity() {
             title = user.nickname
             message = "로그인 성공"
             okButton {
+                bind.titleImage.isEnabled = true
                 bind.logoImage.isEnabled = true
                 bind.googleLoginButton.isEnabled = false
             }
