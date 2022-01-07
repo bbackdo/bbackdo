@@ -1,0 +1,88 @@
+{
+  "project_info": {
+    "project_number": "819435998925",
+    "firebase_url": "https://android-bbackdo-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "android-bbackdo",
+    "storage_bucket": "android-bbackdo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819435998925:android:774e7b6249d7248423a384",
+        "android_client_info": {
+          "package_name": "com.example.bbackdo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "819435998925-2dn0dv002khct30irs325q8lhbtekk0t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bbackdo",
+            "certificate_hash": "059b17234e8452090a9cd0892ea5bef4351c6896"
+          }
+        },
+        {
+          "client_id": "819435998925-b3pdlt17p91ki8o1r0364b55rsu74gtc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bbackdo",
+            "certificate_hash": "1237b77da6803e7c707dd5a14297b8ed40ce6055"
+          }
+        },
+        {
+          "client_id": "819435998925-cofg5rre5irj88j9tifipv0kkvjh0lt9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bbackdo",
+            "certificate_hash": "bf64d6305ad6dd922c455509bc0ebc6865084b91"
+          }
+        },
+        {
+          "client_id": "819435998925-em0lkr61ulic9bur61i36guseik98r8l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bbackdo",
+            "certificate_hash": "da83a464f73868fa5940c8ed98b2fd5823064be7"
+          }
+        },
+        {
+          "client_id": "819435998925-tn3bb92n3gvqrvmcbhbkgl34vslgc61j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bbackdo",
+            "certificate_hash": "5316ad21c1ea45416ca03ef749694654943042e2"
+          }
+        },
+        {
+          "client_id": "819435998925-vv8pc3o9thb63qicfbrqj8je1p19osna.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bbackdo",
+            "certificate_hash": "78fb4b7d0de1db9d7086d8b1c903613878f5dd59"
+          }
+        },
+        {
+          "client_id": "819435998925-npr0ge1g82v5cip9a3j7bl6cs50s4ko2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJpS-Dc579NRxHW6Uz8Qgk7RI18JYyj0U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "819435998925-npr0ge1g82v5cip9a3j7bl6cs50s4ko2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
