@@ -6,11 +6,14 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -24,10 +27,8 @@ import com.google.firebase.database.ServerValue
 import com.google.firebase.database.ktx.getValue
 import splitties.activities.start
 import splitties.bundle.putExtras
-
-
-//알림, 액티비티
-//업을 떄/잡을 떄/졌을 때/자리
+import java.util.*
+import kotlin.collections.ArrayList
 
 class RoomListActivity : AppCompatActivity() {
 
@@ -46,7 +47,7 @@ class RoomListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         with(room) {
             setContentView(root)
-           // Toast.makeText(this@RoomListActivity, "방만들기 액티비티", Toast.LENGTH_SHORT).show()
+            // Toast.makeText(this@RoomListActivity, "방만들기 액티비티", Toast.LENGTH_SHORT).show()
             // 방만들기 클릭 했을 때
             buttonMake.setOnClickListener {
                 start<CreateRoomActivity>()
@@ -61,6 +62,17 @@ class RoomListActivity : AppCompatActivity() {
             swipeRefreshLayout.setOnRefreshListener {
                 refreshRoomList(false)
             }
+
+            //검색
+            editSearchBar.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+                override fun afterTextChanged(s: Editable?) {
+                    adapter.filter.filter(editSearchBar.text)
+                }
+            })
         }
     }
 
@@ -101,7 +113,11 @@ class RoomListActivity : AppCompatActivity() {
         private val context: Context,
         private var listData: ArrayList<Room>
     ) :
-        RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+        RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(), Filterable {
+        var unfilteredList = listData //필터 전 리스트
+        var filteredList = listData //필터 중인 리스트
+
+
         val inflater:LayoutInflater by lazy { LayoutInflater.from(context) }
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewAdapter.ViewHolder {
             val view =
@@ -110,15 +126,41 @@ class RoomListActivity : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(holder: RecyclerViewAdapter.ViewHolder, position: Int) {
-            val room: Room = listData[position]
+            val room: Room = filteredList[position]
 //            Toast.makeText(parent, listData.toString(), Toast.LENGTH_SHORT).show()
             //Log.e("datalist", "data : $listData")
             holder.binding(room)
         }
 
         override fun getItemCount(): Int {
-            Log.e("datalist", "data : ${listData.size}")
-            return listData.size
+            Log.e("datalist", "data : ${filteredList}")
+            return filteredList.size
+        }
+        //검색 시 필터링
+        override fun getFilter(): Filter {
+            return object : Filter() {
+                override fun performFiltering(constraint: CharSequence?): FilterResults {
+                    val charString = constraint.toString()
+                    filteredList = if (charString.isEmpty()) { //필터된 리스트
+                        unfilteredList
+                    } else {
+                        var filteringList = ArrayList<Room>()
+                        for (item in unfilteredList) {
+                            if (item.title?.contains(charString) == true) filteringList.add(item)
+                        }
+                        filteringList
+                    }
+                    val filterResults = FilterResults()
+                    filterResults.values = filteredList
+                    return filterResults
+                }
+
+                override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                    filteredList = results?.values as ArrayList<Room>
+                    notifyDataSetChanged()
+                }
+            }
+
         }
 
         private fun enterRoom(context: Context, rid: String?, uid: String?) {
@@ -171,6 +213,7 @@ class RoomListActivity : AppCompatActivity() {
                     if(room.password == "")
                         imageView.visibility = View.INVISIBLE
                     itemView.setOnClickListener {
+
                         val rid = room.rid
                         val uid = Authentication.uid
 

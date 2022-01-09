@@ -93,7 +93,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/linearLayoutSearch"
         app:layout_constraintEnd_toEndOf="@+id/linearLayoutSearch"
         app:layout_constraintStart_toStartOf="@+id/linearLayoutSearch"
-        app:layout_constraintTop_toTopOf="@+id/linearLayoutSearch" />
+        app:layout_constraintTop_toTopOf="@+id/linearLayoutSearch"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,191 +4,272 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ECB27E"
+    android:backgroundTint="#ECB27E"
     tools:context=".TeamNumActivity">
 
     <TextView
-        android:id="@+id/textTitleSolo"
+        android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:text="방만들기"
-        android:textSize="34sp"
+        android:textColor="#000000"
+        android:textSize="30dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/titleEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textTeamNumSolo"
+        android:id="@+id/textViewTeamNumSolo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text=">팀수"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.133"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
+        android:text="> 팀수"
+        android:textColor="#000000"
+        android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTitleSolo" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
     <EditText
         android:id="@+id/editTeamNumSolo"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/textTeamNumSolo"
-        app:layout_constraintTop_toBottomOf="@+id/textTeamNumSolo" />
-
-    <TextView
-        android:id="@+id/textPenalty"
-        android:layout_width="wrap_content"
+        android:layout_width="52dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text=">커스텀 벌칙"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="0"
+        android:inputType="number"
+        android:textColor="#C0392B"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTeamNumSolo"
+        app:layout_constraintStart_toStartOf="@+id/textViewTeamNumSolo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTeamNumSolo" />
+
+    <TextView
+        android:id="@+id/textViewNumberSolo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="> 인원"
+        android:textColor="#000000"
+        android:textSize="25dp"
         app:layout_constraintStart_toStartOf="@+id/editTeamNumSolo"
         app:layout_constraintTop_toBottomOf="@+id/editTeamNumSolo" />
 
+    <EditText
+        android:id="@+id/editNumberSolo"
+        android:layout_width="52dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="0"
+        android:inputType="number"
+        android:textColor="#C0392B"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewNumberSolo"
+        app:layout_constraintStart_toStartOf="@+id/textViewNumberSolo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNumberSolo" />
+
     <TextView
-        android:id="@+id/textPenalty1"
+        android:id="@+id/textViewCustom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:text="업을 때"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/textPenalty"
-        app:layout_constraintTop_toBottomOf="@+id/textPenalty" />
+        android:layout_marginTop="24dp"
+        android:text="> 커스텀 벌칙"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="@+id/editNumberSolo"
+        app:layout_constraintTop_toBottomOf="@+id/editNumberSolo" />
+
+    <TextView
+        android:id="@+id/textViewPenaltySolo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:text="업을때"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCustom" />
 
     <EditText
         android:id="@+id/editPenaltySolo1"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/textPenalty1"
-        app:layout_constraintTop_toTopOf="@+id/textPenalty1" />
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="0"
+        android:inputType="number"
+        android:textColor="#C0392B"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPenaltySolo1"
+        app:layout_constraintStart_toEndOf="@+id/textViewPenaltySolo1"
+        app:layout_constraintTop_toTopOf="@+id/textViewPenaltySolo1" />
 
     <TextView
-        android:id="@+id/textPenalty2"
+        android:id="@+id/textViewCupSolo1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="잔"
-        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editPenaltySolo1"
         app:layout_constraintStart_toEndOf="@+id/editPenaltySolo1"
         app:layout_constraintTop_toTopOf="@+id/editPenaltySolo1" />
 
     <TextView
-        android:id="@+id/textPenalty3"
+        android:id="@+id/textViewPenaltySolo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="잡을 때"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/textPenalty1"
-        app:layout_constraintTop_toBottomOf="@+id/textPenalty1" />
+        android:layout_marginTop="16dp"
+        android:text="잡을때"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewPenaltySolo1"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPenaltySolo1" />
 
     <EditText
         android:id="@+id/editPenaltySolo2"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/textPenalty3"
-        app:layout_constraintTop_toTopOf="@+id/textPenalty3" />
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="0"
+        android:inputType="number"
+        android:textColor="#C0392B"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPenaltySolo2"
+        app:layout_constraintStart_toEndOf="@+id/textViewPenaltySolo2"
+        app:layout_constraintTop_toTopOf="@+id/textViewPenaltySolo2" />
 
     <TextView
-        android:id="@+id/textPenalty4"
+        android:id="@+id/textViewCupSolo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="잔"
-        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editPenaltySolo2"
         app:layout_constraintStart_toEndOf="@+id/editPenaltySolo2"
         app:layout_constraintTop_toTopOf="@+id/editPenaltySolo2" />
 
     <EditText
         android:id="@+id/editPenaltySolo3"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/textPenalty3"
-        app:layout_constraintTop_toTopOf="@+id/textPenalty5" />
-
-    <TextView
-        android:id="@+id/textPenalty5"
-        android:layout_width="wrap_content"
+        android:layout_width="25dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text=" 번 자리에 말이 오면 "
-        android:textSize="20sp"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="0"
+        android:inputType="number"
+        android:textColor="#C0392B"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPenaltySolo3"
+        app:layout_constraintStart_toStartOf="@+id/textViewPenaltySolo2"
+        app:layout_constraintTop_toTopOf="@+id/textViewPenaltySolo3" />
+
+    <TextView
+        android:id="@+id/textViewPenaltySolo3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="번 자리에 말이 오면"
+        android:textColor="#000000"
+        android:textSize="20dp"
         app:layout_constraintStart_toEndOf="@+id/editPenaltySolo3"
-        app:layout_constraintTop_toBottomOf="@+id/textPenalty3" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewPenaltySolo2" />
 
     <EditText
         android:id="@+id/editPenaltySolo4"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/textPenalty5"
-        app:layout_constraintTop_toTopOf="@+id/textPenalty5" />
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="0"
+        android:inputType="number"
+        android:textColor="#C0392B"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPenaltySolo3"
+        app:layout_constraintStart_toEndOf="@+id/textViewPenaltySolo3"
+        app:layout_constraintTop_toTopOf="@+id/textViewPenaltySolo3" />
 
     <TextView
-        android:id="@+id/textPenalty6"
+        android:id="@+id/textViewCupSolo3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="잔"
-        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editPenaltySolo4"
         app:layout_constraintStart_toEndOf="@+id/editPenaltySolo4"
         app:layout_constraintTop_toTopOf="@+id/editPenaltySolo4" />
 
     <TextView
-        android:id="@+id/textPenalty7"
+        android:id="@+id/textViewPenaltySolo4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="졌을 때"
-        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="@+id/editPenaltySolo3"
-        app:layout_constraintTop_toBottomOf="@+id/textPenalty5" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewPenaltySolo3" />
 
     <EditText
         android:id="@+id/editPenaltySolo5"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/textPenalty7"
-        app:layout_constraintTop_toTopOf="@+id/textPenalty7" />
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="0"
+        android:inputType="number"
+        android:textColor="#C0392B"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPenaltySolo4"
+        app:layout_constraintStart_toEndOf="@+id/textViewPenaltySolo4"
+        app:layout_constraintTop_toTopOf="@+id/textViewPenaltySolo4" />
 
     <TextView
-        android:id="@+id/textPenalty8"
+        android:id="@+id/textViewCupSolo4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="잔"
-        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editPenaltySolo5"
         app:layout_constraintStart_toEndOf="@+id/editPenaltySolo5"
         app:layout_constraintTop_toTopOf="@+id/editPenaltySolo5" />
 
     <Button
         android:id="@+id/buttonFinish"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#DADADA"
+        android:backgroundTint="#F9E7C8"
         android:text="만들기"
         android:textColor="#000000"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/buttonCancel"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+
         android:layout_marginStart="80dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#DADADA"
+        android:backgroundTint="#F9E7C8"
         android:text="취소"
         android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonFinish"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/buttonFinish" />
 
