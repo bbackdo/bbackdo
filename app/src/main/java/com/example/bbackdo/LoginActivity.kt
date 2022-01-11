@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.bbackdo.R.id.kakaoLoginButton
 import com.example.bbackdo.databinding.ActivityLoginBinding
 import com.example.bbackdo.databinding.DialogLoginBinding
 import com.example.bbackdo.dto.User
@@ -22,9 +23,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
-import com.kakao.sdk.auth.LoginClient
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
+import com.kakao.sdk.user.UserApiClient
 import splitties.activities.start
 import splitties.alertdialog.appcompat.*
 import splitties.alertdialog.material.materialAlertDialog
@@ -200,14 +201,14 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
 
-            val kakaoLoginButton = findViewById<ImageButton>(R.id.kakao_login_button)
+            val kakaoLoginButton = findViewById<ImageButton>(R.id.kakaoLoginButton)
 
             kakaoLoginButton.setOnClickListener {
-                if(LoginClient.instance.isKakaoTalkLoginAvailable(this@LoginActivity)){
-                    LoginClient.instance.loginWithKakaoTalk(this@LoginActivity, callback = callback)
+                if(UserApiClient.instance.isKakaoTalkLoginAvailable(this@LoginActivity)){
+                    UserApiClient.instance.loginWithKakaoTalk(this@LoginActivity, callback = callback)
 
                 }else{
-                    LoginClient.instance.loginWithKakaoAccount(this@LoginActivity, callback = callback)
+                    UserApiClient.instance.loginWithKakaoAccount(this@LoginActivity, callback = callback)
                 }
             }
         }
