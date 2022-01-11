@@ -1,5 +1,6 @@
 package com.example.bbackdo
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -8,6 +9,7 @@ import com.example.bbackdo.lib.Authentication
 import com.example.bbackdo.lib.Database
 import com.example.bbackdo.dto.Room
 import com.google.firebase.database.ServerValue
+import splitties.activities.start
 
 class CreateRoomActivity : AppCompatActivity() {
 
@@ -83,11 +85,9 @@ class CreateRoomActivity : AppCompatActivity() {
                     }
                 }
 
-
-
-
-
-
+                start<TeamActivity>{
+                    flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+                }
 
             }
 
