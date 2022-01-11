@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_game.xml" value="0.22" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_nickname.xml" value="0.30885416666666665" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_room_list.xml" value="0.30885416666666665" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_team.xml" value="0.30885416666666665" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_team_num.xml" value="0.1" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/cell_member.xml" value="0.30885416666666665" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/layout_team.xml" value="0.25625" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/drawable/google_login.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/drawable/google_login_icon.xml" value="0.26979166666666665" />
@@ -14,7 +22,7 @@
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/activity_nickname.xml" value="0.264" />
-        <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/activity_room_list.xml" value="0.18659420289855072" />
+        <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/activity_room_list.xml" value="0.8" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/activity_team.xml" value="0.24365942028985507" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/activity_team_num.xml" value="0.264" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/alertdialog_edittext.xml" value="0.24365942028985507" />
@@ -22,7 +30,6 @@
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/dialog_login.xml" value="0.1453804347826087" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/dialog_make_room.xml" value="0.264" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/item_recycler_room.xml" value="0.264" />
-        <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/layout_team.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/navi_mypage.xml" value="0.1296875" />
       </map>
     </option>

@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbackdo.databinding.*
 import com.example.bbackdo.dto.Room
+import com.example.bbackdo.dto.Room.Companion.STATE_WAIT
 import com.example.bbackdo.dto.Team
 import com.example.bbackdo.lib.Authentication
 import com.example.bbackdo.lib.Database
@@ -47,11 +48,6 @@ class RoomListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         with(room) {
             setContentView(root)
-            // Toast.makeText(this@RoomListActivity, "방만들기 액티비티", Toast.LENGTH_SHORT).show()
-            // 방만들기 클릭 했을 때
-            buttonMake.setOnClickListener {
-                start<CreateRoomActivity>()
-            }
 
             //item 간격 설정
             val spaceDecoration = VerticalSpaceItemDecoration(50)
@@ -63,16 +59,6 @@ class RoomListActivity : AppCompatActivity() {
                 refreshRoomList(false)
             }
 
-            //검색
-            editSearchBar.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-                override fun afterTextChanged(s: Editable?) {
-                    adapter.filter.filter(editSearchBar.text)
-                }
-            })
         }
     }
 
@@ -83,7 +69,11 @@ class RoomListActivity : AppCompatActivity() {
             for (roomPair in it.children) {
                 //Toast.makeText(this@RoomListActivity, roomPair.getValue<Room>().toString(), Toast.LENGTH_SHORT).show()
                 val room =  roomPair.getValue<Room>()!!
-                dataList.add(room)
+                //Toast.makeText(this@RoomListActivity, room.state.toString(), Toast.LENGTH_SHORT).show()
+                when(room.state){
+                    STATE_WAIT->dataList.add(room)
+                }
+
             }
            // Toast.makeText(this@RoomListActivity, dataList.toString(), Toast.LENGTH_SHORT).show()
             dataList.reverse()
@@ -133,7 +123,7 @@ class RoomListActivity : AppCompatActivity() {
         }
 
         override fun getItemCount(): Int {
-            Log.e("datalist", "data : ${filteredList}")
+         //   Log.e("datalist", "data : ${filteredList}")
             return filteredList.size
         }
         //검색 시 필터링
@@ -166,12 +156,12 @@ class RoomListActivity : AppCompatActivity() {
         private fun enterRoom(context: Context, rid: String?, uid: String?) {
 
             Database.getReference("rooms/$rid").get().addOnSuccessListener {
-                /*
+
                 val room = it.getValue<Room>()
                 if (room != null && room.state == Room.STATE_WAIT) {
                     if (it.child("users/$uid").exists()) {
-                        context.start<RoomActivity> {
-                            putExtras(RoomActivity.Extras) {
+                        context.start<TeamActivity> {
+                            putExtras(TeamActivity.Extras) {
                                 this.room = room
                             }
                         }
@@ -180,26 +170,12 @@ class RoomListActivity : AppCompatActivity() {
                             "rooms/$rid/users/$uid" to true,
                             "users/$uid/rooms/$rid" to ServerValue.TIMESTAMP
                         )
-                        Database.getReference("")
-                            .updateChildren(updates)
-                            .addOnSuccessListener {
-                                Database.sendChat(
-                                    rid!!,
-                                    Chat.TYPE_ENTER,
-                                    Chat.MESSAGE_ENTER
-                                )
-                                context.start<RoomActivity> {
-                                    putExtras(RoomActivity.Extras) {
-                                        this.room = room
-                                    }
-                                }
-                            }
                     }
                 } else {
                     // 방이 게임중이거나 없을 때
                 }
 
-                 */
+
             }
         }
 
