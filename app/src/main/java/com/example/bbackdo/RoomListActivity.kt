@@ -9,10 +9,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.KeyEvent
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.view.animation.TranslateAnimation
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +19,7 @@ import com.example.bbackdo.databinding.*
 import com.example.bbackdo.dto.Room
 import com.example.bbackdo.dto.Room.Companion.STATE_WAIT
 import com.example.bbackdo.dto.Team
+import com.example.bbackdo.dto.User
 import com.example.bbackdo.lib.Authentication
 import com.example.bbackdo.lib.Database
 import com.example.bbackdo.lib.Util
@@ -57,6 +56,34 @@ class RoomListActivity : AppCompatActivity() {
             // 새로고침
             swipeRefreshLayout.setOnRefreshListener {
                 refreshRoomList(false)
+            }
+
+            //마이페이지
+            Database.getReference("User").get().addOnSuccessListener {
+                val user = it.getValue<User>()
+                if (user != null) {
+                    textViewName.text = user.nickname
+                    textViewInfo.text = "${user.win + user.lose}전${user.win}승${user.lose}패"
+                }
+
+            }
+
+            buttonOpen.setOnClickListener {
+                val anim = TranslateAnimation(page.width.toFloat(), 0f, 0f, 0f)
+                anim.duration = 400
+                anim.fillAfter = true
+                page.animation = anim
+                page.visibility = View.VISIBLE
+                pageBlack.visibility = View.VISIBLE
+            }
+
+            imageButtonClose.setOnClickListener {
+                val anim = TranslateAnimation(0f, page.width.toFloat(), 0f, 0f)
+                anim.duration = 400
+                anim.fillAfter = true
+                page.animation = anim
+                page.visibility = View.GONE
+                pageBlack.visibility = View.GONE
             }
 
         }
