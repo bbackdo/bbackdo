@@ -48,6 +48,11 @@ class RoomListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         with(room) {
             setContentView(root)
+            // Toast.makeText(this@RoomListActivity, "방만들기 액티비티", Toast.LENGTH_SHORT).show()
+            // 방만들기 클릭 했을 때
+            buttonMake.setOnClickListener {
+                start<CreateRoomActivity>()
+            }
 
             //item 간격 설정
             val spaceDecoration = VerticalSpaceItemDecoration(50)
@@ -59,6 +64,16 @@ class RoomListActivity : AppCompatActivity() {
                 refreshRoomList(false)
             }
 
+            //검색
+            editSearchBar.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+                override fun afterTextChanged(s: Editable?) {
+                    adapter.filter.filter(editSearchBar.text)
+                }
+            })
         }
     }
 
@@ -67,7 +82,7 @@ class RoomListActivity : AppCompatActivity() {
         Database.getReference("rooms").get().addOnSuccessListener {
             dataList.clear()
             for (roomPair in it.children) {
-                //Toast.makeText(this@RoomListActivity, roomPair.getValue<Room>().toString(), Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this@RoomListActivity, roomPair.value.toString(), Toast.LENGTH_SHORT).show()
                 val room =  roomPair.getValue<Room>()!!
                 //Toast.makeText(this@RoomListActivity, room.state.toString(), Toast.LENGTH_SHORT).show()
                 when(room.state){
@@ -75,12 +90,13 @@ class RoomListActivity : AppCompatActivity() {
                 }
 
             }
-           // Toast.makeText(this@RoomListActivity, dataList.toString(), Toast.LENGTH_SHORT).show()
+            // Toast.makeText(this@RoomListActivity, dataList.toString(), Toast.LENGTH_SHORT).show()
             dataList.reverse()
             adapter.notifyDataSetChanged()
             room.swipeRefreshLayout.setRefreshing(false)
         }
     }
+
 
     override fun onStart() {
         super.onStart()
@@ -123,7 +139,7 @@ class RoomListActivity : AppCompatActivity() {
         }
 
         override fun getItemCount(): Int {
-         //   Log.e("datalist", "data : ${filteredList}")
+            Log.e("datalist", "data : ${filteredList}")
             return filteredList.size
         }
         //검색 시 필터링
@@ -158,7 +174,14 @@ class RoomListActivity : AppCompatActivity() {
             Database.getReference("rooms/$rid").get().addOnSuccessListener {
 
                 val room = it.getValue<Room>()
-                if (room != null && room.state == Room.STATE_WAIT) {
+                val team = arrayListOf<String>()
+                if (room != null) {
+                    room.teams?.forEach { teamId->
+                        team.add(teamId.key)
+                    }
+                }
+
+                if (room != null && room.state == STATE_WAIT) {
                     if (it.child("users/$uid").exists()) {
                         context.start<TeamActivity> {
                             putExtras(TeamActivity.Extras) {
@@ -166,10 +189,21 @@ class RoomListActivity : AppCompatActivity() {
                             }
                         }
                     } else {
+                        val tid = team.random()
                         val updates = hashMapOf(
                             "rooms/$rid/users/$uid" to true,
-                            "users/$uid/rooms/$rid" to ServerValue.TIMESTAMP
+                            "users/$uid/teams/$tid" to false,
+                            "teams/$tid/members/$uid" to false
                         )
+                        Database.getReference("")
+                            .updateChildren(updates as Map<String, Any>)
+                            .addOnSuccessListener {
+                                context.start<TeamActivity> {
+                                    putExtras(TeamActivity.Extras) {
+                                        this.room = room
+                                    }
+                                }
+                            }
                     }
                 } else {
                     // 방이 게임중이거나 없을 때
@@ -247,13 +281,6 @@ class RoomListActivity : AppCompatActivity() {
                                 }
                         }
 
-
-
-                    }
-                    val pos = adapterPosition
-                    if (pos != RecyclerView.NO_POSITION) {
-                        // 참가하기 클릭 했을 때
-
                     }
                 }
 
@@ -266,4 +293,3 @@ class RoomListActivity : AppCompatActivity() {
         }
     }
 }
-

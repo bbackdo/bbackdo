@@ -16,24 +16,39 @@
         android:text="대기실"
         android:textAlignment="center"
         android:textSize="40dp"
-        app:layout_constraintBottom_toTopOf="@id/recyclerView1"
+        app:layout_constraintBottom_toTopOf="@id/swipeRefreshLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView1"
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
         app:layout_constraintBottom_toTopOf="@id/readyButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/teamTitle"
-        tools:listitem="@layout/layout_team">
+        app:layout_constraintTop_toBottomOf="@+id/teamTitle">
 
-    </androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/teamRecycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/readyButton"
+            tools:listitem="@layout/layout_team">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </com.baoyz.widget.PullRefreshLayout>
+
 
     <Button
         android:id="@+id/readyButton"
@@ -44,7 +59,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView1" />
+        app:layout_constraintTop_toBottomOf="@+id/swipeRefreshLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

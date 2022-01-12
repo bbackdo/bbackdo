@@ -2,6 +2,7 @@ package com.example.bbackdo.dto
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import com.example.bbackdo.dto.Team
 import kotlinx.parcelize.RawValue
 
 @Parcelize
@@ -12,8 +13,8 @@ data class Room (var manager: String? = "",
                  var rid: String? = "",
                  var teamNum: Int? = 0,
                  var title: String? = "",
+                 var users: @RawValue Map<String, Any>? = null,
                  var teams: @RawValue Map<String, Any>? = null,
-                 var users: Map<String, Boolean>? = null,
                  var state: String? = STATE_WAIT
 ):
     Parcelable {

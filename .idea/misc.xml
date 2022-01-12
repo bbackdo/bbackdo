@@ -6,11 +6,13 @@
         <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_game.xml" value="0.22" />
         <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_logout.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_main.xml" value="0.3921875" />
         <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_nickname.xml" value="0.30885416666666665" />
         <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_room_list.xml" value="0.30885416666666665" />
-        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_team.xml" value="0.30885416666666665" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_team.xml" value="0.25" />
         <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_team_num.xml" value="0.1" />
         <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/cell_member.xml" value="0.30885416666666665" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/item_recycler_room.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/layout_team.xml" value="0.25625" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/drawable/google_login.xml" value="0.26979166666666665" />
