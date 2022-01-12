@@ -21,8 +21,10 @@ import com.example.bbackdo.dto.Room.Companion.STATE_WAIT
 import com.example.bbackdo.dto.Team
 import com.example.bbackdo.dto.User
 import com.example.bbackdo.lib.Authentication
+import com.example.bbackdo.lib.Authentication.uid
 import com.example.bbackdo.lib.Database
 import com.example.bbackdo.lib.Util
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ServerValue
 import com.google.firebase.database.ktx.getValue
 import splitties.activities.start
@@ -59,11 +61,12 @@ class RoomListActivity : AppCompatActivity() {
             }
 
             //마이페이지
-            Database.getReference("User").get().addOnSuccessListener {
+            Database.getReference("users/$uid").get().addOnSuccessListener {
                 val user = it.getValue<User>()
                 if (user != null) {
                     textViewName.text = user.nickname
-                    textViewInfo.text = "${user.win + user.lose}전${user.win}승${user.lose}패"
+                    var record = "${user.win + user.lose}전${user.win}승${user.lose}패"
+                    textViewInfo.text = record
                 }
 
             }
@@ -161,7 +164,7 @@ class RoomListActivity : AppCompatActivity() {
                     filteredList = if (charString.isEmpty()) { //필터된 리스트
                         unfilteredList
                     } else {
-                        var filteringList = ArrayList<Room>()
+                        val filteringList = ArrayList<Room>()
                         for (item in unfilteredList) {
                             if (item.title?.contains(charString) == true) filteringList.add(item)
                         }
