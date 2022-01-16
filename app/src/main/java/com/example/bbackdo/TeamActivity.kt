@@ -33,6 +33,7 @@ class TeamActivity : AppCompatActivity() {
     }
 
     private var teamList = HashMap<String, Any>()
+    private var userList = HashMap<String, Any>()
     private var dataList = arrayListOf<Team>()
     private val adapter = TeamAdapter(this@TeamActivity, dataList)
     private val memberList = arrayListOf<User>()
@@ -53,7 +54,7 @@ class TeamActivity : AppCompatActivity() {
 
             // 새로고침
             swipeRefreshLayout.setOnRefreshListener {
-                refreshRoomList(false)
+                refreshRoomList(true)
             }
 
             Database.getReference("teams").addChildEventListener(teamEventListener)
@@ -84,18 +85,36 @@ class TeamActivity : AppCompatActivity() {
     }
     private fun refreshRoomList(refreshing: Boolean){
         bind.swipeRefreshLayout.setRefreshing(refreshing)
+
         Database.getReference("teams").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 snapshot.children.forEach {
-                    Log.d("horang children", it.getValue<Team>().toString())
-                    if (it.getValue<Team>()?.tid in teamList &&  !(it.getValue<Team>() in dataList)) {
+
+                    if (it.getValue<Team>()?.tid in teamList && it.getValue<Team>() !in dataList) {
                         dataList.add(it.getValue<Team>()!!)
-                        Log.d("horang list", dataList.toString())
+                        Log.d("horang list", teamList.toString())
+                        if (dataList[dataList.lastIndex].members != null){ //멤버가 있을 경우
+                            userList =
+                                dataList[dataList.lastIndex].members as HashMap<String, Any> //userlist는 member야
+                            // 이 유저 리스트를 memberlist에 넣어야해
+                            Database.getReference("users").get().addOnSuccessListener { users->
+                                users.children.forEach { user->
+                                    if (user.key in userList){
+                                        memberList.add(user.getValue<User>()!!)
+                                        Log.d("horang user", it.key.toString())
+                                    }
+                                }
+                            }
+                            Log.d("horang children", userList.toString())
+                        }
+                        memberAdapter.notifyItemChanged(memberList.lastIndex)
                         adapter.notifyItemInserted(dataList.lastIndex)
                     }
 
+
                 }
                 bind.swipeRefreshLayout.setRefreshing(false)
+
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -103,6 +122,8 @@ class TeamActivity : AppCompatActivity() {
             }
 
         })
+
+
     }
 
 

@@ -47,7 +47,7 @@ class TeamAdapter(
             with(bind) {
 
 
-                teamName.setText(team.tid)
+                teamName.setText(team.name)
                 val dataList = arrayListOf<User>()
                 val adapter = EachTeamAdapter(context, dataList)
 

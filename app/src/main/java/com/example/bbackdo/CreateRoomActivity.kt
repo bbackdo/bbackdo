@@ -9,6 +9,10 @@ import com.example.bbackdo.lib.Authentication
 import com.example.bbackdo.lib.Database
 import com.example.bbackdo.dto.Room
 import com.example.bbackdo.dto.Team
+import com.example.bbackdo.dto.Team.Companion.TEAM1
+import com.example.bbackdo.dto.Team.Companion.TEAM2
+import com.example.bbackdo.dto.Team.Companion.TEAM3
+import com.example.bbackdo.dto.Team.Companion.TEAM4
 import com.google.firebase.database.ServerValue
 import splitties.activities.start
 import splitties.bundle.putExtras
@@ -87,7 +91,13 @@ class CreateRoomActivity : AppCompatActivity() {
                             var teamRef = Database.getReference("teams").push()
                             var tid = teamRef.key.toString()
                             tids.add(tid)
-                            team = Team(tid)
+                            var teamName = TEAM1
+                            when(i){
+                                2->{teamName = TEAM2}
+                                3->{teamName = TEAM3}
+                                4->{teamName = TEAM4}
+                            }
+                            team = Team(tid, name = teamName, rid = rid)
 
                             var update = hashMapOf(
                                 "teams/$tid" to team,
