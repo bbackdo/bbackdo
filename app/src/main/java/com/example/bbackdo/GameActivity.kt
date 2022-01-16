@@ -1,4 +1,7 @@
 package com.example.bbackdo
 
-class GameActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class GameActivity: AppCompatActivity() {
+
 }
