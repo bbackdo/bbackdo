@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.kakao.sdk:v2-talk:2.8.1@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/54f61cf1da5845ddfbdca996bb2cc988/jetified-v2-talk-2.8.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/54f61cf1da5845ddfbdca996bb2cc988/jetified-v2-talk-2.8.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/54f61cf1da5845ddfbdca996bb2cc988/jetified-v2-talk-2.8.1/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.kakao.sdk/v2-talk/2.8.1/4e4fbefcb71ce44e286d54a05cc743e730a61dd7/v2-talk-2.8.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
