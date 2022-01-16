@@ -50,6 +50,11 @@ class RoomListActivity : AppCompatActivity() {
         with(room) {
             setContentView(root)
 
+            // 방만들기 클릭
+            buttonMake.setOnClickListener {
+                start<CreateRoomActivity>()
+            }
+
             //item 간격 설정
             val spaceDecoration = VerticalSpaceItemDecoration(50)
             recyclerRoom.addItemDecoration(spaceDecoration)
