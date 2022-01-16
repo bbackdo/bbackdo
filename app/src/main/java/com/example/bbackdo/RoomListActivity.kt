@@ -24,7 +24,9 @@ import com.example.bbackdo.lib.Authentication
 import com.example.bbackdo.lib.Authentication.uid
 import com.example.bbackdo.lib.Database
 import com.example.bbackdo.lib.Util
+import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
 import com.google.firebase.database.ktx.getValue
 import splitties.activities.start
@@ -94,6 +96,48 @@ class RoomListActivity : AppCompatActivity() {
                 pageBlack.visibility = View.GONE
             }
 
+            buttonWithdrawal.setOnClickListener {
+                var builder = AlertDialog.Builder(this@RoomListActivity)
+                builder.setTitle("회원탈퇴")
+                builder.setMessage("회원탈퇴하시겠습니까?")
+                builder.setIcon(R.mipmap.ic_launcher)
+
+                var listener = DialogInterface.OnClickListener { _, which ->
+                    when (which) {
+                        DialogInterface.BUTTON_POSITIVE ->
+                            withdrawal()
+                        DialogInterface.BUTTON_NEGATIVE ->
+                            Toast.makeText(this@RoomListActivity, "취소되었습니다", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                builder.setPositiveButton("네", listener)
+                builder.setNegativeButton("아니오", listener)
+
+                builder.show()
+            }
+        }
+    }
+
+    private fun withdrawal() {
+        val mAuth = FirebaseAuth.getInstance().currentUser
+
+        mAuth?.delete()?.addOnCompleteListener(this@RoomListActivity) {
+            if(it.isSuccessful) {
+                val db = mAuth?.let { FirebaseDatabase.getInstance().reference.child("users").child(it.uid) }
+                db?.removeValue()
+                AuthUI.getInstance()
+                    .signOut(this)
+                    .addOnCompleteListener {
+                        finishAffinity()
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        System.exit(0)
+                    }
+
+            } else {
+                Toast.makeText(this@RoomListActivity, "탈퇴가 성공적으로 이루어지지 않았습니다", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
