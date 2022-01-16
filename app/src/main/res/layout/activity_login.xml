@@ -33,19 +33,58 @@
 
     <Button
         android:id="@+id/googleLoginButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="185dp"
+        android:layout_height="56dp"
         android:backgroundTint=" #4285F4"
         android:drawableLeft="@drawable/common_google_signin_btn_icon_dark_normal"
         android:paddingLeft="0dp"
         android:paddingTop="0dp"
         android:paddingBottom="0dp"
-        android:text="구글 계정으로 로그인"
+        android:text="구글로 시작하기"
         android:textStyle="bold"
         app:iconPadding="0dp"
         app:layout_constraintBottom_toTopOf="@+id/logoImage"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleImage" />
+        app:layout_constraintTop_toBottomOf="@+id/titleImage"
+        app:layout_constraintVertical_bias="0.232" />
+
+    <ImageButton
+        android:id="@+id/kakaoLoginButton"
+        android:layout_width="193dp"
+        android:layout_height="51dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/kakao_login_medium_narrow2"
+        app:layout_constraintBottom_toTopOf="@+id/logoImage"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/googleLoginButton"
+        app:layout_constraintVertical_bias="0.365" />
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:visibility="invisible"
+        android:text="로그아웃"
+        app:layout_constraintBottom_toTopOf="@+id/logoImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/entranceButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:visibility="invisible"
+        android:text="입장하기"
+        app:layout_constraintBottom_toTopOf="@+id/logoutButton"
+        app:layout_constraintEnd_toEndOf="@+id/logoutButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/logoutButton"
+        app:layout_constraintTop_toBottomOf="@+id/titleImage"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
