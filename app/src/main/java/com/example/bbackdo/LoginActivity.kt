@@ -179,7 +179,7 @@ class LoginActivity : AppCompatActivity() {
             }
             else if (token != null) {
                 Toast.makeText(this@LoginActivity, "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this@LoginActivity, LoginActivity::class.java)
+                val intent = Intent(this@LoginActivity, RoomListActivity::class.java)
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
 
             }
