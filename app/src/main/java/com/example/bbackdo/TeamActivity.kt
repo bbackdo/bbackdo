@@ -1,7 +1,10 @@
 package com.example.bbackdo
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bbackdo.databinding.*
 import com.example.bbackdo.dto.Room
@@ -60,19 +63,11 @@ class TeamActivity : AppCompatActivity() {
             Database.getReference("teams").addChildEventListener(teamEventListener)
 
             readyButton.setOnClickListener {
-                Database.getReference("users/$uid/readyState").get().addOnSuccessListener {
-
-                    when (it.value) {
-                        true -> {
-                            Database.getReference("users/$uid/readyState").setValue(false)
-                            readyButton.setText("be ready")
-                        }
-                        false -> {
-                            Database.getReference("users/$uid/readyState").setValue(true)
-                            readyButton.setText("I'm ready")
-                        }
+                Database.getReference("rooms/${room.rid}/manager").get().addOnSuccessListener {
+                    when (it.value?.equals(uid)) {
+                        true -> gameStart()
+                        false -> gameReady()
                     }
-
                 }
             }
         }
@@ -80,9 +75,55 @@ class TeamActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+
+        Database.getReference("rooms/${room.rid}/manager").get().addOnSuccessListener {
+             when(it.value?.equals(uid)) {
+                 true -> {
+                     var readyButton = findViewById<Button>(R.id.readyButton)
+                     readyButton.setText("시작")
+                 }
+             }
+        }
+
         refreshRoomList(true)
+    }
+
+    private fun gameStart() {
+        Database.getReference("users/$uid/readyState").setValue(true)
+
+        val users = Database.getReference("rooms/${room.rid}/users").get()
+        for (userID in listOf(users)) {
+            if(Database.getReference("users/${userID}/readyState").equals(false)) {
+                Toast.makeText(this, "모든 플레이어가 준비 상태여야만 게임을 시작할 수 있습니다.", Toast.LENGTH_SHORT).show()
+                return
+            }
+        }
+
+        val intent = Intent(this, GameActivity::class.java)
+        //intent.putExtra("teamNum", count)
+        startActivity(intent)
 
     }
+
+    private fun gameReady() {
+        var readyButton = findViewById<Button>(R.id.readyButton)
+        Database.getReference("users/$uid/readyState").get().addOnSuccessListener {
+
+            when (it.value) {
+                true -> {
+                    Database.getReference("users/$uid/readyState").setValue(false)
+                    readyButton.setText("be ready")
+
+                }
+                false -> {
+                    Database.getReference("users/$uid/readyState").setValue(true)
+                    readyButton.setText("I'm ready")
+                }
+            }
+
+        }
+    }
+
     private fun refreshRoomList(refreshing: Boolean){
         bind.swipeRefreshLayout.setRefreshing(refreshing)
 
