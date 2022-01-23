@@ -3,6 +3,7 @@ package com.example.bbackdo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.example.bbackdo.databinding.ActivityCreateRoomBinding
 import com.example.bbackdo.lib.Authentication
@@ -35,6 +36,51 @@ class CreateRoomActivity : AppCompatActivity() {
             cancelButton.setOnClickListener {
                 finish()
             }
+
+            //editText 선택시, hint 제거
+            memberNumEditText.onFocusChangeListener =
+                View.OnFocusChangeListener { _, hasFocus ->
+                    if (hasFocus) {
+                        memberNumEditText.hint = ""
+                    }
+                }
+            teamNumEditText2.onFocusChangeListener =
+                View.OnFocusChangeListener { _, hasFocus ->
+                    if (hasFocus) {
+                        teamNumEditText2.hint = ""
+                    }
+                }
+            mission1.onFocusChangeListener =
+                View.OnFocusChangeListener { _, hasFocus ->
+                    if (hasFocus) {
+                        mission1.hint = ""
+                    }
+                }
+            mission2.onFocusChangeListener =
+                View.OnFocusChangeListener { _, hasFocus ->
+                    if (hasFocus) {
+                        mission2.hint = ""
+                    }
+                }
+            mission3.onFocusChangeListener =
+                View.OnFocusChangeListener { _, hasFocus ->
+                    if (hasFocus) {
+                        mission3.hint = ""
+                    }
+                }
+            mission4.onFocusChangeListener =
+                View.OnFocusChangeListener { _, hasFocus ->
+                    if (hasFocus) {
+                        mission4.hint = ""
+                    }
+                }
+            mission5.onFocusChangeListener =
+                View.OnFocusChangeListener { _, hasFocus ->
+                    if (hasFocus) {
+                        mission5.hint = ""
+                    }
+                }
+
 
             createRoomButton.setOnClickListener {
                 val roomRef = Database.getReference("rooms").push();
