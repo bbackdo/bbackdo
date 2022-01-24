@@ -24,9 +24,7 @@ import com.example.bbackdo.lib.Authentication
 import com.example.bbackdo.lib.Authentication.uid
 import com.example.bbackdo.lib.Database
 import com.example.bbackdo.lib.Util
-import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
 import com.google.firebase.database.ktx.getValue
 import splitties.activities.start
@@ -96,48 +94,6 @@ class RoomListActivity : AppCompatActivity() {
                 pageBlack.visibility = View.GONE
             }
 
-            buttonWithdrawal.setOnClickListener {
-                var builder = AlertDialog.Builder(this@RoomListActivity)
-                builder.setTitle("회원탈퇴")
-                builder.setMessage("회원탈퇴하시겠습니까?")
-                builder.setIcon(R.mipmap.ic_launcher)
-
-                var listener = DialogInterface.OnClickListener { _, which ->
-                    when (which) {
-                        DialogInterface.BUTTON_POSITIVE ->
-                            withdrawal()
-                        DialogInterface.BUTTON_NEGATIVE ->
-                            Toast.makeText(this@RoomListActivity, "취소되었습니다", Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                builder.setPositiveButton("네", listener)
-                builder.setNegativeButton("아니오", listener)
-
-                builder.show()
-            }
-        }
-    }
-
-    private fun withdrawal() {
-        val mAuth = FirebaseAuth.getInstance().currentUser
-
-        mAuth?.delete()?.addOnCompleteListener(this@RoomListActivity) {
-            if(it.isSuccessful) {
-                val db = mAuth?.let { FirebaseDatabase.getInstance().reference.child("users").child(it.uid) }
-                db?.removeValue()
-                AuthUI.getInstance()
-                    .signOut(this)
-                    .addOnCompleteListener {
-                        finishAffinity()
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
-                        System.exit(0)
-                    }
-
-            } else {
-                Toast.makeText(this@RoomListActivity, "탈퇴가 성공적으로 이루어지지 않았습니다", Toast.LENGTH_SHORT).show()
-            }
         }
     }
 
@@ -154,7 +110,7 @@ class RoomListActivity : AppCompatActivity() {
                 }
 
             }
-           // Toast.makeText(this@RoomListActivity, dataList.toString(), Toast.LENGTH_SHORT).show()
+            // Toast.makeText(this@RoomListActivity, dataList.toString(), Toast.LENGTH_SHORT).show()
             dataList.reverse()
             adapter.notifyDataSetChanged()
             room.swipeRefreshLayout.setRefreshing(false)
@@ -202,7 +158,7 @@ class RoomListActivity : AppCompatActivity() {
         }
 
         override fun getItemCount(): Int {
-         //   Log.e("datalist", "data : ${filteredList}")
+            //   Log.e("datalist", "data : ${filteredList}")
             return filteredList.size
         }
         //검색 시 필터링
@@ -237,23 +193,47 @@ class RoomListActivity : AppCompatActivity() {
             Database.getReference("rooms/$rid").get().addOnSuccessListener {
 
                 val room = it.getValue<Room>()
+                val tids = room?.teams?.keys
+                val test = room?.memberNum
+
+                Log.d("help", tids.toString())
                 if (room != null && room.state == Room.STATE_WAIT) {
                     if (it.child("users/$uid").exists()) {
+                        Log.d("help", tids.toString())
                         context.start<TeamActivity> {
                             putExtras(TeamActivity.Extras) {
                                 this.room = room
                             }
                         }
                     } else {
+                        val random = Random ()
+
+                        val keyList = ArrayList<String>()
+
+                        if(tids !=null) {
+                            for(key in tids) keyList.add(key)
+                        }
+                        val myTid = keyList.get(random.nextInt(keyList.size))
+                        Log.d("help",myTid)
                         val updates = hashMapOf(
                             "rooms/$rid/users/$uid" to true,
-                            "users/$uid/rooms/$rid" to ServerValue.TIMESTAMP
+                            "users/$uid/teams/$myTid" to false,
+                            "teams/$myTid/members/$uid" to false
                         )
+                        Database.getReference("").updateChildren(updates as Map<String, Any>).addOnSuccessListener {
+
+                        }
+
+                        context.start<TeamActivity> {
+                            putExtras(TeamActivity.Extras) {
+                                this.room = room
+                            }
+                        }
+
                     }
                 } else {
                     // 방이 게임중이거나 없을 때
                 }
-
 
             }
         }
@@ -345,4 +325,3 @@ class RoomListActivity : AppCompatActivity() {
         }
     }
 }
-
