@@ -65,6 +65,17 @@ class RoomListActivity : AppCompatActivity() {
                 refreshRoomList(false)
             }
 
+            //검색
+            editSearchBar.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+                override fun afterTextChanged(s: Editable?) {
+                    adapter.filter.filter(editSearchBar.text)
+                }
+            })
+
             //마이페이지
             Database.getReference("users/$uid").get().addOnSuccessListener {
                 val user = it.getValue<User>()

@@ -254,7 +254,7 @@
         android:layout_marginBottom="8dp"
         android:text="잔"
         android:textColor="#000000"
-        android:textSize="16dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/mission2"
         app:layout_constraintStart_toEndOf="@+id/mission2" />
 
