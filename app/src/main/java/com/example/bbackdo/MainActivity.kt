@@ -2,9 +2,12 @@ package com.example.bbackdo
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bbackdo.databinding.ActivityMainBinding
+import com.kakao.sdk.common.util.Utility
+
 import splitties.activities.start
 
 class MainActivity : AppCompatActivity() {
@@ -16,12 +19,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(main.root)
 
-
         main.testButton.setOnClickListener {
-            start<LoginActivity>()
+            start<TeamNumActivity>()
         }
 
-        main.loginBtn.setOnClickListener {
+        main.kakaoLoginBtn.setOnClickListener {
             start<LoginActivity>()
         }
 

@@ -1,12 +1,17 @@
 package com.example.bbackdo
 
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import com.example.bbackdo.databinding.ActivityLoginBinding
 import com.example.bbackdo.databinding.DialogLoginBinding
 import com.example.bbackdo.dto.User
@@ -20,6 +25,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
+import com.kakao.sdk.auth.model.OAuthToken
+import com.kakao.sdk.common.model.AuthErrorCause
+import com.kakao.sdk.user.UserApiClient
 import splitties.activities.start
 import splitties.alertdialog.appcompat.*
 import splitties.alertdialog.material.materialAlertDialog
@@ -50,7 +58,6 @@ class LoginActivity : AppCompatActivity() {
 
     // 로그인 결과 콜백 함수
     private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
-
 
         val response = result.idpResponse
         if (result.resultCode == RESULT_OK) {
@@ -112,8 +119,8 @@ class LoginActivity : AppCompatActivity() {
             title = user.nickname
             message = "로그인 성공"
             okButton {
-                bind.logintEnterRoomBtn.isEnabled = true
-                bind.loginBtn.isEnabled = false
+                bind.logoImage.isEnabled = true
+                bind.googleLoginButton.isEnabled = false
             }
         }.show()
     }
@@ -127,7 +134,6 @@ class LoginActivity : AppCompatActivity() {
             .signOut(this)
             .addOnCompleteListener {
                 // 로그아웃 이후 작업
-                bind.loginBtn.isEnabled = true
             }
     }
 
@@ -136,27 +142,99 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(bind.root)
 
-        with(bind) {
-            if (Authentication.isLoggedIn()) {
-                logintEnterRoomBtn.isEnabled = true
+
+        with(bind){
+
+            val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
+            if (error != null) {
+                when {
+                    error.toString() == AuthErrorCause.AccessDenied.toString() -> {
+                        Toast.makeText(this@LoginActivity, "접근이 거부 됨(동의 취소)", Toast.LENGTH_SHORT).show()
+                    }
+                    error.toString() == AuthErrorCause.InvalidClient.toString() -> {
+                        Toast.makeText(this@LoginActivity, "유효하지 않은 앱", Toast.LENGTH_SHORT).show()
+                    }
+                    error.toString() == AuthErrorCause.InvalidGrant.toString() -> {
+                        Toast.makeText(this@LoginActivity, "인증 수단이 유효하지 않아 인증할 수 없는 상태", Toast.LENGTH_SHORT).show()
+                    }
+                    error.toString() == AuthErrorCause.InvalidRequest.toString() -> {
+                        Toast.makeText(this@LoginActivity, "요청 파라미터 오류", Toast.LENGTH_SHORT).show()
+                    }
+                    error.toString() == AuthErrorCause.InvalidScope.toString() -> {
+                        Toast.makeText(this@LoginActivity, "유효하지 않은 scope ID", Toast.LENGTH_SHORT).show()
+                    }
+                    error.toString() == AuthErrorCause.Misconfigured.toString() -> {
+                        Toast.makeText(this@LoginActivity, "설정이 올바르지 않음(android key hash)", Toast.LENGTH_SHORT).show()
+                    }
+                    error.toString() == AuthErrorCause.ServerError.toString() -> {
+                        Toast.makeText(this@LoginActivity, "서버 내부 에러", Toast.LENGTH_SHORT).show()
+                    }
+                    error.toString() == AuthErrorCause.Unauthorized.toString() -> {
+                        Toast.makeText(this@LoginActivity, "앱이 요청 권한이 없음", Toast.LENGTH_SHORT).show()
+                    }
+                    else -> { // Unknown
+                        Toast.makeText(this@LoginActivity, "기타 에러", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
-            logintEnterRoomBtn.setOnClickListener {
+            else if (token != null) {
+                Toast.makeText(this@LoginActivity, "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@LoginActivity, RoomListActivity::class.java)
+                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+
+            }
+        }
+
+            if (Authentication.isLoggedIn()) {
+                entranceButton.visibility = View.VISIBLE
+                logoutButton.visibility = View.VISIBLE
+                kakaoLoginButton.visibility= View.INVISIBLE
+                googleLoginButton.visibility= View.INVISIBLE
+            }else if(!Authentication.isLoggedIn()){
+                entranceButton.visibility = View.INVISIBLE
+                logoutButton.visibility = View.INVISIBLE
+            }
+            entranceButton.setOnClickListener {
                 if (!Authentication.isLoggedIn()) {
-                    logintEnterRoomBtn.isEnabled = false
+                    titleImage.isEnabled = false
                 } else {
                     start<RoomListActivity>()
                 }
             }
-            loginBtn.setOnClickListener {
+            googleLoginButton.setOnClickListener {
                 login()
+                entranceButton.visibility = View.VISIBLE
+                logoutButton.visibility = View.VISIBLE
+                kakaoLoginButton.visibility= View.INVISIBLE
+                googleLoginButton.visibility= View.INVISIBLE
             }
-            logoutBtn.setOnClickListener {
-                logintEnterRoomBtn.isEnabled = false
+            kakaoLoginButton.setOnClickListener {
+                if(UserApiClient.instance.isKakaoTalkLoginAvailable(this@LoginActivity)){
+                    UserApiClient.instance.loginWithKakaoTalk(this@LoginActivity, callback = callback)
+
+                }else{
+                    UserApiClient.instance.loginWithKakaoAccount(this@LoginActivity, callback = callback)
+                }
+                entranceButton.visibility = View.VISIBLE
+                logoutButton.visibility = View.VISIBLE
+                kakaoLoginButton.visibility= View.INVISIBLE
+                googleLoginButton.visibility= View.INVISIBLE
+            }
+            logoutButton.setOnClickListener {
+                kakaoLoginButton.visibility= View.VISIBLE
+                googleLoginButton.visibility= View.VISIBLE
                 logout()
+                UserApiClient.instance.logout { error ->
+                    if (error != null) {
+                        Toast.makeText(this@LoginActivity, "로그아웃 실패 $error", Toast.LENGTH_SHORT).show()
+                    }else {
+                        Toast.makeText(this@LoginActivity, "로그아웃 성공", Toast.LENGTH_SHORT).show()
+                    }
+                    finish()
             }
 
+
+            }
         }
-
-
     }
 }
