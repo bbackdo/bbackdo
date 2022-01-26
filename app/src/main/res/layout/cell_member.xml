@@ -20,10 +20,12 @@
 
     <TextView
         android:id="@+id/readyStateText"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center"
         android:text="Not Ready"
-        android:textColor="#494949"
+        android:textColor="#444444"
         app:layout_constraintBottom_toBottomOf="@+id/memberIdText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/memberIdText" />

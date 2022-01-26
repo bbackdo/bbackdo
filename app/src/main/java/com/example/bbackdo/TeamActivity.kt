@@ -40,7 +40,7 @@ class TeamActivity : AppCompatActivity() {
     private var dataList = arrayListOf<Team>()
     private val adapter = TeamAdapter(this@TeamActivity, dataList)
     private val memberList = arrayListOf<User>()
-    private val memberAdapter = EachTeamAdapter(this@TeamActivity, memberList)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,11 +77,14 @@ class TeamActivity : AppCompatActivity() {
         super.onStart()
 
         Database.getReference("rooms/${room.rid}/manager").get().addOnSuccessListener {
-             when(it.value?.equals(uid)) {
-                 true -> {
-                     var readyButton = findViewById<Button>(R.id.readyButton)
-                     readyButton.setText("시작")
-                 }
+            var readyButton = findViewById<Button>(R.id.readyButton)
+            when(it.value?.equals(uid)) {
+                true -> {
+                    readyButton.text = "시작"
+                }
+                false -> {
+                    readyButton.text = "준비"
+                }
              }
         }
 
@@ -108,19 +111,18 @@ class TeamActivity : AppCompatActivity() {
     private fun gameReady() {
         var readyButton = findViewById<Button>(R.id.readyButton)
         Database.getReference("users/$uid/readyState").get().addOnSuccessListener {
-
             when (it.value) {
                 true -> {
                     Database.getReference("users/$uid/readyState").setValue(false)
-                    readyButton.setText("be ready")
+                    readyButton.text = "준비"
 
                 }
                 false -> {
                     Database.getReference("users/$uid/readyState").setValue(true)
-                    readyButton.setText("I'm ready")
+                    readyButton.text = "준비 완료"
                 }
             }
-
+            adapter.notifyDataSetChanged()
         }
     }
 
@@ -133,26 +135,24 @@ class TeamActivity : AppCompatActivity() {
 
                     if (it.getValue<Team>()?.tid in teamList && it.getValue<Team>() !in dataList) {
                         dataList.add(it.getValue<Team>()!!)
-                        Log.d("horang list", teamList.toString())
-                        if (dataList[dataList.lastIndex].members != null){ //멤버가 있을 경우
-                            userList =
-                                dataList[dataList.lastIndex].members as HashMap<String, Any> //userlist는 member야
-                            // 이 유저 리스트를 memberlist에 넣어야해
-                            Database.getReference("users").get().addOnSuccessListener { users->
-                                users.children.forEach { user->
-                                    if (user.key in userList){
-                                        memberList.add(user.getValue<User>()!!)
-                                        Log.d("horang user", it.key.toString())
-                                    }
-                                }
-                            }
-                            Log.d("horang children", userList.toString())
-                        }
-                        memberAdapter.notifyItemChanged(memberList.lastIndex)
+//                        Log.d("horang list", teamList.toString())
+//                        if (dataList[dataList.lastIndex].members != null){ //멤버가 있을 경우
+//                            userList =
+//                                dataList[dataList.lastIndex].members as HashMap<String, Any> //userlist는 member야
+//                            // 이 유저 리스트를 memberlist에 넣어야해
+//                            Database.getReference("users").get().addOnSuccessListener { users->
+//                                users.children.forEach { user->
+//                                    if (user.key in userList){
+//                                        memberList.add(user.getValue<User>()!!)
+//                                        Log.d("horang user", it.key.toString())
+//                                    }
+//                                }
+//                            }
+//                            Log.d("horang children", userList.toString())
+//                        }
+//                        memberAdapter.notifyItemChanged(memberList.lastIndex)
                         adapter.notifyItemInserted(dataList.lastIndex)
                     }
-
-
                 }
                 bind.swipeRefreshLayout.setRefreshing(false)
 
