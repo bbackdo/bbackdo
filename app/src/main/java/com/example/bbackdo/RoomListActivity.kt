@@ -193,23 +193,47 @@ class RoomListActivity : AppCompatActivity() {
             Database.getReference("rooms/$rid").get().addOnSuccessListener {
 
                 val room = it.getValue<Room>()
+                val tids = room?.teams?.keys
+                val test = room?.memberNum
+                
+                Log.d("help", tids.toString())
                 if (room != null && room.state == Room.STATE_WAIT) {
                     if (it.child("users/$uid").exists()) {
+                        Log.d("help", tids.toString())
                         context.start<TeamActivity> {
                             putExtras(TeamActivity.Extras) {
                                 this.room = room
                             }
                         }
                     } else {
+                        val random = Random ()
+
+                        val keyList = ArrayList<String>()
+
+                        if(tids !=null) {
+                            for(key in tids) keyList.add(key)
+                        }
+                        val myTid = keyList.get(random.nextInt(keyList.size))
+                        Log.d("help",myTid)
                         val updates = hashMapOf(
                             "rooms/$rid/users/$uid" to true,
-                            "users/$uid/rooms/$rid" to ServerValue.TIMESTAMP
+                            "users/$uid/teams/$myTid" to false,
+                            "teams/$myTid/members/$uid" to false
                         )
+                        Database.getReference("").updateChildren(updates as Map<String, Any>).addOnSuccessListener {
+
+                        }
+
+                        context.start<TeamActivity> {
+                            putExtras(TeamActivity.Extras) {
+                                this.room = room
+                            }
+                        }
+
                     }
                 } else {
                     // 방이 게임중이거나 없을 때
                 }
-
 
             }
         }

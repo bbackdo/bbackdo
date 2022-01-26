@@ -101,7 +101,7 @@ class TeamActivity : AppCompatActivity() {
                                 users.children.forEach { user->
                                     if (user.key in userList){
                                         memberList.add(user.getValue<User>()!!)
-                                        Log.d("horang user", it.key.toString())
+                                        Log.d("horang user", memberList.toString())
                                     }
                                 }
                             }
