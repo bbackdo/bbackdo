@@ -1,7 +1,10 @@
 package com.example.bbackdo
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bbackdo.databinding.*
 import com.example.bbackdo.dto.Room
@@ -37,7 +40,7 @@ class TeamActivity : AppCompatActivity() {
     private var dataList = arrayListOf<Team>()
     private val adapter = TeamAdapter(this@TeamActivity, dataList)
     private val memberList = arrayListOf<User>()
-    private val memberAdapter = EachTeamAdapter(this@TeamActivity, memberList)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,19 +63,11 @@ class TeamActivity : AppCompatActivity() {
             Database.getReference("teams").addChildEventListener(teamEventListener)
 
             readyButton.setOnClickListener {
-                Database.getReference("users/$uid/readyState").get().addOnSuccessListener {
-
-                    when (it.value) {
-                        true -> {
-                            Database.getReference("users/$uid/readyState").setValue(false)
-                            readyButton.setText("be ready")
-                        }
-                        false -> {
-                            Database.getReference("users/$uid/readyState").setValue(true)
-                            readyButton.setText("I'm ready")
-                        }
+                Database.getReference("rooms/${room.rid}/manager").get().addOnSuccessListener {
+                    when (it.value?.equals(uid)) {
+                        true -> gameStart()
+                        false -> gameReady()
                     }
-
                 }
             }
         }
@@ -80,9 +75,57 @@ class TeamActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+
+        Database.getReference("rooms/${room.rid}/manager").get().addOnSuccessListener {
+            var readyButton = findViewById<Button>(R.id.readyButton)
+            when(it.value?.equals(uid)) {
+                true -> {
+                    readyButton.text = "시작"
+                }
+                false -> {
+                    readyButton.text = "준비"
+                }
+             }
+        }
+
         refreshRoomList(true)
+    }
+
+    private fun gameStart() {
+        Database.getReference("users/$uid/readyState").setValue(true)
+
+        val users = Database.getReference("rooms/${room.rid}/users").get()
+        for (userID in listOf(users)) {
+            if(Database.getReference("users/${userID}/readyState").equals(false)) {
+                Toast.makeText(this, "모든 플레이어가 준비 상태여야만 게임을 시작할 수 있습니다.", Toast.LENGTH_SHORT).show()
+                return
+            }
+        }
+
+        val intent = Intent(this, GameActivity::class.java)
+        //intent.putExtra("teamNum", count)
+        startActivity(intent)
 
     }
+
+    private fun gameReady() {
+        var readyButton = findViewById<Button>(R.id.readyButton)
+        Database.getReference("users/$uid/readyState").get().addOnSuccessListener {
+            when (it.value) {
+                true -> {
+                    Database.getReference("users/$uid/readyState").setValue(false)
+                    readyButton.text = "준비"
+
+                }
+                false -> {
+                    Database.getReference("users/$uid/readyState").setValue(true)
+                    readyButton.text = "준비 완료"
+                }
+            }
+            adapter.notifyDataSetChanged()
+        }
+    }
+
     private fun refreshRoomList(refreshing: Boolean){
         bind.swipeRefreshLayout.setRefreshing(refreshing)
 
@@ -92,26 +135,24 @@ class TeamActivity : AppCompatActivity() {
 
                     if (it.getValue<Team>()?.tid in teamList && it.getValue<Team>() !in dataList) {
                         dataList.add(it.getValue<Team>()!!)
-                        Log.d("horang list", teamList.toString())
-                        if (dataList[dataList.lastIndex].members != null){ //멤버가 있을 경우
-                            userList =
-                                dataList[dataList.lastIndex].members as HashMap<String, Any> //userlist는 member야
-                            // 이 유저 리스트를 memberlist에 넣어야해
-                            Database.getReference("users").get().addOnSuccessListener { users->
-                                users.children.forEach { user->
-                                    if (user.key in userList){
-                                        memberList.add(user.getValue<User>()!!)
-                                        Log.d("horang user", memberList.toString())
-                                    }
-                                }
-                            }
-                            Log.d("horang children", userList.toString())
-                        }
-                        memberAdapter.notifyItemChanged(memberList.lastIndex)
+//                        Log.d("horang list", teamList.toString())
+//                        if (dataList[dataList.lastIndex].members != null){ //멤버가 있을 경우
+//                            userList =
+//                                dataList[dataList.lastIndex].members as HashMap<String, Any> //userlist는 member야
+//                            // 이 유저 리스트를 memberlist에 넣어야해
+//                            Database.getReference("users").get().addOnSuccessListener { users->
+//                                users.children.forEach { user->
+//                                    if (user.key in userList){
+//                                        memberList.add(user.getValue<User>()!!)
+//                                        Log.d("horang user", it.key.toString())
+//                                    }
+//                                }
+//                            }
+//                            Log.d("horang children", userList.toString())
+//                        }
+//                        memberAdapter.notifyItemChanged(memberList.lastIndex)
                         adapter.notifyItemInserted(dataList.lastIndex)
                     }
-
-
                 }
                 bind.swipeRefreshLayout.setRefreshing(false)
 

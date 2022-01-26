@@ -1,6 +1,7 @@
 package com.example.bbackdo
 
 import android.content.Context
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -33,6 +34,7 @@ class TeamAdapter(
 
     override fun onBindViewHolder(holder: TeamAdapter.ViewHolder, position: Int) {
         val team: Team = listData[position]
+
         holder.binding(team)
     }
 
@@ -40,20 +42,32 @@ class TeamAdapter(
         return listData.size
     }
 
-
     inner class ViewHolder(private val bind: LayoutTeamBinding) :
         RecyclerView.ViewHolder(bind.root) {
         fun binding(team: Team) {
             with(bind) {
 
-
                 teamName.setText(team.name)
-                val dataList = arrayListOf<User>()
-                val adapter = EachTeamAdapter(context, dataList)
 
+                //중첩 adapter
+                var dataList = arrayListOf<User>()
+                var memberList = arrayListOf<String>()
+                Database.getReference("teams/${team.tid}/members").get().addOnSuccessListener {
+                    memberList.add(it.value.toString())
+                }
 
-                teamRcv.adapter = adapter
+                Database.getReference("users").get().addOnSuccessListener { users ->
+                    users.children.forEach {
+//                        Log.d("memberList", memberList.toString())
+                        if ("{".plus(it.key).plus("=false}") in memberList) {
+//                            Log.d("추가된 유저", it.getValue<User>().toString())
+                            dataList.add(it.getValue<User>()!!)
+                        }
+                        val adapter = EachTeamAdapter(context, dataList)
 
+                        teamRcv.adapter = adapter
+                    }
+                }
             }
 
 
@@ -95,6 +109,15 @@ class EachTeamAdapter(
         fun binding(user: User) {
             with(bind) {
                 memberIdText.text = user.nickname
+                if (user.readyState) {
+                    readyStateText.text = "Ready"
+                    readyStateText.setTextColor(Color.parseColor("#009000"))
+
+                }
+                else {
+                    readyStateText.text = "Not Ready"
+                    readyStateText.setTextColor(Color.DKGRAY)
+                }
             }
 
 

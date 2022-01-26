@@ -65,6 +65,17 @@ class RoomListActivity : AppCompatActivity() {
                 refreshRoomList(false)
             }
 
+            //검색
+            editSearchBar.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+                override fun afterTextChanged(s: Editable?) {
+                    adapter.filter.filter(editSearchBar.text)
+                }
+            })
+
             //마이페이지
             Database.getReference("users/$uid").get().addOnSuccessListener {
                 val user = it.getValue<User>()
@@ -110,7 +121,7 @@ class RoomListActivity : AppCompatActivity() {
                 }
 
             }
-           // Toast.makeText(this@RoomListActivity, dataList.toString(), Toast.LENGTH_SHORT).show()
+            // Toast.makeText(this@RoomListActivity, dataList.toString(), Toast.LENGTH_SHORT).show()
             dataList.reverse()
             adapter.notifyDataSetChanged()
             room.swipeRefreshLayout.setRefreshing(false)
@@ -158,7 +169,7 @@ class RoomListActivity : AppCompatActivity() {
         }
 
         override fun getItemCount(): Int {
-         //   Log.e("datalist", "data : ${filteredList}")
+            //   Log.e("datalist", "data : ${filteredList}")
             return filteredList.size
         }
         //검색 시 필터링
@@ -195,7 +206,7 @@ class RoomListActivity : AppCompatActivity() {
                 val room = it.getValue<Room>()
                 val tids = room?.teams?.keys
                 val test = room?.memberNum
-                
+
                 Log.d("help", tids.toString())
                 if (room != null && room.state == Room.STATE_WAIT) {
                     if (it.child("users/$uid").exists()) {
@@ -325,4 +336,3 @@ class RoomListActivity : AppCompatActivity() {
         }
     }
 }
-
