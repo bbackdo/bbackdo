@@ -5,14 +5,20 @@ import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bbackdo.TeamActivity.Extras.room
 import com.example.bbackdo.databinding.CellMemberBinding
 import com.example.bbackdo.databinding.LayoutTeamBinding
 import com.example.bbackdo.dto.Team
 import com.example.bbackdo.dto.User
 import com.example.bbackdo.lib.Authentication
+import com.example.bbackdo.lib.Authentication.uid
 import com.example.bbackdo.lib.Database
 import com.example.bbackdo.lib.Util
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ServerValue
 import com.google.firebase.database.ktx.getValue
 import splitties.activities.start
@@ -52,9 +58,42 @@ class TeamAdapter(
                 //중첩 adapter
                 var dataList = arrayListOf<User>()
                 var memberList = arrayListOf<String>()
+
                 Database.getReference("teams/${team.tid}/members").get().addOnSuccessListener {
                     memberList.add(it.value.toString())
                 }
+
+
+                Database.getReference("teams/${team.tid}/memebers").addChildEventListener(object: ChildEventListener{
+                    override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                        //Toast.makeText(context, snapshot.value.toString(), Toast.LENGTH_SHORT).show()
+                        memberList.add(snapshot.value.toString())
+                    }
+
+                    override fun onChildChanged(
+                        snapshot: DataSnapshot,
+                        previousChildName: String?
+                    ) {
+
+                    }
+
+                    override fun onChildRemoved(snapshot: DataSnapshot) {
+                        Database.getReference("users/$uid/teams/${team.tid}").removeValue()
+                        memberList.remove(snapshot.value.toString())
+                        Database.getReference("rooms/$room.rid/members/$uid").removeValue()
+
+
+                    }
+
+                    override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                        TODO("Not yet implemented")
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+
+                })
 
                 Database.getReference("users").get().addOnSuccessListener { users ->
                     users.children.forEach {

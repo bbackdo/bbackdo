@@ -25,7 +25,7 @@ import com.example.bbackdo.lib.Authentication.uid
 import com.example.bbackdo.lib.Database
 import com.example.bbackdo.lib.Util
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.ServerValue
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import splitties.activities.start
 import splitties.bundle.putExtras
@@ -126,7 +126,10 @@ class RoomListActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
             room.swipeRefreshLayout.setRefreshing(false)
         }
+
+
     }
+
 
     override fun onStart() {
         super.onStart()

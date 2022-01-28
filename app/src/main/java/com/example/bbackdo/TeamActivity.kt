@@ -1,19 +1,23 @@
 package com.example.bbackdo
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bbackdo.databinding.*
 import com.example.bbackdo.dto.Room
 import com.example.bbackdo.dto.Team
 import com.example.bbackdo.dto.User
+import com.example.bbackdo.lib.Authentication
 import com.example.bbackdo.lib.Authentication.uid
 import com.example.bbackdo.lib.Database
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
+import splitties.activities.start
 import splitties.bundle.BundleSpec
 import splitties.bundle.bundle
 import splitties.bundle.withExtras
@@ -96,6 +100,7 @@ class TeamActivity : AppCompatActivity() {
 
         val users = Database.getReference("rooms/${room.rid}/users").get()
         for (userID in listOf(users)) {
+            Toast.makeText(this, userID.toString(), Toast.LENGTH_SHORT).show()
             if(Database.getReference("users/${userID}/readyState").equals(false)) {
                 Toast.makeText(this, "모든 플레이어가 준비 상태여야만 게임을 시작할 수 있습니다.", Toast.LENGTH_SHORT).show()
                 return
@@ -135,22 +140,6 @@ class TeamActivity : AppCompatActivity() {
 
                     if (it.getValue<Team>()?.tid in teamList && it.getValue<Team>() !in dataList) {
                         dataList.add(it.getValue<Team>()!!)
-//                        Log.d("horang list", teamList.toString())
-//                        if (dataList[dataList.lastIndex].members != null){ //멤버가 있을 경우
-//                            userList =
-//                                dataList[dataList.lastIndex].members as HashMap<String, Any> //userlist는 member야
-//                            // 이 유저 리스트를 memberlist에 넣어야해
-//                            Database.getReference("users").get().addOnSuccessListener { users->
-//                                users.children.forEach { user->
-//                                    if (user.key in userList){
-//                                        memberList.add(user.getValue<User>()!!)
-//                                        Log.d("horang user", it.key.toString())
-//                                    }
-//                                }
-//                            }
-//                            Log.d("horang children", userList.toString())
-//                        }
-//                        memberAdapter.notifyItemChanged(memberList.lastIndex)
                         adapter.notifyItemInserted(dataList.lastIndex)
                     }
                 }
@@ -167,6 +156,57 @@ class TeamActivity : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed() {
+        with(bind){
+            Database.getReference("rooms/${room.rid}").get().addOnSuccessListener {
+                //Toast.makeText(this@TeamActivity, "${it.value}", Toast.LENGTH_SHORT).show()
+                if(it.getValue<Room>()?.manager == uid){
+                    //Toast.makeText(this@TeamActivity, "내방", Toast.LENGTH_SHORT).show()
+
+                    AlertDialog.Builder(this@TeamActivity)
+                        .setTitle("방장이 나가면 방이 사라집니다.")
+                        .setPositiveButton("나가기"){_: DialogInterface, _: Int ->
+
+                            Database.getReference("rooms/${room.rid}/teams").get().addOnSuccessListener {teams->
+                                teams.children.forEach { team->
+                                    val tid = team.key
+                                    //Toast.makeText(this@TeamActivity, tid.toString(), Toast.LENGTH_SHORT).show()
+                                    Database.getReference("teams/$tid").removeValue()
+
+                                }
+                            }
+
+                            Database.getReference("rooms/${room.rid}").removeValue()
+                            finish()
+                            start<RoomListActivity>{
+                                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            }
+
+                        }
+                        .setNeutralButton("취소", null)
+                        .show()
+
+                }else{
+                    //Toast.makeText(this@TeamActivity, "내방아님", Toast.LENGTH_SHORT).show()
+                    AlertDialog.Builder(this@TeamActivity)
+                        .setTitle("나가겠습니까?")
+                        .setPositiveButton("나가기"){_: DialogInterface, _: Int ->
+                            Database.getReference("rooms/${room.rid}/users/${uid}").removeValue()
+
+                        }
+                        .setNeutralButton("취소", null)
+                        .show()
+
+                }
+
+
+
+            }
+
+        }
+
+    }
+
 
     private val teamEventListener = object : ChildEventListener {
         override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
@@ -177,9 +217,17 @@ class TeamActivity : AppCompatActivity() {
 
         override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
 
+
         }
 
         override fun onChildRemoved(snapshot: DataSnapshot) {
+            val tid = snapshot.key!!
+            teamList.remove(tid)
+            dataList.remove(snapshot.getValue<Team>())
+            Database.getReference("teams/${tid}").removeValue()
+            Database.getReference("users/$uid/teams/${tid}").removeValue()
+            adapter.notifyDataSetChanged()
+
 
         }
 
@@ -193,4 +241,6 @@ class TeamActivity : AppCompatActivity() {
 
     }
 }
+
+
 
