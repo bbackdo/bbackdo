@@ -70,6 +70,11 @@ class TeamNumActivity : AppCompatActivity() {
         buttonFinish.setOnClickListener {
             if (editTeamNumSolo.text.isEmpty() || editNumberSolo.text.isEmpty() || editPenaltySolo1.text.isEmpty() || editPenaltySolo2.text.isEmpty() || editPenaltySolo3.text.isEmpty() || editPenaltySolo4.text.isEmpty() || editPenaltySolo5.text.isEmpty()) {
                 Toast.makeText(this, "설정이 완료되지 않았습니다", Toast.LENGTH_SHORT).show()
+            } else if (editNumberSolo.text.toString().toInt() < editTeamNumSolo.text.toString()
+                    .toInt() || editNumberSolo.text.toString()
+                    .toInt() % editTeamNumSolo.text.toString().toInt() != 0
+            ) {
+                Toast.makeText(this, "인원 수는 팀 수의 배수가 되어야 합니다.", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, GameActivity::class.java)
                 //intent.putExtra("teamNum", count)

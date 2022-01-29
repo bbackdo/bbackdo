@@ -20,18 +20,18 @@ import splitties.bundle.putExtras
 
 class CreateRoomActivity : AppCompatActivity() {
 
-    private val bind by lazy{
+    private val bind by lazy {
         ActivityCreateRoomBinding.inflate(layoutInflater)
     }
 
-    private var penalty = arrayListOf(0,0,0,0,0)
+    private var penalty = arrayListOf(0, 0, 0, 0, 0)
     private var tids = arrayListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
 
-        with(bind){
+        with(bind) {
             setContentView(root)
             cancelButton.setOnClickListener {
                 finish()
@@ -90,58 +90,80 @@ class CreateRoomActivity : AppCompatActivity() {
                 var pw = ""
                 when {
                     memberNumEditText.text.toString() == "" -> {
-                        Toast.makeText(this@CreateRoomActivity, "멤버수 입력 부탁", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@CreateRoomActivity, "멤버수 입력 부탁", Toast.LENGTH_SHORT)
+                            .show()
                         //finish()
                     }
                     titleEditText.text.toString() == "" -> {
-                        Toast.makeText(this@CreateRoomActivity, "제목 입력 부탁", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@CreateRoomActivity, "제목 입력 부탁", Toast.LENGTH_SHORT)
+                            .show()
                         //finish()
                     }
                     teamNumEditText2.text.toString() == "" -> {
-                        Toast.makeText(this@CreateRoomActivity, "제목 입력 부탁", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@CreateRoomActivity, "팀수 입력 부탁", Toast.LENGTH_SHORT)
+                            .show()
                         //finish()
+                    }
+                    memberNumEditText.text.toString().toInt() < teamNumEditText2.text.toString()
+                        .toInt() || memberNumEditText.text.toString()
+                        .toInt() % teamNumEditText2.text.toString().toInt() != 0 -> {
+                        Toast.makeText(
+                            this@CreateRoomActivity,
+                            "인원 수는 팀 수의 배수가 되어야 합니다.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
 
 
-                    else->{
+                    else -> {
                         val memberNum = Integer.parseInt(memberNumEditText.text.toString())
                         val title = titleEditText.text.toString()
                         var teamNum = Integer.parseInt(teamNumEditText2.text.toString())
                         penalty.clear()
-                        if(mission1.text.toString() != "")
-                            penalty.add(0,Integer.parseInt(mission1.text.toString()))
-                        if(mission2.text.toString() != "")
-                            penalty.add(1,Integer.parseInt(mission2.text.toString()))
-                        if(mission3.text.toString() != "")
-                            penalty.add(2,Integer.parseInt(mission3.text.toString()))
-                        if(mission4.text.toString() != "")
-                            penalty.add(3,Integer.parseInt(mission4.text.toString()))
-                        if(mission5.text.toString() != "")
-                            penalty.add(4,Integer.parseInt(mission5.text.toString()))
-                        if(passwordEditText.text.toString() != "")
+                        if (mission1.text.toString() != "")
+                            penalty.add(0, Integer.parseInt(mission1.text.toString()))
+                        if (mission2.text.toString() != "")
+                            penalty.add(1, Integer.parseInt(mission2.text.toString()))
+                        if (mission3.text.toString() != "")
+                            penalty.add(2, Integer.parseInt(mission3.text.toString()))
+                        if (mission4.text.toString() != "")
+                            penalty.add(3, Integer.parseInt(mission4.text.toString()))
+                        if (mission5.text.toString() != "")
+                            penalty.add(4, Integer.parseInt(mission5.text.toString()))
+                        if (passwordEditText.text.toString() != "")
                             pw = passwordEditText.text.toString()
 
 
-                        var room = Room(uid, memberNum, pw, penalty, rid, teamNum,
-                            title, hashMapOf(uid to true))
+                        var room = Room(
+                            uid, memberNum, pw, penalty, rid, teamNum,
+                            title, hashMapOf(uid to true)
+                        )
                         var team = Team()
 
                         val updates = hashMapOf(
                             "rooms/$rid" to room
                         )
-                        Database.getReference("").updateChildren(updates as Map<String, Any>).addOnSuccessListener {
-                        }
+                        Database.getReference("").updateChildren(updates as Map<String, Any>)
+                            .addOnSuccessListener {
+                            }
 
-                        Toast.makeText(this@CreateRoomActivity, "$teamNum", Toast.LENGTH_LONG).show()
-                        for (i:Int in 1..teamNum){
+                        Toast.makeText(this@CreateRoomActivity, "$teamNum", Toast.LENGTH_LONG)
+                            .show()
+                        for (i: Int in 1..teamNum) {
                             var teamRef = Database.getReference("teams").push()
                             var tid = teamRef.key.toString()
                             tids.add(tid)
                             var teamName = TEAM1
-                            when(i){
-                                2->{teamName = TEAM2}
-                                3->{teamName = TEAM3}
-                                4->{teamName = TEAM4}
+                            when (i) {
+                                2 -> {
+                                    teamName = TEAM2
+                                }
+                                3 -> {
+                                    teamName = TEAM3
+                                }
+                                4 -> {
+                                    teamName = TEAM4
+                                }
                             }
                             team = Team(tid, name = teamName, rid = rid)
 
@@ -160,14 +182,19 @@ class CreateRoomActivity : AppCompatActivity() {
                             "users/${uid}/teams/${tids[0]}" to false
                         )
 
-                        Database.getReference("").updateChildren(updateTeam as Map<String, Any>).addOnSuccessListener {
-                            Toast.makeText(this@CreateRoomActivity, "방 생성 완료 ${room.rid}", Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                        Database.getReference("").updateChildren(updateTeam as Map<String, Any>)
+                            .addOnSuccessListener {
+                                Toast.makeText(
+                                    this@CreateRoomActivity,
+                                    "방 생성 완료 ${room.rid}",
+                                    Toast.LENGTH_SHORT
+                                )
+                                    .show()
+                            }
                         finish()
 
-                        start<TeamActivity>{
-                            putExtras(TeamActivity.Extras){
+                        start<TeamActivity> {
+                            putExtras(TeamActivity.Extras) {
                                 this.room = room
 
                             }
@@ -175,10 +202,8 @@ class CreateRoomActivity : AppCompatActivity() {
                         }
 
 
-
                     }
                 }
-
 
 
             }
