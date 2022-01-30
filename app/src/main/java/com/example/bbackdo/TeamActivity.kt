@@ -89,7 +89,7 @@ class TeamActivity : AppCompatActivity() {
                 false -> {
                     readyButton.text = "준비"
                 }
-             }
+            }
         }
 
         refreshRoomList(true)
@@ -140,8 +140,14 @@ class TeamActivity : AppCompatActivity() {
 
                     if (it.getValue<Team>()?.tid in teamList && it.getValue<Team>() !in dataList) {
                         dataList.add(it.getValue<Team>()!!)
-                        adapter.notifyItemInserted(dataList.lastIndex)
+                        adapter.notifyDataSetChanged()
+                        //adapter.notifyItemInserted(dataList.lastIndex)
                     }
+                    if (it.getValue<Team>()?.tid in teamList && it.getValue<Team>() in dataList){
+                        adapter.notifyDataSetChanged()
+                    }
+
+
                 }
                 bind.swipeRefreshLayout.setRefreshing(false)
 
@@ -192,6 +198,18 @@ class TeamActivity : AppCompatActivity() {
                         .setTitle("나가겠습니까?")
                         .setPositiveButton("나가기"){_: DialogInterface, _: Int ->
                             Database.getReference("rooms/${room.rid}/users/${uid}").removeValue()
+                            Database.getReference("users/$uid/teams").get().addOnSuccessListener {teams->
+                                teams.children.forEach {
+                                    Toast.makeText(this@TeamActivity, "${it.key}", Toast.LENGTH_SHORT).show()
+                                    Database.getReference("teams/${it.key}/members/$uid").removeValue()
+                                }
+
+                            }
+                            Database.getReference("users/$uid/teams").removeValue()
+
+                            start<RoomListActivity>{
+                                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            }
 
                         }
                         .setNeutralButton("취소", null)
@@ -241,6 +259,5 @@ class TeamActivity : AppCompatActivity() {
 
     }
 }
-
 
 
