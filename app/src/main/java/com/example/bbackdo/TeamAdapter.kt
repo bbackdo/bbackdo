@@ -59,6 +59,7 @@ class TeamAdapter(
                 //중첩 adapter
                 var dataList = arrayListOf<User>()
                 var memberList = HashMap<String, Any>()
+
                 Database.getReference("teams/${team.tid}/members").get().addOnSuccessListener {
                     val membertest = it.value
                     if (it.getValue() != null){
@@ -76,15 +77,19 @@ class TeamAdapter(
                     //Toast.makeText(context, "${teamName.text} ${memberList}", Toast.LENGTH_SHORT).show()
 
                     Log.d("test",team.tid.toString())
-                    """
-                          teamName.setOnClickListener{
-                        memberList.add(membertest)
+
+                    teamName.setOnClickListener{
+                        Database.getReference("users/$uid/teams").removeValue()
+                        listData.map {
+                            Database.getReference("teams/${it.tid}/members/$uid").removeValue()
+                        }
+                        //memberList.put(it.key, membertest)
                         Database.getReference("").updateChildren(updates as Map<String, Any>).addOnSuccessListener {  }
                         //기존 팀에서 삭제
                         Log.d("test",team.tid.toString())
                     }
                         
-                    """.trimIndent()
+
 
 
 
