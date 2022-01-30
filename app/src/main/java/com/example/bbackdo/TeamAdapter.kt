@@ -19,7 +19,9 @@ import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ServerValue
+import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
+import com.google.firebase.ktx.Firebase
 import splitties.activities.start
 import splitties.bundle.putExtras
 
@@ -60,7 +62,7 @@ class TeamAdapter(
                 Database.getReference("teams/${team.tid}/members").get().addOnSuccessListener {
                     val membertest = it.value.toString()
                     memberList.add(it.value.toString())
-                    val pastTid = team.tid
+                    var pastTid = team.tid
                     val updates = hashMapOf(
                         "teams/${team.tid}/members/$uid" to false,
                         "users/$uid/teams/${team.tid}" to false
@@ -70,9 +72,14 @@ class TeamAdapter(
                     Log.d("test",team.tid.toString())
                     teamName.setOnClickListener{
                         memberList.add(membertest)
-                        Database.getReference("").updateChildren(updates as Map<String, Any>).addOnSuccessListener {  }
+//                        Database.getReference("").updateChildren(updates as Map<String, Any>).addOnSuccessListener {  }
                         //기존 팀에서 삭제
+                        Database.getReference("users/$uid/teams").child("teams").setValue(team.tid)
+                        Database.getReference("teams/${team.tid}/members").child("members").setValue(uid)
+                        Database.getReference("users/$uid/teams/${team.tid}").removeValue()
+                        Database.getReference("teams/${team.tid}/members/$uid").child("members").removeValue()
                         Log.d("test",team.tid.toString())
+                        Log.d("test",pastTid.toString())
                     }
                 }
 
@@ -82,13 +89,13 @@ class TeamAdapter(
                     override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                         //Toast.makeText(context, snapshot.value.toString(), Toast.LENGTH_SHORT).show()
                         memberList.add(snapshot.value.toString())
+                        Database.getReference("users/$uid/teams/${team.tid}").removeValue()
+                        Database.getReference("teams/${team.tid}/members/$uid").removeValue()
                     }
 
-                    override fun onChildChanged(
-                        snapshot: DataSnapshot,
-                        previousChildName: String?
-                    ) {
-
+                    override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                        Database.getReference("users/$uid/teams/${team.tid}").removeValue()
+                        Database.getReference("teams/${team.tid}/members/$uid").removeValue()
                     }
 
                     override fun onChildRemoved(snapshot: DataSnapshot) {
