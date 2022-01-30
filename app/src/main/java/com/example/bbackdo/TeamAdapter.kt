@@ -5,7 +5,6 @@ import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbackdo.TeamActivity.Extras.room
 import com.example.bbackdo.databinding.CellMemberBinding
@@ -58,13 +57,28 @@ class TeamAdapter(
                 //중첩 adapter
                 var dataList = arrayListOf<User>()
                 var memberList = arrayListOf<String>()
-
                 Database.getReference("teams/${team.tid}/members").get().addOnSuccessListener {
+                    val membertest = it.value.toString()
                     memberList.add(it.value.toString())
+                    val pastTid = team.tid
+                    val updates = hashMapOf(
+                        "teams/${team.tid}/members/$uid" to false,
+                        "users/$uid/teams/${team.tid}" to false
+
+                    )
+
+                    Log.d("test",team.tid.toString())
+                    teamName.setOnClickListener{
+                        memberList.add(membertest)
+                        Database.getReference("").updateChildren(updates as Map<String, Any>).addOnSuccessListener {  }
+                        //기존 팀에서 삭제
+                        Log.d("test",team.tid.toString())
+                    }
                 }
 
 
-                Database.getReference("teams/${team.tid}/memebers").addChildEventListener(object: ChildEventListener{
+                Database.getReference("teams/${team.tid}/memebers").addChildEventListener(object:
+                    ChildEventListener {
                     override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                         //Toast.makeText(context, snapshot.value.toString(), Toast.LENGTH_SHORT).show()
                         memberList.add(snapshot.value.toString())
@@ -81,7 +95,6 @@ class TeamAdapter(
                         Database.getReference("users/$uid/teams/${team.tid}").removeValue()
                         memberList.remove(snapshot.value.toString())
                         Database.getReference("rooms/$room.rid/members/$uid").removeValue()
-
 
                     }
 
