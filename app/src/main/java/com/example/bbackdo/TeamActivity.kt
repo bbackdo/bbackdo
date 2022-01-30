@@ -127,23 +127,31 @@ class TeamActivity : AppCompatActivity() {
                     readyButton.text = "준비 완료"
                 }
             }
+
             adapter.notifyDataSetChanged()
         }
     }
 
     private fun refreshRoomList(refreshing: Boolean){
         bind.swipeRefreshLayout.setRefreshing(refreshing)
-
+        //Toast.makeText(this@TeamActivity, "${dataList}", Toast.LENGTH_SHORT).show()
         Database.getReference("teams").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                snapshot.children.forEach {
-
-                    if (it.getValue<Team>()?.tid in teamList && it.getValue<Team>() !in dataList) {
-                        dataList.add(it.getValue<Team>()!!)
+                snapshot.children.forEach { teams->
+                    val team = teams.getValue<Team>()
+                    var check = true
+                    dataList.map{
+                        if(it.tid == team?.tid)
+                            check = false
+                    }
+                    if (team?.tid in teamList && check) {
+                        //Toast.makeText(this@TeamActivity, "${team.getValue<Team>()}, ${dataList}", Toast.LENGTH_SHORT).show()
+                        dataList.add(team!!)
                         adapter.notifyDataSetChanged()
                         //adapter.notifyItemInserted(dataList.lastIndex)
                     }
-                    if (it.getValue<Team>()?.tid in teamList && it.getValue<Team>() in dataList){
+                    if (teams.getValue<Team>()?.tid in teamList && !check){
+                        //Toast.makeText(this@TeamActivity, "들어와있음", Toast.LENGTH_LONG).show()
                         adapter.notifyDataSetChanged()
                     }
 
@@ -229,7 +237,7 @@ class TeamActivity : AppCompatActivity() {
     private val teamEventListener = object : ChildEventListener {
         override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
             adapter.notifyDataSetChanged()
-            adapter.notifyItemInserted(dataList.lastIndex)
+            //adapter.notifyItemInserted(dataList.lastIndex)
 
         }
 
