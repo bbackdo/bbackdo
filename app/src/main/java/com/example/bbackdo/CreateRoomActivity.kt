@@ -119,19 +119,19 @@ class CreateRoomActivity : AppCompatActivity() {
                         val memberNum = Integer.parseInt(memberNumEditText.text.toString())
                         val title = titleEditText.text.toString()
                         var teamNum = Integer.parseInt(teamNumEditText2.text.toString())
-                        penalty.clear()
                         if (mission1.text.toString() != "")
-                            penalty.add(0, Integer.parseInt(mission1.text.toString()))
+                            penalty[0] = Integer.parseInt(mission1.text.toString())
                         if (mission2.text.toString() != "")
-                            penalty.add(1, Integer.parseInt(mission2.text.toString()))
+                            penalty[1] = Integer.parseInt(mission2.text.toString())
                         if (mission3.text.toString() != "")
-                            penalty.add(2, Integer.parseInt(mission3.text.toString()))
+                            penalty[2] = Integer.parseInt(mission3.text.toString())
                         if (mission4.text.toString() != "")
-                            penalty.add(3, Integer.parseInt(mission4.text.toString()))
+                            penalty[3] = Integer.parseInt(mission4.text.toString())
                         if (mission5.text.toString() != "")
-                            penalty.add(4, Integer.parseInt(mission5.text.toString()))
+                            penalty[4] = Integer.parseInt(mission5.text.toString())
                         if (passwordEditText.text.toString() != "")
                             pw = passwordEditText.text.toString()
+
 
 
                         var room = Room(
