@@ -24,6 +24,9 @@ allprojects {
         google()
         mavenCentral()
         jcenter()
+        flatDir {
+            dirs "${project(':unityLibrary').projectDir}/libs"
+        }
 
         //카카오 sdk 레포지토리
         maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }

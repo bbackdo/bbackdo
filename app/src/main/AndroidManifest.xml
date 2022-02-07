@@ -25,6 +25,7 @@
         <activity android:name=".TeamNumActivity" />
         <activity android:name=".AniActivity" />
         <activity android:name=".CreateRoomActivity" />
+        <activity android:name=".UnityPlayerActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

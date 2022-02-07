@@ -76,8 +76,8 @@ class TeamNumActivity : AppCompatActivity() {
             ) {
                 Toast.makeText(this, "인원 수는 팀 수의 배수가 되어야 합니다.", Toast.LENGTH_SHORT).show()
             } else {
-                val intent = Intent(this, GameActivity::class.java)
-                //intent.putExtra("teamNum", count)
+                val intent = Intent(this, UnityPlayerActivity::class.java)
+                intent.putExtra("mode", 0)
                 startActivity(intent)
             }
 
