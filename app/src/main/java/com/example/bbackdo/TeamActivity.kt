@@ -107,8 +107,8 @@ class TeamActivity : AppCompatActivity() {
             }
         }
 
-        val intent = Intent(this, GameActivity::class.java)
-        //intent.putExtra("teamNum", count)
+        val intent = Intent(this, UnityPlayerActivity::class.java)
+        intent.putExtra("mode", 1)
         startActivity(intent)
 
     }
