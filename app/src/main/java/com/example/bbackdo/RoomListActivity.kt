@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.Rect
 import android.os.Bundle
 import android.text.Editable
@@ -14,6 +15,8 @@ import android.view.animation.TranslateAnimation
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.toColor
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bbackdo.databinding.*
 import com.example.bbackdo.dto.Room
@@ -28,6 +31,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import splitties.activities.start
+import splitties.alertdialog.appcompat.positiveButton
 import splitties.bundle.putExtras
 import java.util.*
 import kotlin.collections.ArrayList
@@ -88,7 +92,7 @@ class RoomListActivity : AppCompatActivity() {
             }
 
             buttonOpen.setOnClickListener {
-                val anim = TranslateAnimation(page.width.toFloat(), 0f, 0f, 0f)
+                val anim = TranslateAnimation(-page.width.toFloat(), -page.width.toFloat()/5, 0f, 0f)
                 anim.duration = 400
                 anim.fillAfter = true
                 page.animation = anim
@@ -96,15 +100,27 @@ class RoomListActivity : AppCompatActivity() {
                 pageBlack.visibility = View.VISIBLE
             }
 
-            imageButtonClose.setOnClickListener {
-                val anim = TranslateAnimation(0f, page.width.toFloat(), 0f, 0f)
-                anim.duration = 400
-                anim.fillAfter = true
-                page.animation = anim
-                page.visibility = View.GONE
-                pageBlack.visibility = View.GONE
-            }
 
+
+
+        }
+    }
+
+    override fun onBackPressed() {
+        with(room) {
+            when {
+                page.isVisible -> {
+                    val anim = TranslateAnimation(-page.width.toFloat()/5, -page.width.toFloat(), 0f, 0f)
+                    anim.duration = 400
+                    anim.fillAfter = true
+                    page.animation = anim
+                    page.visibility = View.GONE
+                    pageBlack.visibility = View.GONE
+                }
+                else -> {
+                    finish()
+                }
+            }
         }
     }
 
@@ -273,9 +289,10 @@ class RoomListActivity : AppCompatActivity() {
                             @SuppressLint("SetTextI18n")
                             alertMembersTextView.text =
                                 "${room.users?.size ?: 0} / ${room.memberNum}"
-                            AlertDialog.Builder(context).setView(root)
-                                .setPositiveButton("입장") { _: DialogInterface, _: Int ->
 
+                            val builder = AlertDialog.Builder(context, R.style.MyDialogTheme)
+                                builder.setView(root)
+                                .setPositiveButton("입장") { _: DialogInterface, _: Int ->
 
                                     if (!room.password.isNullOrBlank()) {
 
@@ -283,10 +300,10 @@ class RoomListActivity : AppCompatActivity() {
                                             AlertdialogEdittextBinding.inflate(inflater)
 
                                         with(editTextBinding) {
-                                            AlertDialog.Builder(context)
+                                            AlertDialog.Builder(context, R.style.MyDialogTheme)
                                                 .setTitle("비밀번호를 입력하세요")
                                                 .setView(root)
-                                                .setPositiveButton("입장") { _: DialogInterface, _: Int ->
+                                                .setPositiveButton("입장하기") { _: DialogInterface, _: Int ->
                                                     val enterPassword =
                                                         alertEditText.text.toString()
                                                     // 비밀 번호 맞을 때
@@ -303,18 +320,30 @@ class RoomListActivity : AppCompatActivity() {
                                                     }
                                                 }
                                                 .setNeutralButton("취소", null)
-                                                .create().show()
+                                                .create().also { alertDialog ->
+                                            //        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(
+                                              //          Color.BLACK)
+                                                //    alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(
+                                                  //      Color.BLACK)
+                                                    alertDialog.show()
+                                                }
                                         }
 
                                     } else { // 비밀번호 없을 때
                                         enterRoom(context, rid, uid)
                                     }
-                                }.setNeutralButton("취소", null).also { alertDialog ->
+                                }.setNeutralButton("취소", null).also { builder ->
                                     Util.uidToNickname(room.manager!!) {
                                         if (it != Util.MESSAGE_UNDEFINED) {
                                             val nickname = it as String
                                             alertManagerTextView.text = nickname
-                                            alertDialog.show()
+                                            val dialog = builder.create()
+                             //               dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(
+                               //                 Color.BLACK)
+                                 //           dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(
+                                   //             Color.BLACK)
+                                            dialog.show()
+                                            //alertDialog.show()
                                         }
                                     }
                                 }
@@ -332,8 +361,7 @@ class RoomListActivity : AppCompatActivity() {
 
             }
 
-
-            fun setTitle(title: String) {
+            fun dialog(){
 
             }
         }

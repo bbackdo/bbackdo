@@ -119,7 +119,7 @@ class LoginActivity : AppCompatActivity() {
             title = user.nickname
             message = "로그인 성공"
             okButton {
-                bind.logoImage.isEnabled = true
+                //bind.logoImage.isEnabled = true
                 bind.googleLoginButton.isEnabled = false
             }
         }.show()
@@ -190,6 +190,7 @@ class LoginActivity : AppCompatActivity() {
                 logoutButton.visibility = View.VISIBLE
                 kakaoLoginButton.visibility= View.INVISIBLE
                 googleLoginButton.visibility= View.INVISIBLE
+                logintext.text="게임\n입장하기"
             }else if(!Authentication.isLoggedIn()){
                 entranceButton.visibility = View.INVISIBLE
                 logoutButton.visibility = View.INVISIBLE
