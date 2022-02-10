@@ -1,11 +1,15 @@
 package com.example.bbackdo
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.bbackdo.databinding.ActivityCreateRoomBinding
+import com.example.bbackdo.databinding.DialogLoginBinding
+import com.example.bbackdo.databinding.DialogYutBinding
 import com.example.bbackdo.lib.Authentication
 import com.example.bbackdo.lib.Database
 import com.example.bbackdo.dto.Room
@@ -114,6 +118,15 @@ class CreateRoomActivity : AppCompatActivity() {
                         ).show()
                     }
 
+                    teamNumEditText2.text.toString().toInt() > 4 || teamNumEditText2.text.toString().toInt() < 1
+                    -> {
+                        Toast.makeText(this@CreateRoomActivity, "팀 수는 1개 ~ 4개까지 가능합니다", Toast.LENGTH_SHORT).show()
+                    }
+                    memberNumEditText.text.toString().toInt() > 8 || memberNumEditText.text.toString().toInt() < 1
+                    -> {
+                        Toast.makeText(this@CreateRoomActivity, "인원 수는 1인 ~ 8인까지 가능합니다", Toast.LENGTH_SHORT).show()
+                    }
+
 
                     else -> {
                         val memberNum = Integer.parseInt(memberNumEditText.text.toString())
@@ -131,7 +144,6 @@ class CreateRoomActivity : AppCompatActivity() {
                             penalty[4] = Integer.parseInt(mission5.text.toString())
                         if (passwordEditText.text.toString() != "")
                             pw = passwordEditText.text.toString()
-
 
 
                         var room = Room(
@@ -208,8 +220,22 @@ class CreateRoomActivity : AppCompatActivity() {
 
             }
 
+            checkimg.setOnClickListener {
+                val builder = AlertDialog.Builder(this@CreateRoomActivity, R.style.MyDialogTheme)
+                val builderItem = DialogYutBinding.inflate(layoutInflater)
+                with(builder){
+                    setView(builderItem.root)
+                    setPositiveButton("확인", null)
+                    show()
+
+
+                }
+
+            }
         }
+
+    }
+
 
 
     }
-}

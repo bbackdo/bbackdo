@@ -70,11 +70,12 @@ class LoginActivity : AppCompatActivity() {
                     // nickname, win, lose, readyState, rooms
                     if (user == null) {
                         Toast.makeText(this@LoginActivity, "신규 로그인", Toast.LENGTH_SHORT).show()
-                        val builder = AlertDialog.Builder(this@LoginActivity)
+                        val builder = AlertDialog.Builder(this@LoginActivity, R.style.MyDialogTheme)
                         val builderItem = DialogLoginBinding.inflate(layoutInflater)
                         val editText = builderItem.alertEditText
                         with(builder) {
                             setTitle("닉네임을 입력하세요")
+                            setMessage("바꿀수없습니다.")
                             setView(builderItem.root)
                             setPositiveButton("OK") { _: DialogInterface, _: Int ->
                                 if (editText.text != null) {

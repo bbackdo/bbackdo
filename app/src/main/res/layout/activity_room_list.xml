@@ -150,7 +150,7 @@
 
         <TextView
             android:id="@+id/textViewInfo"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="48dp"
             android:layout_weight="1.7"
@@ -158,13 +158,14 @@
             android:gravity="left"
             android:text="0전0승0패"
             android:textColor="@color/text"
-            android:textSize="20dp" />
+            android:textSize="20dp"/>
 
         <TextView
             android:id="@+id/rulebutton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="48dp"
+            android:paddingTop="10dp"
             android:layout_marginTop="8dp"
             android:layout_weight="0.2"
             android:fontFamily="@font/main"
@@ -175,11 +176,12 @@
 
         <TextView
             android:id="@+id/developer"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="48dp"
             android:layout_marginTop="8dp"
             android:layout_weight="0.2"
+            android:paddingTop="10dp"
             android:fontFamily="@font/main"
             android:gravity="left"
             android:text="개발자 소개"
@@ -189,7 +191,7 @@
 
         <TextView
             android:id="@+id/buttonWithdrawal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginLeft="48dp"
@@ -197,6 +199,7 @@
             android:layout_weight="0.2"
             android:fontFamily="@font/main"
             android:text="탈퇴하기"
+            android:paddingTop="10dp"
             android:textColor="@color/text"
             android:textSize="20dp" />
 
