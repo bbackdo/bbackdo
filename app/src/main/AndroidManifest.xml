@@ -3,6 +3,7 @@
     package="com.example.bbackdo">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".KakaoApplication"
         android:allowBackup="true"
@@ -12,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bbackdo">
         <activity
+            android:name=".RuleActivity"
+            android:exported="false" />
+        <activity
             android:name=".LogoutActivity"
             android:exported="false" />
         <activity
@@ -20,13 +24,15 @@
         <activity
             android:name=".TeamActivity"
             android:exported="true" />
+        <activity android:name=".DeveloperActivity" />
         <activity android:name=".RoomListActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".TeamNumActivity" />
         <activity android:name=".AniActivity" />
         <activity android:name=".CreateRoomActivity" />
         <activity android:name=".UnityPlayerActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,7 +56,5 @@
             android:name="com.kakao.sdk.AppKey"
             android:value="f34797735d54a48073a66f9a9c5ab107" />
     </application>
-
-
 
 </manifest>

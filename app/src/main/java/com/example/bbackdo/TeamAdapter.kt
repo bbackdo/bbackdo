@@ -55,6 +55,17 @@ class TeamAdapter(
             with(bind) {
 
                 teamName.setText(team.name)
+                teamName.isSelected = true
+                teamimg.setImageResource(
+                    when(teamName.text){
+                        "안동소주 팀" -> R.drawable.team1img
+                        "문배주 팀" -> R.drawable.team2img
+                        "진도홍주 팀" -> R.drawable.team3img
+                        "이강주 팀" -> R.drawable.team4img
+
+                        else -> R.drawable.team1img
+                    }
+                )
 
                 //중첩 adapter
                 var dataList = arrayListOf<User>()
@@ -156,14 +167,13 @@ class EachTeamAdapter(
         fun binding(user: User) {
             with(bind) {
                 memberIdText.text = user.nickname
+                memberIdText.isSelected = true
                 if (user.readyState) {
-                    readyStateText.text = "Ready"
-                    readyStateText.setTextColor(Color.parseColor("#009000"))
+                    readyStateText.setTextColor(Color.parseColor("#1F177C"))
 
                 }
                 else {
-                    readyStateText.text = "Not Ready"
-                    readyStateText.setTextColor(Color.DKGRAY)
+                    readyStateText.setTextColor(Color.LTGRAY)
                 }
             }
 

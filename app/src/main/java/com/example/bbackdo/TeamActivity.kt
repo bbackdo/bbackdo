@@ -8,6 +8,8 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bbackdo.databinding.*
 import com.example.bbackdo.dto.Room
 import com.example.bbackdo.dto.Team
@@ -55,9 +57,13 @@ class TeamActivity : AppCompatActivity() {
             Database.getReference("rooms/${room.rid}/teams").get().addOnSuccessListener {
                 teamList = it.getValue<HashMap<String, Any>>()!!
             }
-
-            //Log.d("horang datalist", dataList.toString())
             teamRecycler.adapter = adapter
+
+            val gridLayouManager = GridLayoutManager(applicationContext, 2)
+
+            teamRecycler.layoutManager = gridLayouManager
+            //Log.d("horang datalist", dataList.toString())
+
 
             // 새로고침
             swipeRefreshLayout.setOnRefreshListener {
@@ -72,6 +78,67 @@ class TeamActivity : AppCompatActivity() {
                         true -> gameStart()
                         false -> gameReady()
                     }
+                }
+            }
+            backbutton.setOnClickListener {
+                with(bind){
+                    Database.getReference("rooms/${room.rid}").get().addOnSuccessListener {
+                        //Toast.makeText(this@TeamActivity, "${it.value}", Toast.LENGTH_SHORT).show()
+                        if(it.getValue<Room>()?.manager == uid){
+                            //Toast.makeText(this@TeamActivity, "내방", Toast.LENGTH_SHORT).show()
+
+                            AlertDialog.Builder(this@TeamActivity)
+                                .setTitle("방장이 나가면 방이 사라집니다.")
+                                .setPositiveButton("나가기"){_: DialogInterface, _: Int ->
+
+                                    Database.getReference("rooms/${room.rid}/teams").get().addOnSuccessListener {teams->
+                                        teams.children.forEach { team->
+                                            val tid = team.key
+                                            //Toast.makeText(this@TeamActivity, tid.toString(), Toast.LENGTH_SHORT).show()
+                                            Database.getReference("teams/$tid").removeValue()
+
+                                        }
+                                    }
+
+                                    Database.getReference("rooms/${room.rid}").removeValue()
+                                    finish()
+                                    start<RoomListActivity>{
+                                        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                                    }
+
+                                }
+                                .setNeutralButton("취소", null)
+                                .show()
+
+                        }else{
+                            //Toast.makeText(this@TeamActivity, "내방아님", Toast.LENGTH_SHORT).show()
+                            AlertDialog.Builder(this@TeamActivity)
+                                .setTitle("나가겠습니까?")
+                                .setPositiveButton("나가기"){_: DialogInterface, _: Int ->
+                                    Database.getReference("rooms/${room.rid}/users/${uid}").removeValue()
+                                    Database.getReference("users/$uid/teams").get().addOnSuccessListener {teams->
+                                        teams.children.forEach {
+                                            Toast.makeText(this@TeamActivity, "${it.key}", Toast.LENGTH_SHORT).show()
+                                            Database.getReference("teams/${it.key}/members/$uid").removeValue()
+                                        }
+
+                                    }
+                                    Database.getReference("users/$uid/teams").removeValue()
+
+                                    start<RoomListActivity>{
+                                        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                                    }
+
+                                }
+                                .setNeutralButton("취소", null)
+                                .show()
+
+                        }
+
+
+
+                    }
+
                 }
             }
         }

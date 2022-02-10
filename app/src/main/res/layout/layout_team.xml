@@ -1,47 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="200dp"
+    android:layout_marginTop="10dp"
+    android:layout_height="250dp"
     android:scrollbarSize="20dp"
+    android:background="@drawable/teamimg"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/teamimg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.2"
+        android:layout_margin="4dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/swipe_team"
+        app:srcCompat="@drawable/team1img" />
 
     <com.baoyz.widget.PullRefreshLayout
         android:id="@+id/swipe_team"
         android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_margin="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/teamName"
+        app:layout_constraintStart_toStartOf="@+id/teamName"
+        app:layout_constraintTop_toBottomOf="@+id/teamName">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/teamRcv"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/teamName"
+            app:layout_constraintTop_toBottomOf="@+id/teamName"
             tools:listitem="@layout/cell_member">
 
         </androidx.recyclerview.widget.RecyclerView>
 
     </com.baoyz.widget.PullRefreshLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/teamName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
-        android:backgroundTint="#FFFFFF"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="10dp"
+        android:elevation="2dp"
+        android:background="@drawable/cellview"
         android:text="팀이름"
-        android:textColor="#3F51B5"
-        app:layout_constraintBottom_toTopOf="@+id/swipe_team"
+        android:textSize="24dp"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -100,6 +100,13 @@ class RoomListActivity : AppCompatActivity() {
                 pageBlack.visibility = View.VISIBLE
             }
 
+            developer.setOnClickListener {
+                start<DeveloperActivity>()
+            }
+            rulebutton.setOnClickListener {
+                start<RuleActivity>()
+            }
+
 
 
 
@@ -274,6 +281,7 @@ class RoomListActivity : AppCompatActivity() {
             fun binding(room: Room) {
                 with(bind) {
                     textTitle.text = room.title.toString()
+                    textTitle.isSelected = true
                     textLimit.text = "${room.users?.size ?:0}/${room.memberNum}"
                     if(room.password == "")
                         imageView.visibility = View.INVISIBLE
@@ -338,12 +346,7 @@ class RoomListActivity : AppCompatActivity() {
                                             val nickname = it as String
                                             alertManagerTextView.text = nickname
                                             val dialog = builder.create()
-                             //               dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(
-                               //                 Color.BLACK)
-                                 //           dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(
-                                   //             Color.BLACK)
                                             dialog.show()
-                                            //alertDialog.show()
                                         }
                                     }
                                 }
