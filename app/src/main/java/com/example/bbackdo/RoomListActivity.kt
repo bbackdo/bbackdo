@@ -255,7 +255,8 @@ class RoomListActivity : AppCompatActivity() {
                         val updates = hashMapOf(
                             "rooms/$rid/users/$uid" to true,
                             "users/$uid/teams/$myTid" to false,
-                            "teams/$myTid/members/$uid" to false
+                            "teams/$myTid/members/$uid" to false,
+                            "users/$uid/readyState" to false
                         )
                         Database.getReference("").updateChildren(updates as Map<String, Any>).addOnSuccessListener {
 
@@ -297,6 +298,9 @@ class RoomListActivity : AppCompatActivity() {
                             @SuppressLint("SetTextI18n")
                             alertMembersTextView.text =
                                 "${room.users?.size ?: 0} / ${room.memberNum}"
+
+                            alertTitleTextView.isSelected = true
+                            alertManagerTextView.isSelected = true
 
                             val builder = AlertDialog.Builder(context, R.style.MyDialogTheme)
                                 builder.setView(root)

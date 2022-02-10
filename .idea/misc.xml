@@ -3,10 +3,41 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/drawable-anydpi/ic_arrow.xml" value="0.2425" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/drawable-anydpi/ic_menu.xml" value="0.2495" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2155" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/drawable/buttonview.xml" value="0.22" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/drawable/cellview.xml" value="0.231" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/drawable/cellwithline.xml" value="0.33" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2155" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/drawable/loginbuttonview.xml" value="0.231" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/drawable/logoutcell.xml" value="0.1" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/drawable/nobg.xml" value="0.2955" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/drawable/view_background.xml" value="0.2155" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/drawable/vieweithline.xml" value="0.3625" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/font/font.xml" value="0.2552083333333333" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_ani.xml" value="0.38958333333333334" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_create_room.xml" value="0.33" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_developer.xml" value="0.2942708333333333" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_game.xml" value="0.3723958333333333" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_nickname.xml" value="0.37395833333333334" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_room_list.xml" value="0.33" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_rule.xml" value="0.18385416666666668" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_second.xml" value="0.37395833333333334" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_splash.xml" value="0.18385416666666668" />
         <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_team.xml" value="0.31666666666666665" />
-        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_team_num.xml" value="0.309375" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_team_num.xml" value="0.33" />
         <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/cell_member.xml" value="0.30416666666666664" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/developerteam.xml" value="0.2942708333333333" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/dialog_enter_room.xml" value="0.5" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/dialog_login.xml" value="0.3723958333333333" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/dialog_make_room.xml" value="0.2942708333333333" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/dialog_yut.xml" value="0.5" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/item_recycler_room.xml" value="0.5" />
         <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/layout_team.xml" value="0.25" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/navi_mypage.xml" value="0.3723958333333333" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/drawable/google_login.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/drawable/google_login_icon.xml" value="0.26979166666666665" />
@@ -27,52 +58,13 @@
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/dialog_make_room.xml" value="0.264" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/item_recycler_room.xml" value="0.264" />
         <entry key="..\:/Users/sol/Private/Eos/bbackdo/bbackdo/app/src/main/res/layout/navi_mypage.xml" value="0.1296875" />
-        <entry key="app/src/main/res/drawable/buttonview.xml" value="0.126" />
-        <entry key="app/src/main/res/drawable/cellview.xml" value="0.126" />
-        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/logoutcell.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/view_background.xml" value="0.126" />
-        <entry key="app/src/main/res/drawable/vieweithline.xml" value="0.126" />
-        <entry key="app/src/main/res/layout/activity_ani.xml" value="0.2947916666666667" />
-        <entry key="app/src/main/res/layout/activity_create_room.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_developer.xml" value="0.32456140350877194" />
-        <entry key="app/src/main/res/layout/activity_flash.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_game.xml" value="0.15045592705167174" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_logout.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_nickname.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_room_list.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_rule.xml" value="0.15045592705167174" />
-        <entry key="app/src/main/res/layout/activity_second.xml" value="0.2753623188405797" />
-        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/activity_team.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_team_num.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/alertdialog_edittext.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/cell_member.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/developerinfo.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/developerteam.xml" value="0.6431718061674009" />
-        <entry key="app/src/main/res/layout/dialog_enter_room.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/dialog_login.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/dialog_make_room.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/dialog_yut.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/item_recycler_room.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/layout_team.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/navi_mypage.xml" value="0.23550724637681159" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.33" />
-      </ProjectState>
-    </option>
   </component>
 </project>

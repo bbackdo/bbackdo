@@ -57,18 +57,23 @@ class DeveloperActivity: AppCompatActivity() {
             infodatas.add(infos("장보경", "한양대학교 컴퓨터소프트웨어학부\n" +
                     "유니티 개발, 아이디어 담당"))
             infodatas.add(infos("이가은", "한양대학교 컴퓨터소프트웨어학부\n" +
-                    "안드로이드 개발, 파이어베이스 개발 담당"))
+                    "안드로이드 개발,\n시키키 담당"))
             infodatas.add(infos("김은솔", "한한양대학교 컴퓨터소프트웨어학부\n" +
-                    "안드로이드 개발, 구원투수 담당"))
+                    "안드로이드 개발,\n구원투수 담당"))
             infodatas.add(infos("임성덕", "한양대학교 컴퓨터소프트웨어학부\n" +
                     "안드로이드 개발, 파이어베이스 개발 담당"))
             infodatas.add(infos("이창현", "한양대학교 컴퓨터소프트웨어학부\n" +
-                    "유니티 개발, 디자인 담당"))
+                    "유니티 개발, 똑똑이 담당"))
 
-            teamdatas.add(teams("안동소주", "content"))
-            teamdatas.add(teams("문배주", "content"))
-            teamdatas.add(teams("진도홍주", "content"))
-            teamdatas.add(teams("이강주", "content"))
+            teamdatas.add(teams("안동소주", "상북도 안동에서 전승되어온 민속주로 증류식 소주."+
+                    "쌀, 보리, 조, 수수, 콩 등 다섯가지 곡물을 물에 불린 후 시루에 쪄서 여기에다 누룩을 섞어 10일 가량 발효시켜 진술을 만든다. 이 진술을 솥에 담고 그 위에 소주고리를 얹어 불을 지피면 진술이 증류되어 소주가 만들어진다. "))
+            teamdatas.add(teams("문배주", "한국의 전통 증류식 소주의 하나. 대한민국의 국가무형문화재 제86-1호." +
+                    "평안도 지방에서 전승되어 오는 술로 술의 향기가 문배나무의 과실에서 풍기는 향기와 같아 붙여진 이름이다. " +
+                    "한국 전통주로서는 특이하게도 쌀을 전혀 쓰지 않고 밀(누룩), 수수, 조만으로 만들어지는 것이 특징이다. "))
+            teamdatas.add(teams("진도홍주", "진도섬에서 고려 초부터 전해져 오던 중 조선조에는 “지초주”라 하여 최고의 진상품으로 꼽혔다." +
+                    "진도홍주는 진도산 쌀과 지초를 원재료로 사용하며, 술의 색상이 지초에서 용출되어 홍색이 아름답게 착색되어 시각적인 매력을 느끼게 함과 동시에 그 술맛과 향이 재래 증류주의 독특한 향기를 지니고 있다."))
+            teamdatas.add(teams("이강주", "조선시대 3대 명주의 하나로 전통소주에 배와 생강이 들어간다 해서 이강주라 불리게 되었으며 향토문화재 제 6호로 지정된 25도의 약소주이며 이강고(梨薑膏)라고 부르기도 한다." +
+                    "종래의 토종 누룩을 만들어 백미를 원료로 해서 약주를 만든 후 이 술로 토종 소주를 내리고 여기에 배, 생강, 울금, 계피, 꿀을 넣어 장기간 후숙시켜 마신다. "))
 
             teamRecycler.adapter = infoadapter
             teamRecycler2.adapter = teaminfoadapter
@@ -151,6 +156,7 @@ class DeveloperActivity: AppCompatActivity() {
                 with(bind) {
                     title.text = team.title
                     teamcontent.text = team.content
+                    teamcontent.movementMethod = ScrollingMovementMethod.getInstance()
 
                     teamimg.setImageResource(
                         when(title.text){

@@ -116,6 +116,15 @@ class LoginActivity : AppCompatActivity() {
 
     private fun successLogin(user: User) {
         Authentication.user = user
+        AlertDialog.Builder(this, R.style.MyDialogTheme)
+            .setTitle(user.nickname)
+            .setMessage("로그인 성공")
+            .setPositiveButton("확인"){ _ : DialogInterface, _:Int->
+                bind.googleLoginButton.isEnabled = false
+            }
+            .show()
+            /*
+
         materialAlertDialog {
             title = user.nickname
             message = "로그인 성공"
@@ -124,6 +133,8 @@ class LoginActivity : AppCompatActivity() {
                 bind.googleLoginButton.isEnabled = false
             }
         }.show()
+        */
+
     }
 
     private fun login() {
@@ -226,9 +237,18 @@ class LoginActivity : AppCompatActivity() {
                 kakaoLoginButton.visibility= View.VISIBLE
                 googleLoginButton.visibility= View.VISIBLE
                 logout()
+                UserApiClient.instance.logout {
+
+                }
                 UserApiClient.instance.logout { error ->
                     if (error != null) {
-                        Toast.makeText(this@LoginActivity, "로그아웃 실패 $error", Toast.LENGTH_SHORT).show()
+                        if(error.message == "no authentication key!"){
+                            finish()
+                        }
+                        else{
+                            Toast.makeText(this@LoginActivity, "로그아웃 실패 ${error}", Toast.LENGTH_SHORT).show()
+                        }
+
                     }else {
                         Toast.makeText(this@LoginActivity, "로그아웃 성공", Toast.LENGTH_SHORT).show()
                     }

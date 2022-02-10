@@ -85,12 +85,10 @@ class TeamActivity : AppCompatActivity() {
                     Database.getReference("rooms/${room.rid}").get().addOnSuccessListener {
                         //Toast.makeText(this@TeamActivity, "${it.value}", Toast.LENGTH_SHORT).show()
                         if(it.getValue<Room>()?.manager == uid){
-                            //Toast.makeText(this@TeamActivity, "내방", Toast.LENGTH_SHORT).show()
-
-                            AlertDialog.Builder(this@TeamActivity)
+                            
+                            AlertDialog.Builder(this@TeamActivity, R.style.MyDialogTheme)
                                 .setTitle("방장이 나가면 방이 사라집니다.")
                                 .setPositiveButton("나가기"){_: DialogInterface, _: Int ->
-
                                     Database.getReference("rooms/${room.rid}/teams").get().addOnSuccessListener {teams->
                                         teams.children.forEach { team->
                                             val tid = team.key
@@ -111,18 +109,17 @@ class TeamActivity : AppCompatActivity() {
                                 .show()
 
                         }else{
-                            //Toast.makeText(this@TeamActivity, "내방아님", Toast.LENGTH_SHORT).show()
-                            AlertDialog.Builder(this@TeamActivity)
-                                .setTitle("나가겠습니까?")
+                            AlertDialog.Builder(this@TeamActivity, R.style.MyDialogTheme)
+                                .setTitle("나가시겠습니까?")
                                 .setPositiveButton("나가기"){_: DialogInterface, _: Int ->
                                     Database.getReference("rooms/${room.rid}/users/${uid}").removeValue()
                                     Database.getReference("users/$uid/teams").get().addOnSuccessListener {teams->
                                         teams.children.forEach {
-                                            Toast.makeText(this@TeamActivity, "${it.key}", Toast.LENGTH_SHORT).show()
+                                            //Toast.makeText(this@TeamActivity, "${it.key}", Toast.LENGTH_SHORT).show()
                                             Database.getReference("teams/${it.key}/members/$uid").removeValue()
                                         }
-
                                     }
+
                                     Database.getReference("users/$uid/teams").removeValue()
 
                                     start<RoomListActivity>{
@@ -167,7 +164,7 @@ class TeamActivity : AppCompatActivity() {
 
         val users = Database.getReference("rooms/${room.rid}/users").get()
         for (userID in listOf(users)) {
-            Toast.makeText(this, userID.toString(), Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, userID.toString(), Toast.LENGTH_SHORT).show()
             if(Database.getReference("users/${userID}/readyState").equals(false)) {
                 Toast.makeText(this, "모든 플레이어가 준비 상태여야만 게임을 시작할 수 있습니다.", Toast.LENGTH_SHORT).show()
                 return
@@ -275,7 +272,7 @@ class TeamActivity : AppCompatActivity() {
                             Database.getReference("rooms/${room.rid}/users/${uid}").removeValue()
                             Database.getReference("users/$uid/teams").get().addOnSuccessListener {teams->
                                 teams.children.forEach {
-                                    Toast.makeText(this@TeamActivity, "${it.key}", Toast.LENGTH_SHORT).show()
+                                    //Toast.makeText(this@TeamActivity, "${it.key}", Toast.LENGTH_SHORT).show()
                                     Database.getReference("teams/${it.key}/members/$uid").removeValue()
                                 }
 

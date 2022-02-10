@@ -159,8 +159,7 @@ class CreateRoomActivity : AppCompatActivity() {
                             .addOnSuccessListener {
                             }
 
-                        Toast.makeText(this@CreateRoomActivity, "$teamNum", Toast.LENGTH_LONG)
-                            .show()
+                        //Toast.makeText(this@CreateRoomActivity, "$teamNum", Toast.LENGTH_LONG).show()
                         for (i: Int in 1..teamNum) {
                             var teamRef = Database.getReference("teams").push()
                             var tid = teamRef.key.toString()
@@ -198,7 +197,7 @@ class CreateRoomActivity : AppCompatActivity() {
                             .addOnSuccessListener {
                                 Toast.makeText(
                                     this@CreateRoomActivity,
-                                    "방 생성 완료 ${room.rid}",
+                                    "방 생성 완료",
                                     Toast.LENGTH_SHORT
                                 )
                                     .show()
