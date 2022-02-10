@@ -1,9 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: com.louiscad.splitties:splitties-alertdialog-appcompat-android:3.0.0-beta03@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1921b9c7d19f222e2c648751f6dc0c7a/transformed/jetified-alertdialog-appcompat-debug/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1921b9c7d19f222e2c648751f6dc0c7a/transformed/jetified-alertdialog-appcompat-debug/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1921b9c7d19f222e2c648751f6dc0c7a/transformed/jetified-alertdialog-appcompat-debug/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/37dea55c919f4c0ef4ea9d729619c357/transformed/jetified-alertdialog-appcompat-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/37dea55c919f4c0ef4ea9d729619c357/transformed/jetified-alertdialog-appcompat-debug/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/37dea55c919f4c0ef4ea9d729619c357/transformed/jetified-alertdialog-appcompat-debug/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-alertdialog-appcompat-android/3.0.0-beta03/629f79bc4cc1e1c509e0ac30983ea62a933747f7/splitties-alertdialog-appcompat-android-3.0.0-beta03-javadoc.jar!/" />
