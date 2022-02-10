@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 
 class TeamNumActivity : AppCompatActivity() {
@@ -21,7 +22,7 @@ class TeamNumActivity : AppCompatActivity() {
         val editPenaltySolo4 = findViewById<EditText>(R.id.editPenaltySolo4)
         val editPenaltySolo5 = findViewById<EditText>(R.id.editPenaltySolo5)
         val buttonFinish = findViewById<Button>(R.id.buttonFinish)
-        val buttonCancel = findViewById<Button>(R.id.buttonCancel)
+        val buttonCancel = findViewById<ImageButton>(R.id.buttonCancel)
 
         //editText 선택시, hint 제거
         editTeamNumSolo.onFocusChangeListener =

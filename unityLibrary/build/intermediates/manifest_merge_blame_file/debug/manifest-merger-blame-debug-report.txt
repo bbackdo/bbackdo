@@ -6,94 +6,94 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="19"
-8-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml
+8-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="30" />
-9-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml
+9-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml
 10
 11    <uses-feature android:glEsVersion="0x00020000" />
-11-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:15:3-52
-11-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:15:17-49
+11-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:15:3-52
+11-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:15:17-49
 12    <uses-feature
-12-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:16:3-88
+12-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:16:3-88
 13        android:name="android.hardware.touchscreen"
-13-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:16:17-60
+13-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:16:17-60
 14        android:required="false" />
-14-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:16:61-85
+14-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:16:61-85
 15    <uses-feature
-15-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:17:3-99
+15-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:17:3-99
 16        android:name="android.hardware.touchscreen.multitouch"
-16-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:17:17-71
+16-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:17:17-71
 17        android:required="false" />
-17-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:17:72-96
+17-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:17:72-96
 18    <uses-feature
-18-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:18:3-108
+18-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:18:3-108
 19        android:name="android.hardware.touchscreen.multitouch.distinct"
-19-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:18:17-80
+19-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:18:17-80
 20        android:required="false" />
-20-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:18:81-105
+20-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:18:81-105
 21
 22    <application>
-22-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:4:3-14:17
+22-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:4:3-14:17
 23        <activity
-23-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:5:5-8:16
+23-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:5:5-8:16
 24            android:name="com.unity3d.player.UnityPlayerActivity"
-24-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:5:15-68
+24-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:5:15-68
 25            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
-25-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:5:182-363
+25-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:5:182-363
 26            android:hardwareAccelerated="false"
-26-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:5:399-434
+26-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:5:399-434
 27            android:launchMode="singleTask"
-27-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:5:150-181
+27-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:5:150-181
 28            android:resizeableActivity="false"
-28-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:5:364-398
+28-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:5:364-398
 29            android:screenOrientation="fullSensor"
-29-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:5:111-149
+29-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:5:111-149
 30            android:theme="@style/UnityThemeSelector" >
-30-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:5:69-110
+30-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:5:69-110
 31            <meta-data
-31-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:6:7-82
+31-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:6:7-82
 32                android:name="unityplayer.UnityActivity"
-32-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:6:18-58
+32-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:6:18-58
 33                android:value="true" />
-33-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:6:59-79
+33-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:6:59-79
 34            <meta-data
-34-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:7:7-78
+34-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:7:7-78
 35                android:name="android.notch_support"
-35-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:7:18-54
+35-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:7:18-54
 36                android:value="true" />
-36-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:7:55-75
+36-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:7:55-75
 37        </activity>
 38
 39        <meta-data
-39-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:9:5-69
+39-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:9:5-69
 40            android:name="unity.splash-mode"
-40-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:9:16-48
+40-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:9:16-48
 41            android:value="0" />
-41-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:9:49-66
+41-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:9:49-66
 42        <meta-data
-42-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:10:5-74
+42-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:10:5-74
 43            android:name="unity.splash-enable"
-43-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:10:16-50
+43-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:10:16-50
 44            android:value="True" />
-44-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:10:51-71
+44-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:10:51-71
 45        <meta-data
-45-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:11:5-84
+45-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:11:5-84
 46            android:name="unity.allow-resizable-window"
-46-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:11:16-59
+46-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:11:16-59
 47            android:value="False" />
-47-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:11:60-81
+47-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:11:60-81
 48        <meta-data
-48-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:12:5-81
+48-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:12:5-81
 49            android:name="notch.config"
-49-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:12:16-43
+49-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:12:16-43
 50            android:value="portrait|landscape" />
-50-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:12:44-78
+50-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:12:44-78
 51        <meta-data
-51-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:13:5-101
+51-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:13:5-101
 52            android:name="unity.build-id"
-52-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:13:16-45
+52-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:13:16-45
 53            android:value="ab90085e-3b0d-40dd-9796-c7b91a3a2627" />
-53-->C:\Users\sol\Private\Eos\bbackdo\bbackdo\unityLibrary\src\main\AndroidManifest.xml:13:46-98
+53-->C:\Users\82105\AndroidStudioProjects\bbackdo\unityLibrary\src\main\AndroidManifest.xml:13:46-98
 54    </application>
 55
 56</manifest>
