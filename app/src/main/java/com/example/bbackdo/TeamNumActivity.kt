@@ -79,13 +79,13 @@ class TeamNumActivity : AppCompatActivity() {
             } else {
                 val intent = Intent(this, UnityPlayerActivity::class.java)
                 intent.putExtra("mode", 0)
-                intent.putExtra("TeamNum",editTeamNumSolo.toString())
-                intent.putExtra("MemberNum",editNumberSolo.toString())
-                intent.putExtra("Penalty1",editPenaltySolo1.toString())
-                intent.putExtra("Penalty2",editPenaltySolo2.toString())
-                intent.putExtra("Penalty3",editPenaltySolo3.toString())
-                intent.putExtra("Penalty4",editPenaltySolo4.toString())
-                intent.putExtra("Penalty5",editPenaltySolo5.toString())
+                intent.putExtra("TeamNum",editTeamNumSolo.text.toString())
+                intent.putExtra("MemberNum",editNumberSolo.text.toString())
+                intent.putExtra("Penalty1",editPenaltySolo1.text.toString())
+                intent.putExtra("Penalty2",editPenaltySolo2.text.toString())
+                intent.putExtra("Penalty3",editPenaltySolo3.text.toString())
+                intent.putExtra("Penalty4",editPenaltySolo4.text.toString())
+                intent.putExtra("Penalty5",editPenaltySolo5.text.toString())
 
                 startActivity(intent)
             }

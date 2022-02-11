@@ -4,10 +4,14 @@ package com.example.bbackdo;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
+import android.os.Process;
 
 import com.unity3d.player.IUnityPlayerLifecycleEvents;
 import com.unity3d.player.MultiWindowSupport;
@@ -35,16 +39,24 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
 
-        //mode 확인
-        Intent intent = getIntent();
-        int mode = intent.getExtras().getInt("mode");
-
         String cmdLine = updateUnityCommandLineArguments(getIntent().getStringExtra("unity"));
         getIntent().putExtra("unity", cmdLine);
 
         mUnityPlayer = new UnityPlayer(this, this);
         setContentView(mUnityPlayer);
         mUnityPlayer.requestFocus();
+
+        Intent intent = getIntent();
+        int mode = intent.getExtras().getInt("mode");
+        if (mode == 0) {
+            mUnityPlayer.UnitySendMessage("GameControl", "set_teamNum", intent.getExtras().getString("TeamNum"));
+//            mUnityPlayer.UnitySendMessage("TeamNum", "num", intent.getExtras().getString("MemberNum"));
+            mUnityPlayer.UnitySendMessage("GameControl", "set_overlapNum", intent.getExtras().getString("Penalty1"));
+            mUnityPlayer.UnitySendMessage("GameControl", "set_catchNum", intent.getExtras().getString("Penalty2"));
+            mUnityPlayer.UnitySendMessage("GameControl", "set_penaltySpot", intent.getExtras().getString("Penalty3"));
+            mUnityPlayer.UnitySendMessage("GameControl", "set_penaltyNum", intent.getExtras().getString("Penalty4"));
+            mUnityPlayer.UnitySendMessage("GameControl", "set_loseNum", intent.getExtras().getString("Penalty5"));
+        }
     }
 
     // When Unity player unloaded move task to background
@@ -54,6 +66,8 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
 
     // Callback before Unity player process is killed
     @Override public void onUnityPlayerQuitted() {
+//        Intent intent = Intent(this, MainActivity)
+//        startActivity(intent);
     }
 
     @Override protected void onNewIntent(Intent intent)
