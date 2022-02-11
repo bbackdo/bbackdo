@@ -92,7 +92,7 @@ class RoomListActivity : AppCompatActivity() {
             }
 
             buttonOpen.setOnClickListener {
-                val anim = TranslateAnimation(-page.width.toFloat(), -page.width.toFloat()/5, 0f, 0f)
+                val anim = TranslateAnimation(-page.width.toFloat(), -page.width.toFloat()/7, 0f, 0f)
                 anim.duration = 400
                 anim.fillAfter = true
                 page.animation = anim
@@ -117,7 +117,7 @@ class RoomListActivity : AppCompatActivity() {
         with(room) {
             when {
                 page.isVisible -> {
-                    val anim = TranslateAnimation(-page.width.toFloat()/5, -page.width.toFloat(), 0f, 0f)
+                    val anim = TranslateAnimation(-page.width.toFloat()/7, -page.width.toFloat(), 0f, 0f)
                     anim.duration = 400
                     anim.fillAfter = true
                     page.animation = anim

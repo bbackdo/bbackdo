@@ -81,11 +81,11 @@ class DeveloperActivity: AppCompatActivity() {
             backbutton.setOnClickListener {
                 finish()
             }
-            sourceText.text = "학:\n " +
+            sourceText.text = "* 학 이미지 " +
                     "https://www.culture.go.kr/tradition/traditionalDesignPatternView.do?seq=9179&did=77708&reffer=shape&dpid=140&sType=02&xtaxonomy=%EB%8F%99%EB%AC%BC%EB%AC%B8&uType=2D&cPage=3" +
-                    "\n용:\n" +
-                    "https://www.culture.go.kr/tradition/traditionalDesignPatternView.do?seq=8523&did=35701&reffer=shape&dpid=140&xtaxonomy=%EB%8F%99%EB%AC%BC%EB%AC%B8&xtaxonomy2=%EC%9A%A9%EB%AC%B8&uType=2D&gubun=all&cPage=\n" +
-                    "\n경복궁:\n" +
+                    "\n\n* 용 이미지 " +
+                    "https://www.culture.go.kr/tradition/traditionalDesignPatternView.do?seq=8523&did=35701&reffer=shape&dpid=140&xtaxonomy=%EB%8F%99%EB%AC%BC%EB%AC%B8&xtaxonomy2=%EC%9A%A9%EB%AC%B8&uType=2D&gubun=all&cPage=" +
+                    "\n\n* 경복궁 이미지 " +
                     "https://kor.pngtree.com/freepng/south-korea-gyeongbokgung-building-clip-art_6621934.html"
             sourceText.movementMethod = ScrollingMovementMethod.getInstance()
 

@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/teamimg"
-    android:layout_margin="10dp"
-    android:layout_width="200dp"
-    android:layout_height="250dp">
+    android:layout_margin="8dp"
+    android:layout_width="215dp"
+    android:layout_height="260dp">
 
     <ImageView
         android:id="@+id/developerimg"
@@ -22,9 +22,9 @@
         android:id="@+id/view"
         android:layout_width="0dp"
         android:layout_height="2px"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="26dp"
+        android:layout_marginEnd="18dp"
         android:background="#BBBBBB"
         app:layout_constraintTop_toBottomOf="@id/developerimg"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,9 +47,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:maxHeight="75dp"
-        android:text="* 한양대학교 컴퓨터소프트웨어학부\n\n* 유니티 개발, 디자인 담당"
+        android:lineSpacingExtra="8dp"
+        android:text="* 한양대학교 컴퓨터소프트웨어학부\n* 유니티 개발, 디자인 담당"
         android:textColor="@color/text"
-        android:textSize="10dp"
+        android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/developerName"
         app:layout_constraintTop_toBottomOf="@+id/developerName" />
