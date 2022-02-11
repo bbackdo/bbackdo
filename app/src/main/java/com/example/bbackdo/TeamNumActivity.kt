@@ -86,7 +86,7 @@ class TeamNumActivity : AppCompatActivity() {
                     val intent = Intent(this@TeamNumActivity, UnityPlayerActivity::class.java)
                     intent.putExtra("mode", 0)
                     intent.putExtra("TeamNum", editTeamNumSolo.text.toString())
-                    intent.putExtra("MemberNum", editNumberSolo.text.toString())
+//                    intent.putExtra("MemberNum", editNumberSolo.text.toString())
                     intent.putExtra("Penalty1", editPenaltySolo1.text.toString())
                     intent.putExtra("Penalty2", editPenaltySolo2.text.toString())
                     intent.putExtra("Penalty3", editPenaltySolo3.text.toString())
