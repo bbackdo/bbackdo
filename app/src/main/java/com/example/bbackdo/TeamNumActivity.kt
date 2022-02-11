@@ -67,32 +67,26 @@ class TeamNumActivity : AppCompatActivity() {
                     }
                 }
 
-            buttonFinish.setOnClickListener {
-                if (editTeamNumSolo.text.isEmpty() || editNumberSolo.text.isEmpty() || editPenaltySolo1.text.isEmpty() || editPenaltySolo2.text.isEmpty() || editPenaltySolo3.text.isEmpty() || editPenaltySolo4.text.isEmpty() || editPenaltySolo5.text.isEmpty()) {
-                    Toast.makeText(this@TeamNumActivity, "설정이 완료되지 않았습니다", Toast.LENGTH_SHORT)
-                        .show()
-                } else if (editNumberSolo.text.toString().toInt() < editTeamNumSolo.text.toString()
-                        .toInt() || editNumberSolo.text.toString()
-                        .toInt() % editTeamNumSolo.text.toString().toInt() != 0
-                ) {
-                    Toast.makeText(
-                        this@TeamNumActivity,
-                        "인원 수는 팀 수의 배수가 되어야 합니다.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                } else {
-                    val intent = Intent(this@TeamNumActivity, UnityPlayerActivity::class.java)
-                    intent.putExtra("mode", 0)
-                    intent.putExtra("TeamNum", editTeamNumSolo.text.toString())
-                    intent.putExtra("MemberNum", editNumberSolo.text.toString())
-                    intent.putExtra("Penalty1", editPenaltySolo1.text.toString())
-                    intent.putExtra("Penalty2", editPenaltySolo2.text.toString())
-                    intent.putExtra("Penalty3", editPenaltySolo3.text.toString())
-                    intent.putExtra("Penalty4", editPenaltySolo4.text.toString())
-                    intent.putExtra("Penalty5", editPenaltySolo5.text.toString())
 
-                    startActivity(intent)
-                }
+        buttonFinish.setOnClickListener {
+            if (editTeamNumSolo.text.isEmpty() || editNumberSolo.text.isEmpty() || editPenaltySolo1.text.isEmpty() || editPenaltySolo2.text.isEmpty() || editPenaltySolo3.text.isEmpty() || editPenaltySolo4.text.isEmpty() || editPenaltySolo5.text.isEmpty()) {
+                Toast.makeText(this, "설정이 완료되지 않았습니다", Toast.LENGTH_SHORT).show()
+            } else if (editNumberSolo.text.toString().toInt() < editTeamNumSolo.text.toString()
+                    .toInt() || editNumberSolo.text.toString()
+                    .toInt() % editTeamNumSolo.text.toString().toInt() != 0
+            ) {
+                Toast.makeText(this, "인원 수는 팀 수의 배수가 되어야 합니다.", Toast.LENGTH_SHORT).show()
+            } else {
+                val intent = Intent(this, UnityPlayerActivity::class.java)
+                intent.putExtra("mode", 0)
+                intent.putExtra("TeamNum",editTeamNumSolo.text.toString())
+                intent.putExtra("MemberNum",editNumberSolo.text.toString())
+                intent.putExtra("Penalty1",editPenaltySolo1.text.toString())
+                intent.putExtra("Penalty2",editPenaltySolo2.text.toString())
+                intent.putExtra("Penalty3",editPenaltySolo3.text.toString())
+                intent.putExtra("Penalty4",editPenaltySolo4.text.toString())
+                intent.putExtra("Penalty5",editPenaltySolo5.text.toString())
+
 
             }
 
