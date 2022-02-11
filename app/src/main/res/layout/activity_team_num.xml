@@ -11,9 +11,7 @@
         android:id="@+id/constraintLayoutSolo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -43,7 +41,7 @@
             android:fontFamily="@font/main"
             android:text="방 만들기"
             android:textColor="@color/text"
-            android:textSize="30dp"
+            android:textSize="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/buttonCancel"
@@ -103,7 +101,7 @@
             android:ems="1"
             android:fontFamily="@font/main"
             android:gravity="center"
-            android:text="잔"
+            android:text="인"
             android:textColor="@color/text"
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -288,7 +286,7 @@
         android:layout_width="0dp"
         android:layout_height="38dp"
         android:layout_marginStart="16dp"
-        android:background="@drawable/img_1"
+        android:background="@drawable/longbg"
         android:fontFamily="@font/main"
         android:text="윷놀이 판\n확인하기"
         android:textColor="@color/text"
@@ -475,14 +473,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.4" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidlineSolo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
+        app:layout_constraintGuide_percent="0.1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

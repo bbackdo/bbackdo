@@ -92,12 +92,19 @@ class RoomListActivity : AppCompatActivity() {
             }
 
             buttonOpen.setOnClickListener {
-                val anim = TranslateAnimation(-page.width.toFloat(), -page.width.toFloat()/5, 0f, 0f)
+                val anim = TranslateAnimation(-page.width.toFloat(), -page.width.toFloat()/7, 0f, 0f)
                 anim.duration = 400
                 anim.fillAfter = true
                 page.animation = anim
                 page.visibility = View.VISIBLE
                 pageBlack.visibility = View.VISIBLE
+            }
+
+            developer.setOnClickListener {
+                start<DeveloperActivity>()
+            }
+            rulebutton.setOnClickListener {
+                start<RuleActivity>()
             }
 
 
@@ -110,7 +117,7 @@ class RoomListActivity : AppCompatActivity() {
         with(room) {
             when {
                 page.isVisible -> {
-                    val anim = TranslateAnimation(-page.width.toFloat()/5, -page.width.toFloat(), 0f, 0f)
+                    val anim = TranslateAnimation(-page.width.toFloat()/7, -page.width.toFloat(), 0f, 0f)
                     anim.duration = 400
                     anim.fillAfter = true
                     page.animation = anim
@@ -248,7 +255,8 @@ class RoomListActivity : AppCompatActivity() {
                         val updates = hashMapOf(
                             "rooms/$rid/users/$uid" to true,
                             "users/$uid/teams/$myTid" to false,
-                            "teams/$myTid/members/$uid" to false
+                            "teams/$myTid/members/$uid" to false,
+                            "users/$uid/readyState" to false
                         )
                         Database.getReference("").updateChildren(updates as Map<String, Any>).addOnSuccessListener {
 
@@ -274,6 +282,7 @@ class RoomListActivity : AppCompatActivity() {
             fun binding(room: Room) {
                 with(bind) {
                     textTitle.text = room.title.toString()
+                    textTitle.isSelected = true
                     textLimit.text = "${room.users?.size ?:0}/${room.memberNum}"
                     if(room.password == "")
                         imageView.visibility = View.INVISIBLE
@@ -289,6 +298,9 @@ class RoomListActivity : AppCompatActivity() {
                             @SuppressLint("SetTextI18n")
                             alertMembersTextView.text =
                                 "${room.users?.size ?: 0} / ${room.memberNum}"
+
+                            alertTitleTextView.isSelected = true
+                            alertManagerTextView.isSelected = true
 
                             val builder = AlertDialog.Builder(context, R.style.MyDialogTheme)
                                 builder.setView(root)
@@ -338,12 +350,7 @@ class RoomListActivity : AppCompatActivity() {
                                             val nickname = it as String
                                             alertManagerTextView.text = nickname
                                             val dialog = builder.create()
-                             //               dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(
-                               //                 Color.BLACK)
-                                 //           dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(
-                                   //             Color.BLACK)
                                             dialog.show()
-                                            //alertDialog.show()
                                         }
                                     }
                                 }

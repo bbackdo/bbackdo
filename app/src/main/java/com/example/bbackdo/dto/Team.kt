@@ -13,9 +13,9 @@ data class Team(
     var rid: String? = ""
 ) : Parcelable {
     companion object {
-        const val TEAM1 = "소주팀"
-        const val TEAM2 = "맥주팀"
-        const val TEAM3 = "양주팀"
-        const val TEAM4 = "칵테일팀"
+        const val TEAM1 = "안동소주 팀"
+        const val TEAM2 = "문배주 팀"
+        const val TEAM3 = "진도홍주 팀"
+        const val TEAM4 = "이강주 팀"
     }
 }

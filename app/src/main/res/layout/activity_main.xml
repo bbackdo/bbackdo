@@ -14,6 +14,7 @@
         android:layout_height="0dp"
         android:weightSum="10"
         android:orientation="vertical"
+        android:background="@color/background"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/guideline1"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,6 +57,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
+            android:background="@color/background"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="8.5"

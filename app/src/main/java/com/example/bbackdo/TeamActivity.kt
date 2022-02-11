@@ -3,26 +3,27 @@ package com.example.bbackdo
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.bbackdo.databinding.*
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.bbackdo.databinding.ActivityTeamBinding
+import com.example.bbackdo.databinding.DialogExitBinding
 import com.example.bbackdo.dto.Room
 import com.example.bbackdo.dto.Team
 import com.example.bbackdo.dto.User
-import com.example.bbackdo.lib.Authentication
 import com.example.bbackdo.lib.Authentication.uid
 import com.example.bbackdo.lib.Database
-import com.google.firebase.database.*
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import splitties.activities.start
 import splitties.bundle.BundleSpec
 import splitties.bundle.bundle
 import splitties.bundle.withExtras
-import java.util.*
-import kotlin.collections.HashMap
 
 class TeamActivity : AppCompatActivity() {
     object Extras : BundleSpec() {
@@ -55,9 +56,11 @@ class TeamActivity : AppCompatActivity() {
             Database.getReference("rooms/${room.rid}/teams").get().addOnSuccessListener {
                 teamList = it.getValue<HashMap<String, Any>>()!!
             }
-
-            //Log.d("horang datalist", dataList.toString())
             teamRecycler.adapter = adapter
+
+            val gridLayouManager = GridLayoutManager(applicationContext, 2)
+            teamRecycler.layoutManager = gridLayouManager
+            //Log.d("horang datalist", dataList.toString())
 
             // 새로고침
             swipeRefreshLayout.setOnRefreshListener {
@@ -74,6 +77,76 @@ class TeamActivity : AppCompatActivity() {
                     }
                 }
             }
+            backbutton.setOnClickListener {
+                with(bind) {
+                    val exitbind = DialogExitBinding.inflate(layoutInflater)
+                    with(exitbind) {
+                        Database.getReference("rooms/${room.rid}").get().addOnSuccessListener {
+                            //Toast.makeText(this@TeamActivity, "${it.value}", Toast.LENGTH_SHORT).show()
+                            if (it.getValue<Room>()?.manager == uid) {
+                                alertTitleTextView.text = "방장이 나가면 방이 사라집니다."
+                                AlertDialog.Builder(this@TeamActivity, R.style.MyDialogTheme)
+                                    .setView(root)
+                                    .setPositiveButton("나가기") { _: DialogInterface, _: Int ->
+                                        Database.getReference("rooms/${room.rid}/teams").get()
+                                            .addOnSuccessListener { teams ->
+                                                teams.children.forEach { team ->
+                                                    val tid = team.key
+                                                    //Toast.makeText(this@TeamActivity, tid.toString(), Toast.LENGTH_SHORT).show()
+                                                    Database.getReference("teams/$tid")
+                                                        .removeValue()
+
+                                                }
+                                            }
+
+                                        Database.getReference("rooms/${room.rid}").removeValue()
+                                        finish()
+                                        start<RoomListActivity> {
+                                            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                                        }
+
+                                    }
+                                    .setNeutralButton("취소", null)
+                                    .show()
+
+                            } else {
+
+                                alertTitleTextView.text = "나가시겠습니까?"
+                                AlertDialog.Builder(this@TeamActivity, R.style.MyDialogTheme)
+                                    .setView(root)
+                                    .setPositiveButton("나가기") { _: DialogInterface, _: Int ->
+                                        Database.getReference("rooms/${room.rid}/users/${uid}")
+                                            .removeValue()
+                                        Database.getReference("users/$uid/teams").get()
+                                            .addOnSuccessListener { teams ->
+                                                teams.children.forEach {
+                                                    //Toast.makeText(this@TeamActivity, "${it.key}", Toast.LENGTH_SHORT).show()
+                                                    Database.getReference("teams/${it.key}/members/$uid")
+                                                        .removeValue()
+                                                }
+                                            }
+
+                                        Database.getReference("users/$uid/teams").removeValue()
+
+                                        start<RoomListActivity> {
+                                            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                                        }
+
+                                    }
+                                    .setNeutralButton("취소", null)
+                                    .show()
+
+
+                            }
+
+
+                        }
+
+                    }
+
+
+                }
+            }
         }
     }
 
@@ -82,7 +155,7 @@ class TeamActivity : AppCompatActivity() {
 
         Database.getReference("rooms/${room.rid}/manager").get().addOnSuccessListener {
             var readyButton = findViewById<Button>(R.id.readyButton)
-            when(it.value?.equals(uid)) {
+            when (it.value?.equals(uid)) {
                 true -> {
                     readyButton.text = "시작"
                 }
@@ -100,8 +173,8 @@ class TeamActivity : AppCompatActivity() {
 
         val users = Database.getReference("rooms/${room.rid}/users").get()
         for (userID in listOf(users)) {
-            Toast.makeText(this, userID.toString(), Toast.LENGTH_SHORT).show()
-            if(Database.getReference("users/${userID}/readyState").equals(false)) {
+            //Toast.makeText(this, userID.toString(), Toast.LENGTH_SHORT).show()
+            if (Database.getReference("users/${userID}/readyState").equals(false)) {
                 Toast.makeText(this, "모든 플레이어가 준비 상태여야만 게임을 시작할 수 있습니다.", Toast.LENGTH_SHORT).show()
                 return
             }
@@ -132,16 +205,16 @@ class TeamActivity : AppCompatActivity() {
         }
     }
 
-    private fun refreshRoomList(refreshing: Boolean){
+    private fun refreshRoomList(refreshing: Boolean) {
         bind.swipeRefreshLayout.setRefreshing(refreshing)
         //Toast.makeText(this@TeamActivity, "${dataList}", Toast.LENGTH_SHORT).show()
         Database.getReference("teams").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                snapshot.children.forEach { teams->
+                snapshot.children.forEach { teams ->
                     val team = teams.getValue<Team>()
                     var check = true
-                    dataList.map{
-                        if(it.tid == team?.tid)
+                    dataList.map {
+                        if (it.tid == team?.tid)
                             check = false
                     }
                     if (team?.tid in teamList && check) {
@@ -150,7 +223,7 @@ class TeamActivity : AppCompatActivity() {
                         adapter.notifyDataSetChanged()
                         //adapter.notifyItemInserted(dataList.lastIndex)
                     }
-                    if (teams.getValue<Team>()?.tid in teamList && !check){
+                    if (teams.getValue<Team>()?.tid in teamList && !check) {
                         //Toast.makeText(this@TeamActivity, "들어와있음", Toast.LENGTH_LONG).show()
                         adapter.notifyDataSetChanged()
                     }
@@ -171,63 +244,73 @@ class TeamActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        with(bind){
-            Database.getReference("rooms/${room.rid}").get().addOnSuccessListener {
-                //Toast.makeText(this@TeamActivity, "${it.value}", Toast.LENGTH_SHORT).show()
-                if(it.getValue<Room>()?.manager == uid){
-                    //Toast.makeText(this@TeamActivity, "내방", Toast.LENGTH_SHORT).show()
+        with(bind) {
+            val exitbind = DialogExitBinding.inflate(layoutInflater)
+            with(exitbind) {
+                Database.getReference("rooms/${room.rid}").get().addOnSuccessListener {
+                    //Toast.makeText(this@TeamActivity, "${it.value}", Toast.LENGTH_SHORT).show()
+                    if (it.getValue<Room>()?.manager == uid) {
+                        alertTitleTextView.text = "방장이 나가면 방이 사라집니다."
+                        AlertDialog.Builder(this@TeamActivity, R.style.MyDialogTheme)
+                            .setView(root)
+                            .setPositiveButton("나가기") { _: DialogInterface, _: Int ->
+                                Database.getReference("rooms/${room.rid}/teams").get()
+                                    .addOnSuccessListener { teams ->
+                                        teams.children.forEach { team ->
+                                            val tid = team.key
+                                            //Toast.makeText(this@TeamActivity, tid.toString(), Toast.LENGTH_SHORT).show()
+                                            Database.getReference("teams/$tid")
+                                                .removeValue()
 
-                    AlertDialog.Builder(this@TeamActivity)
-                        .setTitle("방장이 나가면 방이 사라집니다.")
-                        .setPositiveButton("나가기"){_: DialogInterface, _: Int ->
+                                        }
+                                    }
 
-                            Database.getReference("rooms/${room.rid}/teams").get().addOnSuccessListener {teams->
-                                teams.children.forEach { team->
-                                    val tid = team.key
-                                    //Toast.makeText(this@TeamActivity, tid.toString(), Toast.LENGTH_SHORT).show()
-                                    Database.getReference("teams/$tid").removeValue()
-
-                                }
-                            }
-
-                            Database.getReference("rooms/${room.rid}").removeValue()
-                            finish()
-                            start<RoomListActivity>{
-                                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                            }
-
-                        }
-                        .setNeutralButton("취소", null)
-                        .show()
-
-                }else{
-                    //Toast.makeText(this@TeamActivity, "내방아님", Toast.LENGTH_SHORT).show()
-                    AlertDialog.Builder(this@TeamActivity)
-                        .setTitle("나가겠습니까?")
-                        .setPositiveButton("나가기"){_: DialogInterface, _: Int ->
-                            Database.getReference("rooms/${room.rid}/users/${uid}").removeValue()
-                            Database.getReference("users/$uid/teams").get().addOnSuccessListener {teams->
-                                teams.children.forEach {
-                                    Toast.makeText(this@TeamActivity, "${it.key}", Toast.LENGTH_SHORT).show()
-                                    Database.getReference("teams/${it.key}/members/$uid").removeValue()
+                                Database.getReference("rooms/${room.rid}").removeValue()
+                                finish()
+                                start<RoomListActivity> {
+                                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                                 }
 
                             }
-                            Database.getReference("users/$uid/teams").removeValue()
+                            .setNeutralButton("취소", null)
+                            .show()
 
-                            start<RoomListActivity>{
-                                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    } else {
+                        alertTitleTextView.text = "나가시겠습니까?"
+
+                        AlertDialog.Builder(this@TeamActivity, R.style.MyDialogTheme)
+                            .setView(root)
+                            .setPositiveButton("나가기") { _: DialogInterface, _: Int ->
+                                Database.getReference("rooms/${room.rid}/users/${uid}")
+                                    .removeValue()
+                                Database.getReference("users/$uid/teams").get()
+                                    .addOnSuccessListener { teams ->
+                                        teams.children.forEach {
+                                            //Toast.makeText(this@TeamActivity, "${it.key}", Toast.LENGTH_SHORT).show()
+                                            Database.getReference("teams/${it.key}/members/$uid")
+                                                .removeValue()
+                                        }
+                                    }
+
+                                Database.getReference("users/$uid/teams").removeValue()
+
+                                start<RoomListActivity> {
+                                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                                }
+
                             }
+                            .setNeutralButton("취소", null)
+                            .show()
 
-                        }
-                        .setNeutralButton("취소", null)
-                        .show()
+
+                    }
+
 
                 }
 
-
-
             }
+
+
 
         }
 

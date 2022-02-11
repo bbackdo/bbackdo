@@ -76,6 +76,8 @@
         android:text="입장하기"
         android:fontFamily="@font/main"
         android:textColor="@color/text"
+        android:gravity="center"
+        android:foregroundGravity="center"
         android:background="@drawable/cellview"
         app:layout_constraintTop_toTopOf="@id/guideline5"
         app:layout_constraintBottom_toTopOf="@+id/logoutButton"
