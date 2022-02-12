@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
-    android:layout_height="wrap_content">
+    android:layout_height="100dp">
 
     <TextView
         android:id="@+id/alertTitleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:ellipsize="marquee"
         android:fontFamily="@font/main"
         android:gravity="center"
@@ -16,14 +17,12 @@
         android:text="나가시겠습니까?"
         android:textColor="#000000"
         android:textSize="20dp"
-        android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
     </TextView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
