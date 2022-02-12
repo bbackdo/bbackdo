@@ -190,7 +190,8 @@ class CreateRoomActivity : AppCompatActivity() {
                         }
                         var updateTeam = hashMapOf(
                             "teams/${tids[0]}/members/$uid" to false,
-                            "users/${uid}/teams/${tids[0]}" to false
+                            "users/${uid}/teams/${tids[0]}" to false,
+                            "users/$uid/readyState" to false
                         )
 
                         Database.getReference("").updateChildren(updateTeam as Map<String, Any>)

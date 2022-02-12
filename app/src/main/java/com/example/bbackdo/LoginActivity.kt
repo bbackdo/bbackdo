@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import com.example.bbackdo.databinding.ActivityLoginBinding
+import com.example.bbackdo.databinding.DialogExitBinding
 import com.example.bbackdo.databinding.DialogLoginBinding
 import com.example.bbackdo.dto.User
 import com.example.bbackdo.lib.Authentication
@@ -74,10 +75,8 @@ class LoginActivity : AppCompatActivity() {
                         val builderItem = DialogLoginBinding.inflate(layoutInflater)
                         val editText = builderItem.alertEditText
                         with(builder) {
-                            setTitle("닉네임을 입력하세요")
-                            setMessage("바꿀수없습니다.")
                             setView(builderItem.root)
-                            setPositiveButton("OK") { _: DialogInterface, _: Int ->
+                            setPositiveButton("확인") { _: DialogInterface, _: Int ->
                                 if (editText.text != null) {
                                     val nickname = editText.text.toString()
                                     user = User(nickname)
@@ -116,13 +115,17 @@ class LoginActivity : AppCompatActivity() {
 
     private fun successLogin(user: User) {
         Authentication.user = user
-        AlertDialog.Builder(this, R.style.MyDialogTheme)
-            .setTitle(user.nickname)
-            .setMessage("로그인 성공")
-            .setPositiveButton("확인"){ _ : DialogInterface, _:Int->
-                bind.googleLoginButton.isEnabled = false
-            }
-            .show()
+        val dialog = DialogExitBinding.inflate(layoutInflater)
+        with(dialog){
+            alertTitleTextView.text = "로그인 성공!"
+            AlertDialog.Builder(this@LoginActivity, R.style.MyDialogTheme)
+                .setView(root)
+                .setPositiveButton("확인"){ _ : DialogInterface, _:Int->
+                    bind.googleLoginButton.isEnabled = false
+                }
+                .show()
+        }
+
             /*
 
         materialAlertDialog {

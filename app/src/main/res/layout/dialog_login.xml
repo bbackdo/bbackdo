@@ -4,7 +4,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    // nickname, win, lose, readyState, rooms
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="닉네임을 입력하세요"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:fontFamily="@font/main"
+        android:textColor="@color/text"
+        android:textSize="20dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/main"
+        android:text="※ 주의 ※\n한번 설정한 별명은 다시 변경하실 수 없습니다.\n부디 신중히 설정해 주세요."
+    app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#D90000"
+        android:textSize="14dp" />
 
     <EditText
         android:id="@+id/alertEditText"
@@ -12,9 +42,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/content" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
