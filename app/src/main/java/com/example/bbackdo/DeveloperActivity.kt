@@ -58,7 +58,7 @@ class DeveloperActivity: AppCompatActivity() {
                     "유니티 개발, 아이디어 담당"))
             infodatas.add(infos("이가은", "한양대학교 컴퓨터소프트웨어학부\n" +
                     "안드로이드 개발,\n시키키 담당"))
-            infodatas.add(infos("김은솔", "한한양대학교 컴퓨터소프트웨어학부\n" +
+            infodatas.add(infos("김은솔", "한양대학교 컴퓨터소프트웨어학부\n" +
                     "안드로이드 개발,\n구원투수 담당"))
             infodatas.add(infos("임성덕", "한양대학교 컴퓨터소프트웨어학부\n" +
                     "안드로이드 개발, 파이어베이스 개발 담당"))

@@ -1,2 +1,2 @@
-include ':app', ':unityLibrary'
+include ':app'
 rootProject.name = "Bbackdo"

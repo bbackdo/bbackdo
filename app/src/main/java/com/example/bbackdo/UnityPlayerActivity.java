@@ -65,8 +65,6 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
 
     // Callback before Unity player process is killed
     @Override public void onUnityPlayerQuitted() {
-//        Intent intent = Intent(this, MainActivity)
-//        startActivity(intent);
     }
 
     @Override protected void onNewIntent(Intent intent)
