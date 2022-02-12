@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.bbackdo.databinding.ActivityTeamNumBinding
 import com.example.bbackdo.databinding.DialogYutBinding
+import splitties.activities.start
 
 class TeamNumActivity : AppCompatActivity() {
 
@@ -98,9 +99,10 @@ class TeamNumActivity : AppCompatActivity() {
                         .setPositiveButton("확인", null)
                         .show()
                 }
+            }
 
-
-
+            rulebutton.setOnClickListener {
+                start<RuleActivity>()
             }
         }
     }
