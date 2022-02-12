@@ -16,20 +16,20 @@
         app:layout_constraintBottom_toTopOf="@id/teamRecycler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/backbutton"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="16dp"
-            android:scaleType="fitXY"
-            app:layout_goneMarginStart="8dp"
             android:background="#00000000"
+            android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/developerTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_goneMarginStart="8dp"
             app:srcCompat="@drawable/ic_arrow"
             app:tint="@color/text"
             tools:visibility="visible" />
@@ -53,73 +53,88 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/teamRecycler"
+        android:layout_width="0dp"
+        android:layout_height="280dp"
+        android:layout_margin="8dp"
+        android:orientation="horizontal"
+        android:scrollbars="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/scrollbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        tools:listitem="@layout/developerinfo">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/teamRecycler"
-            android:layout_width="0dp"
-            android:layout_height="280dp"
-            android:layout_margin="8dp"
-            android:orientation="horizontal"
-            android:scrollbars="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@id/constraintLayoutteam"
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ScrollView
+        android:id="@+id/scrollbar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/teamRecycler">
+
+        <LinearLayout
+            android:id="@+id/constraintLayoutteam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-            tools:listitem="@layout/developerinfo">
+            app:layout_constraintTop_toBottomOf="@id/teamRecycler">
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:id="@+id/image1"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/missionimg"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/main"
+                    android:text="팀 이름 소개"
+                    android:textColor="@color/text"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/image1"
+                    app:layout_constraintStart_toEndOf="@id/image1" />
+
+            </LinearLayout>
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutsource"
-        app:layout_constraintTop_toBottomOf="@id/teamRecycler"
-        android:id="@+id/constraintLayoutteam"
-        android:layout_width="0dp"
-        android:layout_height="250dp">
-
-        <ImageView
-            android:id="@+id/image1"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/missionimg"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <TextView
-            android:id="@+id/text1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:fontFamily="@font/main"
-            android:text="팀 이름 소개"
-            android:textColor="@color/text"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/image1"
-            app:layout_constraintStart_toEndOf="@id/image1" />
-
-        <TextView
-            android:id="@+id/text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:textSize="12dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@id/image1"
-            app:layout_constraintTop_toBottomOf="@id/text1"
-            android:textColor="@color/textlight"
-            android:text="게임에 사용되고 있는 팀 명은 모두 우리나라 전통주 입니다."/>
-
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="게임에 사용되고 있는 팀 명은 모두 우리나라 전통주 입니다."
+                android:textColor="@color/textlight"
+                android:textSize="12dp"
+                app:layout_constraintStart_toStartOf="@id/image1"
+                app:layout_constraintTop_toBottomOf="@id/text1" />
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/teamRecycler2"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:numColumns="2"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -131,85 +146,95 @@
 
             </androidx.recyclerview.widget.RecyclerView>
 
-
-   </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayoutsource"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutteam">
-
-
-        <ImageView
-            android:id="@+id/image2"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/missionimg"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/text21"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:fontFamily="@font/main"
-            android:text="소스 이미지 출처 표시"
-            android:textColor="@color/text"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/image2"
-            app:layout_constraintStart_toEndOf="@id/image2" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayouttext"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="16dp"
-            android:background="@drawable/cellview"
-            android:elevation="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text21">
-
-            <TextView
-                android:id="@+id/sourceText"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_margin="8dp"
-                android:text="djfilaj fkla.d klsdkl c"
-                android:scrollbars="vertical"
-                android:textColor="@color/text"
-                android:textSize="12dp"
-                android:lineSpacingExtra="8dp"
-                android:marqueeRepeatLimit="marquee_forever"
-                app:layout_constraintBottom_toTopOf="@id/sourceView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            <View
-                android:id="@+id/sourceView"
-                android:layout_width="0dp"
-                android:layout_height="2px"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="#BBBBBB"
+            <LinearLayout
+                android:id="@+id/constraintLayoutsource"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintHorizontal_bias="0.0"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/teamRecycler2">
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp">
+
+                    <ImageView
+                        android:id="@+id/image2"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/missionimg"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/text21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/main"
+                        android:text="소스 이미지 출처 표시"
+                        android:textColor="@color/text"
+                        android:textSize="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/image2"
+                        app:layout_constraintStart_toEndOf="@id/image2" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/constraintLayouttext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/cellview"
+                    android:elevation="4dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text21">
+
+                    <TextView
+                        android:id="@+id/sourceText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:lineSpacingExtra="8dp"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:text="djfilaj fkla.d klsdkl c"
+                        android:textColor="@color/text"
+                        android:textSize="12dp"
+                        app:layout_constraintBottom_toTopOf="@id/sourceView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/sourceView"
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="#BBBBBB"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

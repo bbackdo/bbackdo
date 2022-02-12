@@ -75,6 +75,8 @@ class DeveloperActivity: AppCompatActivity() {
             teamdatas.add(teams("이강주", "조선시대 3대 명주의 하나로 전통소주에 배와 생강이 들어간다 해서 이강주라 불리게 되었으며 향토문화재 제 6호로 지정된 25도의 약소주이며 이강고(梨薑膏)라고 부르기도 한다." +
                     "종래의 토종 누룩을 만들어 백미를 원료로 해서 약주를 만든 후 이 술로 토종 소주를 내리고 여기에 배, 생강, 울금, 계피, 꿀을 넣어 장기간 후숙시켜 마신다. "))
 
+
+
             teamRecycler.adapter = infoadapter
             teamRecycler2.adapter = teaminfoadapter
 
