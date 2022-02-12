@@ -197,7 +197,7 @@ class TeamActivity : AppCompatActivity() {
                 }
                 false -> {
                     Database.getReference("users/$uid/readyState").setValue(true)
-                    readyButton.text = "준비 완료"
+                    readyButton.text = "준비 취소"
                 }
             }
 
