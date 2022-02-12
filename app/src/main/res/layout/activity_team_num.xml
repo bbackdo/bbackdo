@@ -52,64 +52,6 @@
 
 
     <TextView
-        android:id="@+id/textViewNumberSolo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/main"
-        android:text="인원"
-        android:textColor="@color/textlight"
-        android:textColorLink="#000000"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/memberNumView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidlineSolo2" />
-
-    <LinearLayout
-        android:id="@+id/memberNumView"
-        android:layout_width="0dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/cellview"
-        android:elevation="4dp"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textViewNumberSolo"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNumberSolo">
-
-        <EditText
-            android:id="@+id/editNumberSolo"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="#00000000"
-            android:elevation="4dp"
-            android:ems="8"
-            android:fontFamily="@font/main"
-            android:hint="최대 8인"
-            android:inputType="number"
-            android:textAlignment="center"
-            android:textColor="@color/text"
-
-            android:textSize="16dp" />
-
-        <TextView
-            android:id="@+id/memberNumText"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:ems="1"
-            android:fontFamily="@font/main"
-            android:gravity="center"
-            android:text="인"
-            android:textColor="@color/text"
-            android:textSize="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editNumberSolo" />
-
-    </LinearLayout>
-
-    <TextView
         android:id="@+id/textViewTeamNumSolo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -121,7 +63,7 @@
         android:textColorLink="#000000"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/memberNumView" />
+        app:layout_constraintTop_toBottomOf="@+id/guidlineSolo2" />
 
     <LinearLayout
         android:id="@+id/teamNumView"
@@ -282,7 +224,7 @@
         app:layout_constraintTop_toTopOf="@+id/editPenaltySolo4" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/checkSolo"
+        android:id="@+id/checkimgSolo"
         android:layout_width="0dp"
         android:layout_height="38dp"
         android:layout_marginStart="16dp"
@@ -291,6 +233,7 @@
         android:text="윷놀이 판\n확인하기"
         android:textColor="@color/text"
         android:textSize="10dp"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@+id/editPenaltySolo4"
         app:layout_constraintEnd_toEndOf="@+id/editPenaltySolo2view"
         app:layout_constraintStart_toEndOf="@id/textViewCupSolo3"
@@ -473,7 +416,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintGuide_percent="0.28" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidlineSolo2"
