@@ -50,7 +50,6 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
         int mode = intent.getExtras().getInt("mode");
         if (mode == 0) {
             mUnityPlayer.UnitySendMessage("GameControl", "set_teamNum", intent.getExtras().getString("TeamNum"));
-//            mUnityPlayer.UnitySendMessage("TeamNum", "num", intent.getExtras().getString("MemberNum"));
             mUnityPlayer.UnitySendMessage("GameControl", "set_overlapNum", intent.getExtras().getString("Penalty1"));
             mUnityPlayer.UnitySendMessage("GameControl", "set_catchNum", intent.getExtras().getString("Penalty2"));
             mUnityPlayer.UnitySendMessage("GameControl", "set_penaltySpot", intent.getExtras().getString("Penalty3"));

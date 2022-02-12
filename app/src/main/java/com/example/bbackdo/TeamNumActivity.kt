@@ -65,9 +65,11 @@ class TeamNumActivity : AppCompatActivity() {
 
 
             buttonFinish.setOnClickListener {
+
                 if (editTeamNumSolo.text.isEmpty() || editPenaltySolo1.text.isEmpty() || editPenaltySolo2.text.isEmpty() || editPenaltySolo3.text.isEmpty() || editPenaltySolo4.text.isEmpty() || editPenaltySolo5.text.isEmpty()) {
                     Toast.makeText(this@TeamNumActivity, "설정이 완료되지 않았습니다", Toast.LENGTH_SHORT)
                         .show()
+
                 } else {
                     val intent = Intent(this@TeamNumActivity, UnityPlayerActivity::class.java)
                     intent.putExtra("mode", 0)
@@ -77,7 +79,8 @@ class TeamNumActivity : AppCompatActivity() {
                     intent.putExtra("Penalty3", editPenaltySolo3.text.toString())
                     intent.putExtra("Penalty4", editPenaltySolo4.text.toString())
                     intent.putExtra("Penalty5", editPenaltySolo5.text.toString())
-
+                    
+                    startActivity(intent)
 
                 }
             }
@@ -95,6 +98,7 @@ class TeamNumActivity : AppCompatActivity() {
                         .setPositiveButton("확인", null)
                         .show()
                 }
+
 
 
             }
