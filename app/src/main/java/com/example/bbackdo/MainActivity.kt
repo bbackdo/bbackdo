@@ -24,7 +24,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         main.kakaoLoginBtn.setOnClickListener {
-            start<LoginActivity>()
+            Toast.makeText(this@MainActivity, "준비중인 서비스 입니다", Toast.LENGTH_SHORT).show()
+            //start<LoginActivity>()
         }
 
     }
