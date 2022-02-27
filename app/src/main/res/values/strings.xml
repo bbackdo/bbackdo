@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bbackdo</string>
+    <string name="app_name">빽도</string>
     <string name="title_activity_login">로그인 액티비티</string>
     <string name="prompt_email">이메일</string>
     <string name="prompt_password">Password</string>
