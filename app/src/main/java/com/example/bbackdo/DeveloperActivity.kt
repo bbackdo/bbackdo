@@ -83,12 +83,26 @@ class DeveloperActivity: AppCompatActivity() {
             backbutton.setOnClickListener {
                 finish()
             }
-            sourceText.text = "* 학 이미지 " +
-                    "https://www.culture.go.kr/tradition/traditionalDesignPatternView.do?seq=9179&did=77708&reffer=shape&dpid=140&sType=02&xtaxonomy=%EB%8F%99%EB%AC%BC%EB%AC%B8&uType=2D&cPage=3" +
-                    "\n\n* 용 이미지 " +
-                    "https://www.culture.go.kr/tradition/traditionalDesignPatternView.do?seq=8523&did=35701&reffer=shape&dpid=140&xtaxonomy=%EB%8F%99%EB%AC%BC%EB%AC%B8&xtaxonomy2=%EC%9A%A9%EB%AC%B8&uType=2D&gubun=all&cPage=" +
+            sourceText.text = "* 학, 용 이미지 " +
+                      "본 저작물은 \"문화포털\" 에서 서비스 되는 전통문양을 활용하였습니다." +
                     "\n\n* 경복궁 이미지 " +
-                    "https://kor.pngtree.com/freepng/south-korea-gyeongbokgung-building-clip-art_6621934.html"
+                    "궁전 PNG는 mars에 의해 설계되었고,에서 유래되었습니다. <a href=\"https://kor.pngtree.com\"> Pngtree.com</a>" +
+                    "\n\n* 윷 이미지 " +
+                    "대한민국 PNG는 乔木에 의해 설계되었고,에서 유래되었습니다. <a href=\"https://kor.pngtree.com\"> Pngtree.com</a>" +
+                    "\n\n* 윷판 이미지 " +
+                    "https://www.pinterest.co.kr/pin/760756562064429810/\n" +
+                    "https://www.pinterest.co.kr/pin/760756562064411538/" +
+                    "\n\n* 문양 " +
+                    "무늬 PNG는 duapensil에 의해 설계되었고,에서 유래되었습니다. <a href=\"https://kor.pngtree.com\"> Pngtree.com</a>" +
+                    "\n\n* 진도 홍주 " +
+                    "본 저작물은 '진도군청'에서 '2005년'작성하여 공공누리 제1유형으로 개방한 '홍주병'을 이용하였으며,\n" +
+                    "해당 저작물은 '진도군청,https://www.jindo.go.kr/home/sub.cs?m=211'에서 무료로 다운받으실 수 있습니다." +
+                    "\n\n* 문배주 " +
+                    "문배주 양조원 http://www.moonbaesool.co.kr/" +
+                    "\n\n* 안동 소주 " +
+                    "명인 안동소주 https://smartstore.naver.com/andongsojumall" +
+                    "\n\n* 이강주 " +
+                    "전주이강주 https://smartstore.naver.com/leegangju"
             sourceText.movementMethod = ScrollingMovementMethod.getInstance()
 
         }

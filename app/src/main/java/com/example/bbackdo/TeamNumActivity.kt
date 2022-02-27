@@ -100,6 +100,9 @@ class TeamNumActivity : AppCompatActivity() {
                         .show()
                 }
             }
+            checkDevelop.setOnClickListener {
+                start<DeveloperActivity>()
+            }
 
             rulebutton.setOnClickListener {
                 start<RuleActivity>()
