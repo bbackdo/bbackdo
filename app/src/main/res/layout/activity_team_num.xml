@@ -413,23 +413,61 @@
         android:id="@+id/rulebutton"
         android:layout_width="0dp"
         android:layout_height="38dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/longbg"
         android:clickable="true"
         android:fontFamily="@font/main"
         android:text="윷놀이 규칙\n확인하기"
         android:textColor="@color/text"
         android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/teamNumView"
-        app:layout_constraintEnd_toEndOf="@+id/checkimgSolo"
-        app:layout_constraintStart_toEndOf="@+id/textViewPenaltySolo2"
-        app:layout_constraintTop_toTopOf="@+id/teamNumView" />
+        app:layout_constraintEnd_toEndOf="@+id/editPenaltySolo5view"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editPenaltySolo5view"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEtc" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/checkDevelop"
+        android:layout_width="0dp"
+        android:layout_height="38dp"
+        android:background="@drawable/longbg"
+        android:clickable="true"
+        android:fontFamily="@font/main"
+        android:text="개발자 소개 및 출처"
+        android:textColor="@color/text"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/rulebutton"
+        app:layout_constraintEnd_toEndOf="@+id/editPenaltySolo2view"
+        app:layout_constraintStart_toStartOf="@+id/editPenaltySolo2view"
+        app:layout_constraintTop_toTopOf="@+id/rulebutton" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidlineSolo1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.28" />
+        app:layout_constraintGuide_percent="0.28180575" />
+
+    <ImageView
+        android:id="@+id/etcimgSolo"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:src="@drawable/missionimg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidlineSolo3" />
+
+    <TextView
+        android:id="@+id/textViewEtc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/main"
+        android:text="기타 정보"
+        android:textColor="@color/text"
+        android:textSize="20dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/etcimgSolo"
+        app:layout_constraintStart_toEndOf="@+id/etcimgSolo"
+        app:layout_constraintTop_toTopOf="@+id/etcimgSolo" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidlineSolo2"
@@ -437,6 +475,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidlineSolo3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
