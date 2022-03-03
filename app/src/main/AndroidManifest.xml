@@ -31,7 +31,8 @@
         <activity android:name=".AniActivity" />
         <activity android:name=".CreateRoomActivity" />
         <activity android:name=".UnityPlayerActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:noHistory="true"/>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,6 +56,11 @@
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="f34797735d54a48073a66f9a9c5ab107" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
+
+
     </application>
 
 </manifest>
