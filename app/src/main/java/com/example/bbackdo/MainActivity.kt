@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(main.root)
 
         //Log.d("gaeun", "oncreate")
-        loadAd()
+        //loadAd()
 
         main.testButton.setOnClickListener {
             startActivity(intent)
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onBackPressed() {
-        showInterstitial()
+        //showInterstitial()
         super.onBackPressed()
     }
 

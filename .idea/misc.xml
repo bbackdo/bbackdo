@@ -29,7 +29,7 @@
         <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_second.xml" value="0.37395833333333334" />
         <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_splash.xml" value="0.18385416666666668" />
         <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_team.xml" value="0.31666666666666665" />
-        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_team_num.xml" value="0.33" />
+        <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/activity_team_num.xml" value="0.37395833333333334" />
         <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/alertdialog_edittext.xml" value="0.2833333333333333" />
         <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/cell_member.xml" value="0.5" />
         <entry key="..\:/Users/82105/AndroidStudioProjects/bbackdo/app/src/main/res/layout/developerinfo.xml" value="0.35572916666666665" />
@@ -65,7 +65,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
