@@ -14,26 +14,48 @@
         android:theme="@style/Theme.Bbackdo">
         <activity
             android:name=".RuleActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LogoutActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".NicknameActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".TeamActivity"
-            android:exported="true" />
-        <activity android:name=".DeveloperActivity" />
-        <activity android:name=".RoomListActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".TeamNumActivity" />
-        <activity android:name=".AniActivity" />
-        <activity android:name=".CreateRoomActivity" />
-        <activity android:name=".UnityPlayerActivity" />
-        <activity android:name=".MainActivity"
-            android:noHistory="true"/>
-        <activity android:name=".SplashActivity">
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DeveloperActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RoomListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TeamNumActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AniActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CreateRoomActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UnityPlayerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -58,7 +80,7 @@
             android:value="f34797735d54a48073a66f9a9c5ab107" />
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-3940256099942544~3347511713" />
 
 
     </application>
