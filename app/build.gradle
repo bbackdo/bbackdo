@@ -2,7 +2,6 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'com.google.gms.google-services'
     id 'kotlin-parcelize'
 }
 
@@ -11,7 +10,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.bbackdo"
+        applicationId "com.bback.bbackdo"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
