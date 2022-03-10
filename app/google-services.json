@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:819435998925:android:774e7b6249d7248423a384",
         "android_client_info": {
-          "package_name": "com.bback.bbackdo"
+          "package_name": "com.example.bbackdo"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "819435998925-vv8pc3o9thb63qicfbrqj8je1p19osna.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.bback.bbackdo",
+            "package_name": "com.example.bbackdo",
             "certificate_hash": "78fb4b7d0de1db9d7086d8b1c903613878f5dd59"
           }
         },
