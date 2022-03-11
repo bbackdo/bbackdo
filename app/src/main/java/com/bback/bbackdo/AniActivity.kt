@@ -1,16 +1,20 @@
 package com.bback.bbackdo
 
+import android.app.Activity
+import java.util.Random
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bback.bbackdo.databinding.ActivityAniBinding
-import java.util.*
 
 class AniActivity : AppCompatActivity() {
     private val bind by lazy{
         ActivityAniBinding.inflate(layoutInflater)
     }
 
-    var imgYut = arrayListOf<Int>(R.drawable.yut_0,R.drawable.yut_1)
+    var imgYut = arrayListOf<Int>(
+       R.drawable.yut_0,
+       R.drawable.yut_1
+    )
     var Yut = arrayListOf<String>("윷","걸","개","도","모")
 
     override fun onCreate(savedInstanceState: Bundle?) {

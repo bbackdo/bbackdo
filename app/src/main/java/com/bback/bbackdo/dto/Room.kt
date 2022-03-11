@@ -2,6 +2,7 @@ package com.bback.bbackdo.dto
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import com.bback.bbackdo.dto.Team
 import kotlinx.parcelize.RawValue
 
 @Parcelize

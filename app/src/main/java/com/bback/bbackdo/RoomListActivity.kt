@@ -3,34 +3,38 @@ package com.bback.bbackdo
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
+import android.graphics.Color
 import android.graphics.Rect
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.view.animation.TranslateAnimation
-import android.widget.Filter
-import android.widget.Filterable
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.toColor
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bback.bbackdo.databinding.*
 import com.bback.bbackdo.dto.Room
 import com.bback.bbackdo.dto.Room.Companion.STATE_WAIT
+import com.bback.bbackdo.dto.Team
 import com.bback.bbackdo.dto.User
 import com.bback.bbackdo.lib.Authentication
 import com.bback.bbackdo.lib.Authentication.uid
 import com.bback.bbackdo.lib.Database
 import com.bback.bbackdo.lib.Util
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import splitties.activities.start
+import splitties.alertdialog.appcompat.positiveButton
 import splitties.bundle.putExtras
 import java.util.*
+import kotlin.collections.ArrayList
 
 class RoomListActivity : AppCompatActivity() {
 
@@ -52,7 +56,7 @@ class RoomListActivity : AppCompatActivity() {
 
             // 방만들기 클릭
             buttonMake.setOnClickListener {
-                start<CreateRoomActivity>()
+                start<com.bback.bbackdo.CreateRoomActivity>()
             }
 
             //item 간격 설정

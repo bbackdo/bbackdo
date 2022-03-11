@@ -1,5 +1,6 @@
 package com.bback.bbackdo
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -11,10 +12,11 @@ import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.kakao.sdk.common.util.Utility
 
 import splitties.activities.start
 
-const val AD_UNIT_ID = "ca-app-pub-3940256099942544/1033173712"
+const val AD_UNIT_ID = "ca-app-pub-1707526745353281~5185097668"
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         main.testButton.setOnClickListener {
             startActivity(intent)
             start<TeamNumActivity>(){
-                loadAd()
+                //loadAd()
             }
         }
 
@@ -56,10 +58,10 @@ class MainActivity : AppCompatActivity() {
         val adRequest = AdRequest.Builder().build()
 
         InterstitialAd.load(
-            this, AD_UNIT_ID, adRequest,
+            this,R.string.AD_UNIT_ID.toString(), adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
-                    adError?.message?.let { Log.d(TAG, it) }
+                    Log.d(TAG, adError?.message)
                     mInterstitialAd = null
                     mAdIsLoading = false
                     val error = "domain: ${adError.domain}, code: ${adError.code}, " +

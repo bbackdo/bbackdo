@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bback.bbackdo.databinding.ActivityCreateRoomBinding
 import com.bback.bbackdo.lib.Authentication
 import com.bback.bbackdo.lib.Database
+import com.bback.bbackdo.dto.Room
+import com.google.firebase.database.ServerValue
 
 class CreateActivity : AppCompatActivity() {
     private val bind by lazy{

@@ -1,5 +1,6 @@
 package com.bback.bbackdo
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,16 +8,17 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.bback.bbackdo.databinding.ActivityCreateRoomBinding
+import com.bback.bbackdo.databinding.DialogLoginBinding
 import com.bback.bbackdo.databinding.DialogYutBinding
-import com.bback.bbackdo.R
+import com.bback.bbackdo.lib.Authentication
+import com.bback.bbackdo.lib.Database
 import com.bback.bbackdo.dto.Room
 import com.bback.bbackdo.dto.Team
 import com.bback.bbackdo.dto.Team.Companion.TEAM1
 import com.bback.bbackdo.dto.Team.Companion.TEAM2
 import com.bback.bbackdo.dto.Team.Companion.TEAM3
 import com.bback.bbackdo.dto.Team.Companion.TEAM4
-import com.bback.bbackdo.lib.Authentication
-import com.bback.bbackdo.lib.Database
+import com.google.firebase.database.ServerValue
 import splitties.activities.start
 import splitties.bundle.putExtras
 
@@ -203,10 +205,9 @@ class CreateRoomActivity : AppCompatActivity() {
                             }
                         finish()
 
-                        start<TeamActivity> {
-
-                            putExtras(TeamActivity.Extras) {
-                                this.room = room
+                        start<com.bback.bbackdo.TeamActivity> {
+                            putExtras(com.bback.bbackdo.TeamActivity.Extras) {
+                                com.bback.bbackdo.TeamActivity.Extras.room = room
 
                             }
                             flags = Intent.FLAG_ACTIVITY_NO_HISTORY
@@ -220,7 +221,9 @@ class CreateRoomActivity : AppCompatActivity() {
             }
 
             checkimg.setOnClickListener {
-                val builder = AlertDialog.Builder(this@CreateRoomActivity, R.style.MyDialogTheme)
+                val builder = AlertDialog.Builder(this@CreateRoomActivity,
+                    R.style.MyDialogTheme
+                )
                 val builderItem = DialogYutBinding.inflate(layoutInflater)
                 with(builder){
                     setView(builderItem.root)

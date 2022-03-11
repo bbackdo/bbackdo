@@ -180,7 +180,7 @@ class TeamActivity : AppCompatActivity() {
             }
         }
 
-        val intent = Intent(this, UnityPlayerActivity::class.java)
+        val intent = Intent(this, com.bback.bbackdo.UnityPlayerActivity::class.java)
         intent.putExtra("mode", 1)
         startActivity(intent)
 

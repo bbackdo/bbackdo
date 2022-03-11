@@ -5,14 +5,24 @@ import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bback.bbackdo.TeamActivity.Extras.room
 import com.bback.bbackdo.databinding.CellMemberBinding
 import com.bback.bbackdo.databinding.LayoutTeamBinding
 import com.bback.bbackdo.dto.Team
 import com.bback.bbackdo.dto.User
+import com.bback.bbackdo.lib.Authentication
 import com.bback.bbackdo.lib.Authentication.uid
 import com.bback.bbackdo.lib.Database
+import com.bback.bbackdo.lib.Util
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ServerValue
 import com.google.firebase.database.ktx.getValue
+import splitties.activities.start
+import splitties.bundle.putExtras
 
 class TeamAdapter(
     private val context: Context,
