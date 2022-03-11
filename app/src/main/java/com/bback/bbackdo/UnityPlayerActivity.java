@@ -14,7 +14,6 @@ import android.view.WindowManager;
 import android.os.Process;
 
 import com.unity3d.player.IUnityPlayerLifecycleEvents;
-import com.unity3d.player.MultiWindowSupport;
 import com.unity3d.player.UnityPlayer;
 
 public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecycleEvents
@@ -63,8 +62,9 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
         moveTaskToBack(true);
     }
 
-    // Callback before Unity player process is killed
+    // When Unity player quited kill process
     @Override public void onUnityPlayerQuitted() {
+        Process.killProcess(Process.myPid());
     }
 
     @Override protected void onNewIntent(Intent intent)
@@ -84,38 +84,10 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
         super.onDestroy();
     }
 
-    // If the activity is in multi window mode or resizing the activity is allowed we will use
-    // onStart/onStop (the visibility callbacks) to determine when to pause/resume.
-    // Otherwise it will be done in onPause/onResume as Unity has done historically to preserve
-    // existing behavior.
-    @Override protected void onStop()
-    {
-        super.onStop();
-
-        if (!MultiWindowSupport.getAllowResizableWindow(this))
-            return;
-
-        mUnityPlayer.pause();
-    }
-
-    @Override protected void onStart()
-    {
-        super.onStart();
-
-        if (!MultiWindowSupport.getAllowResizableWindow(this))
-            return;
-
-        mUnityPlayer.resume();
-    }
-
     // Pause Unity
     @Override protected void onPause()
     {
         super.onPause();
-
-        if (MultiWindowSupport.getAllowResizableWindow(this))
-            return;
-
         mUnityPlayer.pause();
     }
 
@@ -123,10 +95,6 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
     @Override protected void onResume()
     {
         super.onResume();
-
-        if (MultiWindowSupport.getAllowResizableWindow(this))
-            return;
-
         mUnityPlayer.resume();
     }
 
