@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:scrollbarSize="20dp"
+    tools:context=".RoomListActivity">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonMake"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/buttonview"
+        android:elevation="4dp"
+        android:fontFamily="@font/main"
+        android:text="방만들기"
+        android:textColor="@color/buttonText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/swipeRefreshLayout" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutSearch"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/cellview"
+        android:elevation="4dp"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/buttonOpen"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:background="#00000000"
+            android:src="@drawable/ic_menu"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/editSearchBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="2dp"
+            android:background="@color/white"
+            android:fontFamily="@font/main"
+            android:inputType="text"
+            android:lines="1"
+            android:paddingStart="10dp"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/buttonMake"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutSearch">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerRoom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editSearchBar"
+            tools:listitem="@layout/item_recycler_room"
+            tools:visibility="visible" />
+
+    </com.baoyz.widget.PullRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/pageBlack"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#56000000"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:translationZ="4dp"
+        android:visibility="invisible">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/page"
+        android:layout_width="300dp"
+        android:layout_height="0dp"
+        android:background="@drawable/img"
+        android:orientation="vertical"
+        android:translationZ="4dp"
+        android:visibility="invisible"
+        android:weightSum="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/imageViewProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="50dp"
+            android:layout_weight="2"
+            android:scaleType="fitStart"
+            android:src="@drawable/mypageimg" />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.5"
+            android:fontFamily="@font/main"
+            android:gravity="left"
+            android:text="이름"
+            android:textColor="@color/text"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/textViewInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:layout_weight="1.6"
+            android:fontFamily="@font/main"
+            android:gravity="left"
+            android:text="0전0승0패"
+            android:textColor="@color/text"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:id="@+id/rulebutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:paddingTop="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="0.2"
+            android:fontFamily="@font/main"
+            android:gravity="left"
+            android:text="윷놀이 규칙"
+            android:textColor="#000000"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/developer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="0.2"
+            android:paddingTop="10dp"
+            android:fontFamily="@font/main"
+            android:gravity="left"
+            android:text="개발자 소개"
+            android:textColor="@color/text"
+            android:textSize="16dp" />
+
+
+        <TextView
+            android:id="@+id/buttonWithdrawal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="0.2"
+            android:fontFamily="@font/main"
+            android:text="탈퇴하기"
+            android:paddingTop="10dp"
+            android:textColor="@color/text"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

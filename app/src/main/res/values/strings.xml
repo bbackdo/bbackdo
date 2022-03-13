@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">Bbackdo</string>
+    <string name="app_name">빽도</string>
+    <string name="title_activity_login">로그인 액티비티</string>
+    <string name="prompt_email">이메일</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_dialog_nickname">닉네임을 입력하세요.</string>
+    <string name="enter_message">%1$s 님이 입장하셨습니다.</string>
+    <string name="player">참가자</string>
+    <string name="game_view_content_description">Game view</string>
+    <string name="AD_UNIT_ID">ca-app-pub-1707526745353281~5185097668</string>
 </resources>

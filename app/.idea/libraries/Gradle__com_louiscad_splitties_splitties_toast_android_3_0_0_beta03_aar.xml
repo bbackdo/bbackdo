@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Gradle: com.louiscad.splitties:splitties-toast-android:3.0.0-beta03@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9b908f1ceacede001533065f745d9548/transformed/jetified-toast-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/2c4cf2d652ab7d1d63ce80d25713a42b/transformed/jetified-toast-debug/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/2c4cf2d652ab7d1d63ce80d25713a42b/transformed/jetified-toast-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/2c4cf2d652ab7d1d63ce80d25713a42b/transformed/jetified-toast-debug/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-toast-android/3.0.0-beta03/63e57eed4e31f71c78bca40eac7c280b417892df/splitties-toast-android-3.0.0-beta03-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.louiscad.splitties/splitties-toast-android/3.0.0-beta03/d77543640d95b83e5232fee29808bdd7861f6364/splitties-toast-android-3.0.0-beta03-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

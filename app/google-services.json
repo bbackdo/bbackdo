@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "819435998925",
+    "firebase_url": "https://android-bbackdo-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "android-bbackdo",
+    "storage_bucket": "android-bbackdo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819435998925:android:774e7b6249d7248423a384",
+        "android_client_info": {
+          "package_name": "com.example.bbackdo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "819435998925-vv8pc3o9thb63qicfbrqj8je1p19osna.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bbackdo",
+            "certificate_hash": "78fb4b7d0de1db9d7086d8b1c903613878f5dd59"
+          }
+        },
+        {
+          "client_id": "819435998925-npr0ge1g82v5cip9a3j7bl6cs50s4ko2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJpS-Dc579NRxHW6Uz8Qgk7RI18JYyj0U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "819435998925-npr0ge1g82v5cip9a3j7bl6cs50s4ko2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
