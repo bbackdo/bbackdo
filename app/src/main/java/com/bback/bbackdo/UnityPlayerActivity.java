@@ -48,12 +48,12 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
         Intent intent = getIntent();
         int mode = intent.getExtras().getInt("mode");
         if (mode == 0) {
-            mUnityPlayer.UnitySendMessage("GameControl", "set_teamNum", intent.getExtras().getString("TeamNum"));
-            mUnityPlayer.UnitySendMessage("GameControl", "set_overlapNum", intent.getExtras().getString("Penalty1"));
-            mUnityPlayer.UnitySendMessage("GameControl", "set_catchNum", intent.getExtras().getString("Penalty2"));
-            mUnityPlayer.UnitySendMessage("GameControl", "set_penaltySpot", intent.getExtras().getString("Penalty3"));
-            mUnityPlayer.UnitySendMessage("GameControl", "set_penaltyNum", intent.getExtras().getString("Penalty4"));
-            mUnityPlayer.UnitySendMessage("GameControl", "set_loseNum", intent.getExtras().getString("Penalty5"));
+            mUnityPlayer.UnitySendMessage("LoadingSceneManager", "set_teamNum", intent.getExtras().getString("TeamNum"));
+            mUnityPlayer.UnitySendMessage("LoadingSceneManager", "set_overlapNum", intent.getExtras().getString("Penalty1"));
+            mUnityPlayer.UnitySendMessage("LoadingSceneManager", "set_catchNum", intent.getExtras().getString("Penalty2"));
+            mUnityPlayer.UnitySendMessage("LoadingSceneManager", "set_penaltySpot", intent.getExtras().getString("Penalty3"));
+            mUnityPlayer.UnitySendMessage("LoadingSceneManager", "set_penaltyNum", intent.getExtras().getString("Penalty4"));
+            mUnityPlayer.UnitySendMessage("LoadingSceneManager", "set_loseNum", intent.getExtras().getString("Penalty5"));
         }
     }
 
