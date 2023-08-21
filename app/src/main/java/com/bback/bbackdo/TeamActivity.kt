@@ -74,6 +74,7 @@ class TeamActivity : AppCompatActivity() {
                     when (it.value?.equals(uid)) {
                         true -> gameStart()
                         false -> gameReady()
+                        else -> {}
                     }
                 }
             }
@@ -162,6 +163,8 @@ class TeamActivity : AppCompatActivity() {
                 false -> {
                     readyButton.text = "준비"
                 }
+
+                else -> {}
             }
         }
 

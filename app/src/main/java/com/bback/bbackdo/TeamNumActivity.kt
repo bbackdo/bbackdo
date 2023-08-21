@@ -133,7 +133,7 @@ class TeamNumActivity : AppCompatActivity() {
             this, AD_UNIT_ID, adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
-                    Log.d(TAG, adError?.message)
+                    Log.d(TAG, adError?.message.toString())
                     mInterstitialAd = null
                     mAdIsLoading = false
                     val error = "domain: ${adError.domain}, code: ${adError.code}, " +
@@ -167,12 +167,6 @@ class TeamNumActivity : AppCompatActivity() {
                     loadAd()
                 }
 
-                override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
-                    Log.d(TAG, "Ad failed to show.")
-                    // Don't forget to set the ad reference to null so you
-                    // don't show the ad a second time.
-                    mInterstitialAd = null
-                }
 
                 override fun onAdShowedFullScreenContent() {
                     Log.d(TAG, "Ad showed fullscreen content.")
